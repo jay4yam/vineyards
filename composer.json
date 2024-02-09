@@ -7,12 +7,14 @@
     "require": {
         "php": "^8.3",
         "blade-ui-kit/blade-icons": "^1.6",
+        "codeat3/blade-carbon-icons": "^2.18",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/breeze": "^1.28",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "owenvoke/blade-fontawesome": "^2.5",
+        "postare/blade-mdi": "^1.1",
         "saade/blade-iconsax": "^1.1"
     },
     "require-dev": {

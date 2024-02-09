@@ -3,39 +3,39 @@
 @section('content')
 
     <!-- -->
-    <header class="h-screen w-full text-center overflow-hidden">
+    <header class="relative flex items-center justify-center h-screen overflow-hidden">
 
         <!--logo & baseline -->
-        <div class="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3 text-white drop-shadow">
+        <div class="relative z-50 w-1/2 h-fit m-auto left-0 right-0 top-0 bottom-0 text-white drop-shadow text-center">
             <div class="flex flex-col gap-4">
             <img class="h-64 pb-20" height="200" src="/images/logo-vineyards.svg" alt="logo Michaël Zingraf Real Estate"/>
-            <h1 class="font-gotham text-shadow uppercase text-2xl font-bold">{{ __('home.baseline') }}</h1>
-            <h2 class="font-retro lowercase text-6xl text-shadow">{{ __('home.secondline') }}</h2>
+            <h1 class="font-eurostile text-shadow uppercase text-2xl font-bold">{{ __('home.baseline') }}</h1>
+            <h2 class="font-retro lowercase text-7xl text-shadow">{{ __('home.secondline') }}</h2>
             </div>
         </div>
 
         <!-- video de la home page-->
-        <video autoplay loop muted class="bg-cover z-10">
+        <video autoplay loop muted class="absolute z-10 w-auto min-w-full min-h-full max-w-none">
             <source src="/images/laonwine.mp4" type="video/mp4">
         </video>
 
     </header>
 
     <!-- bloc MZ et Intro -->
-    <div class="flex flex-col lg:flex-row">
+    <section class="flex flex-wrap">
 
         <!-- MZ & HZ photo -->
-        <div class="w-full h-96 lg:h-auto lg:w-1/2 bg-manager"></div>
+        <div class="basis-full lg:basis-1/2 h-96 lg:h-auto bg-manager"></div>
 
         <!-- intro -->
-        <div class="w-full lg:w-1/2 p-8 lg:p-28 text-justify">
+        <div class="basis-full lg:basis-1/2 p-8 lg:p-28 text-justify">
             <h2 class="uppercase font-black text-3xl text-black py-4 text-center">{{ __('home.metier_passion') }}</h2>
             <h3 class="font-crimson font-bold">
                 Dans chaque verre de vin se reflète l'essence d'un terroir,
                 et derrière chaque domaine viticole, une demeure rêvée où l'art de vivre
                 se marie à la perfection avec l'immobilier de prestige.
             </h3>
-            <div class="text-gray-500 font-crimson pt-14">
+            <div class="text-gray-500 font-crimson pt-12">
                 <p class="py-2">En tant que fondateur du groupe Michaël Zingraf Real Estate,
                     j'ai toujours souhaité marier mes passions pour l'immobilier
                     et la pierre et le monde exquis du vin. C'est avec une grande fierté
@@ -63,13 +63,13 @@
             </div>
         </div>
 
-    </div>
+    </section>
 
     <!-- philosophie & img bg -->
-    <div class="flex flex-col lg:flex-row">
+    <section class="flex flex-wrap">
 
         <!-- intro -->
-        <div class="order-2 lg:order-1 w-full lg:w-1/2 p-8 lg:p-28 text-justify">
+        <div class="basis-full lg:basis-1/2 order-2 lg:order-1 p-8 lg:p-28 text-justify">
             <h2 class="uppercase font-black text-3xl text-black py-4 text-center">Notre Philosophie</h2>
             <h3 class="font-crimson font-bold">
                 Vendre un domaine viticole, c'est transmettre un héritage de passion et d'excellence,
@@ -101,132 +101,145 @@
         </div>
 
         <!-- BG-wine -->
-        <div class="order-1 lg:order-2 w-full h-96 lg:h-auto lg:w-1/2 bg-wine"></div>
+        <div class="basis-full lg:basis-1/2 order-1 lg:order-2 h-96 lg:h-auto bg-wine"></div>
 
-    </div>
+    </section>
 
     <!-- PROPERTIES -->
-    <div class="flex flex-row">
+    <section class="flex flex-wrap">
 
-        <div class="w-1/2 grid grid-cols-2 gap-2">
+        <!-- produits -->
+        <div class="basis-full lg:basis-1/2 grid grid-cols-1 lg:grid-cols-2 auto-rows-max gap-2">
 
             <!-- produit 1 -->
-            <div class="relative h-72 overflow-hidden">
+            <div class="group relative flex items-center justify-center h-fit w-fit overflow-hidden hover:cursor-pointer">
 
-                <a href="" class="group hover:cursor-pointer">
-                    <picture
-                        class="absolute w-full h-full transition ease-in-out delay-100 group-hover:brightness-105 group-hover:scale-110">
-                        <source srcset="/properties/chateau-viticole.jpg" media="(orientation: paysage)"/>
-                        <img src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
-                    </picture>
+                <div class="hover:brightness-75">
+                    <img class="" src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
+                </div>
 
-                    <div
-                        class="absolute bottom-0 hidden transition ease-in duration-500 backdrop-blur w-full text-white text-shadow font-gotham py-2 px-2 text-center z-30 bg-white/75 group-hover:block">
-                        Superbe Propriété viticole de folie
-                    </div>
-                </a>
+                <ul class="absolute hidden group-hover:block text-white text-lg font-black uppercase text-shadow text-center gap-2">
+                    <li class="text-base border-white border-b">superbe magnifique</li>
+                    <li class="text-base">Propriété viticole - Saint-Tropez</li>
+                    <li class="text-sm flex flex-row justify-around">
+                        <div class="flex flex-row items-center gap-2"><x-mdi-fruit-grapes class="mx-auto h-4"/><span>17ha</span></div>
+                        <div class="flex flex-row items-center gap-2"><x-carbon-area class="mx-auto h-4"/><span>1200m<sup>2</sup></span></div>
+                        <div class="flex flex-row items-center gap-2"><x-fas-map-marker-alt class="mx-auto h-4"/><span>Saint-Tropez</span></div>
+                    </li>
+                    <li class="text-lg">2 500 000 €</li>
+                </ul>
 
             </div>
             <!-- ./produit 1 -->
 
             <!-- produit 2 -->
-            <div class="relative h-72 overflow-hidden">
+            <div class="group relative flex items-center justify-center h-fit w-fit overflow-hidden hover:cursor-pointer">
 
-                <a href="" class="group hover:cursor-pointer">
-                    <picture
-                        class="absolute w-full h-full transition ease-in-out delay-100 group-hover:brightness-105 group-hover:scale-110">
-                        <source srcset="/properties/chateau-viticole.jpg" media="(orientation: paysage)"/>
-                        <img src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
-                    </picture>
+                <div class="hover:brightness-75">
+                    <img class="" src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
+                </div>
 
-                    <div
-                        class="absolute bottom-0 hidden transition ease-in duration-500 backdrop-blur w-full text-white text-shadow font-gotham py-2 px-2 text-center z-30 bg-white/75 group-hover:block">
-                        Superbe Propriété viticole de folie
-                    </div>
-                </a>
+                <ul class="absolute hidden group-hover:block text-white text-lg font-black uppercase text-shadow text-center gap-2">
+                    <li class="text-base border-white border-b">superbe magnifique</li>
+                    <li class="text-base">Propriété viticole - Saint-Tropez</li>
+                    <li class="text-sm flex flex-row justify-around">
+                        <div class="flex flex-row items-center gap-2"><x-mdi-fruit-grapes class="mx-auto h-4"/><span>17ha</span></div>
+                        <div class="flex flex-row items-center gap-2"><x-carbon-area class="mx-auto h-4"/><span>1200m<sup>2</sup></span></div>
+                        <div class="flex flex-row items-center gap-2"><x-fas-map-marker-alt class="mx-auto h-4"/><span>Saint-Tropez</span></div>
+                    </li>
+                    <li class="text-lg">2 500 000 €</li>
+                </ul>
 
             </div>
             <!-- ./produit 2 -->
 
             <!-- produit 3 -->
-            <div class="relative h-72 overflow-hidden">
+            <div class="group relative flex items-center justify-center h-fit w-fit overflow-hidden hover:cursor-pointer">
 
-                <a href="" class="group hover:cursor-pointer">
-                    <picture
-                        class="absolute w-full h-full transition ease-in-out delay-100 group-hover:brightness-105 group-hover:scale-110">
-                        <source srcset="/properties/chateau-viticole.jpg" media="(orientation: paysage)"/>
-                        <img src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
-                    </picture>
+                <div class="hover:brightness-75">
+                    <img class="" src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
+                </div>
 
-                    <div
-                        class="absolute bottom-0 hidden transition ease-in duration-500 backdrop-blur w-full text-white text-shadow font-gotham py-2 px-2 text-center z-30 bg-white/75 group-hover:block">
-                        Superbe Propriété viticole de folie
-                    </div>
-                </a>
+                <ul class="absolute hidden group-hover:block text-white text-lg font-black uppercase text-shadow text-center gap-2">
+                    <li class="text-base border-white border-b">superbe magnifique</li>
+                    <li class="text-base">Propriété viticole - Saint-Tropez</li>
+                    <li class="text-sm flex flex-row justify-around">
+                        <div class="flex flex-row items-center gap-2"><x-mdi-fruit-grapes class="mx-auto h-4"/><span>17ha</span></div>
+                        <div class="flex flex-row items-center gap-2"><x-carbon-area class="mx-auto h-4"/><span>1200m<sup>2</sup></span></div>
+                        <div class="flex flex-row items-center gap-2"><x-fas-map-marker-alt class="mx-auto h-4"/><span>Saint-Tropez</span></div>
+                    </li>
+                    <li class="text-lg">2 500 000 €</li>
+                </ul>
 
             </div>
             <!-- ./produit 3 -->
 
             <!-- produit 4 -->
-            <div class="relative h-72 overflow-hidden">
+            <div class="group relative flex items-center justify-center h-fit w-fit overflow-hidden hover:cursor-pointer">
 
-                <a href="" class="group hover:cursor-pointer">
-                    <picture
-                        class="absolute w-full h-full transition ease-in-out delay-100 group-hover:brightness-105 group-hover:scale-110">
-                        <source srcset="/properties/chateau-viticole.jpg" media="(orientation: paysage)"/>
-                        <img src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
-                    </picture>
+                <div class="hover:brightness-75">
+                    <img class="" src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
+                </div>
 
-                    <div
-                        class="absolute bottom-0 hidden transition ease-in duration-500 backdrop-blur w-full text-white text-shadow font-gotham py-2 px-2 text-center z-30 bg-white/75 group-hover:block">
-                        Superbe Propriété viticole de folie
-                    </div>
-                </a>
+                <ul class="absolute hidden group-hover:block text-white text-lg font-black uppercase text-shadow text-center gap-2">
+                    <li class="text-base border-white border-b">superbe magnifique</li>
+                    <li class="text-base">Propriété viticole - Saint-Tropez</li>
+                    <li class="text-sm flex flex-row justify-around">
+                        <div class="flex flex-row items-center gap-2"><x-mdi-fruit-grapes class="mx-auto h-4"/><span>17ha</span></div>
+                        <div class="flex flex-row items-center gap-2"><x-carbon-area class="mx-auto h-4"/><span>1200m<sup>2</sup></span></div>
+                        <div class="flex flex-row items-center gap-2"><x-fas-map-marker-alt class="mx-auto h-4"/><span>Saint-Tropez</span></div>
+                    </li>
+                    <li class="text-lg">2 500 000 €</li>
+                </ul>
 
             </div>
             <!-- ./produit 4 -->
 
             <!-- produit 5 -->
-            <div class="relative h-72 overflow-hidden">
+            <div class="group relative flex items-center justify-center h-fit w-fit overflow-hidden hover:cursor-pointer">
 
-                <a href="" class="group hover:cursor-pointer">
-                    <picture
-                        class="absolute w-full h-full transition ease-in-out delay-100 group-hover:brightness-105 group-hover:scale-110">
-                        <source srcset="/properties/chateau-viticole.jpg" media="(orientation: paysage)"/>
-                        <img src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
-                    </picture>
+                <div class="hover:brightness-75">
+                    <img class="" src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
+                </div>
 
-                    <div
-                        class="absolute bottom-0 hidden transition ease-in duration-500 backdrop-blur w-full text-white text-shadow font-gotham py-2 px-2 text-center z-30 bg-white/75 group-hover:block">
-                        Superbe Propriété viticole de folie
-                    </div>
-                </a>
+                <ul class="absolute hidden group-hover:block text-white text-lg font-black uppercase text-shadow text-center gap-2">
+                    <li class="text-base border-white border-b">superbe magnifique</li>
+                    <li class="text-base">Propriété viticole - Saint-Tropez</li>
+                    <li class="text-sm flex flex-row justify-around">
+                        <div class="flex flex-row items-center gap-2"><x-mdi-fruit-grapes class="mx-auto h-4"/><span>17ha</span></div>
+                        <div class="flex flex-row items-center gap-2"><x-carbon-area class="mx-auto h-4"/><span>1200m<sup>2</sup></span></div>
+                        <div class="flex flex-row items-center gap-2"><x-fas-map-marker-alt class="mx-auto h-4"/><span>Saint-Tropez</span></div>
+                    </li>
+                    <li class="text-lg">2 500 000 €</li>
+                </ul>
 
             </div>
             <!-- ./produit 5 -->
 
             <!-- produit 6 -->
-            <div class="relative h-72 overflow-hidden">
+            <div class="group relative flex items-center justify-center h-fit w-fit overflow-hidden hover:cursor-pointer">
 
-                <a href="" class="group hover:cursor-pointer">
-                    <picture
-                        class="absolute w-full h-full transition ease-in-out delay-100 group-hover:brightness-105 group-hover:scale-110">
-                        <source srcset="/properties/chateau-viticole.jpg" media="(orientation: paysage)"/>
-                        <img src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
-                    </picture>
+                <div class="hover:brightness-75">
+                    <img class="" src="/properties/chateau-viticole.jpg" alt="logo Michaël Zingraf Real Estate"/>
+                </div>
 
-                    <div
-                        class="absolute bottom-0 hidden transition ease-in duration-500 backdrop-blur w-full text-white text-shadow font-gotham py-2 px-2 text-center z-30 bg-white/75 group-hover:block">
-                        Superbe Propriété viticole de folie
-                    </div>
-                </a>
+                <ul class="absolute hidden group-hover:block text-white text-lg font-black uppercase text-shadow text-center gap-2">
+                    <li class="text-base border-white border-b">superbe magnifique</li>
+                    <li class="text-base">Propriété viticole - Saint-Tropez</li>
+                    <li class="text-sm flex flex-row justify-around">
+                        <div class="flex flex-row items-center gap-2"><x-mdi-fruit-grapes class="mx-auto h-4"/><span>17ha</span></div>
+                        <div class="flex flex-row items-center gap-2"><x-carbon-area class="mx-auto h-4"/><span>1200m<sup>2</sup></span></div>
+                        <div class="flex flex-row items-center gap-2"><x-fas-map-marker-alt class="mx-auto h-4"/><span>Saint-Tropez</span></div>
+                    </li>
+                    <li class="text-lg">2 500 000 €</li>
+                </ul>
 
             </div>
             <!-- ./produit 6 -->
-
         </div>
 
-        <div class="w-full lg:w-1/2 p-8 lg:p-28 text-justify">
+        <!-- texte présentation -->
+        <div class="basis-full lg:basis-1/2 p-8 lg:p-28 text-justify">
             <h2 class="uppercase font-black text-3xl text-black py-4 text-center">Nos Propriétés</h2>
             <h3 class="font-crimson font-bold">
                 Découvrez les Trésors Viticoles en Provence et dans le monde avec Michaël Zingraf Vineyards.
@@ -236,7 +249,7 @@
                 viticoles d'exception.
             </h3>
 
-            <p class="text-gray-500 font-crimson pt-2">
+            <p class="text-gray-500 font-crimson pt-14">
                 Au cœur des paysages envoûtants où les vignes se dessinent à l'horizon,
                 Michaël Zingraf Vineyards vous invite à explorer une collection exclusive
                 de propriétés viticoles en Provence et au-delà. Notre réputation,
@@ -258,39 +271,32 @@
                 techniques et commerciaux.
             </p>
 
-            <p class="text-gray-500 font-crimson pt-2"><strong>Une Opportunité d'Investir dans l'Or Rouge</strong><br>
-                Les propriétés viticoles représentent aujourd'hui une opportunité d'investissement.
-                Elles permettent non seulement de posséder un morceau de l'histoire viticole française mais aussi de
-                participer à
-                la production de vins reconnus mondialement.
-            </p>
-
             <div class="text-center rounded-sm pt-12">
                 <button class="bg-red-700 hover:bg-red-600 p-3 text-white ">Découvrez toutes nos propriétés</button>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- STAFF & FORM -->
-    <div class="flex flex-row">
+    <div class="flex flex-wrap">
 
-        <!-- intro -->
-        <div class="w-full lg:w-1/2 p-8 lg:p-28 text-justify">
+        <!-- colonne staff a compléter -->
+        <div class="basis-full lg:basis-1/2 p-8 lg:p-28 text-justify">
             <h2 class="uppercase font-black text-3xl text-black py-4 text-center">{{ __('home.brand') }}</h2>
             <h3 class="font-crimson font-bold text-center">{{ __('home.staff') }}</h3>
         </div>
 
         <!-- main form -->
-        <div class="w-full h-96 lg:h-auto lg:w-1/2 bg-form hover:cursor-pointer">
+        <div class="basis-full lg:basis-1/2 h-fit lg:h-auto bg-form hover:cursor-pointer">
 
-            <div class="my-28 mx-44 bg-white rounded-md drop-shadow-2xl">
+            <div class="mx-6 my-6 lg:my-28 lg:mx-44 bg-white rounded-md drop-shadow-2xl">
 
                 <form class="p-14">
 
-                    <div class="flex flex-col justify-center items-center gap-6 pb-6">
-                        <img class="w-20" src="{{ asset('images/logo-vineyards-rouge.svg') }}" alt="logo Michaël Zingraf Vineyards">
+                    <div class="flex flex-col gap-6 pb-6">
+                        <img class="mx-auto w-20" src="{{ asset('images/logo-vineyards-rouge.svg') }}" alt="logo Michaël Zingraf Vineyards">
                         <h4 class="uppercase text-center font-black text-xl">{{ __('form.contact-us') }}</h4>
-                        <p class="text-base text-justify text-gray-500">
+                        <p class="text-base text-justify text-gray-500 hidden lg:block">
                             Prêt à explorer l'univers des vignobles d'exception ?
                             Laissez-nous vous accompagner dans cette quête passionnante.
                             Remplissez le formulaire ci-dessous et un membre de notre équipe d'experts
@@ -328,12 +334,14 @@
                         <button type="submit" class="rounded-sm bg-red-700 hover:bg-red-600 p-3 text-white ">{{ __('form.send') }}</button>
                     </div>
                 </form>
+
             </div>
+
         </div>
 
     </div>
 
-    <!-- réaussurance -->
+    <!-- réassurance -->
     <div class="w-full p-20">
         <div class=" flex flex-row gap-12 justify-center text-gray-500 font-crimson">
             <div class="flex flex-col justify-center">
@@ -365,7 +373,7 @@
         </div>
     </div>
 
-    <!-- addresse -->
+    <!-- adresse -->
     <div class="flex justify-center items-center bg-address">
         <div class="m-28 w-1/3 bg-white rounded-md p-20 text-center">
             <h3 class="uppercase text-center font-black text-xl">Michaël Zingraf Vineyards</h3>
@@ -374,8 +382,8 @@
                 où chaque vignoble est une porte ouverte sur un monde où le luxe
                 et la terre se rencontrent en harmonie parfaite.
             </p>
-            <div class="w-full flex justify-center items-center p-6">
-                <x-fas-map-marker-alt class="h-12"/>
+            <div class="w-full flex p-6">
+                <x-fas-map-marker-alt class="mx-auto h-12 text-red-600"/>
             </div>
             <div class="flex flex-col gap-4 font-crimson italic">
                 <div>
@@ -386,12 +394,12 @@
 
                 <div>
                     <p class="text-black">{{ __('form.phone') }}</p>
-                    <p class="text-gray-500">+33(0)4.22.400.300</p>
+                    <a href="tel:+33(0)4.22.400.300" class="text-gray-500">+33(0)4.22.400.300</a>
                 </div>
 
                 <div>
                     <p class="text-black">{{ __('form.email') }}</p>
-                    <p class="text-gray-500">vineyards@michaelzingraf.com</p>
+                    <a href="mailto:vineyards@michaelzingraf.com" class="text-gray-500">vineyards@michaelzingraf.com</a>
                 </div>
             </div>
         </div>

@@ -14,6 +14,7 @@ export default {
             fontFamily: {
                 retro: ['Retro Signature'],
                 crimson:['Crimson Text'],
+                eurostile:['Eurostile'],
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
