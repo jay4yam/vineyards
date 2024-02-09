@@ -1,0 +1,49 @@
+@tailwind base;
+
+@layer base {
+    @font-face {
+        font-family: 'Retro Signature';
+        src: url('../fonts/RetroSignatureRegular.woff2') format('woff2'),
+        url('../fonts/RetroSignatureRegular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Crimson Text';
+        src: url('../fonts/CrimsonText-Regular.ttf') format('ttf'),
+        url('../fonts/CrimsonText-Regular.ttf') format('ttf');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+}
+
+.bg-manager{
+    background: url('/images/michael-heathcliff-zingraf.webp');
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-wine{
+    background: url('/images/bg-vin.webp');
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-form{
+    background: url('/images/bg-form.webp');
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-address{
+    background: url('/images/bg-address-vineyards.webp');
+    background-position: center;
+    background-size: cover;
+}
+
+@tailwind components;
+@tailwind utilities;
+
