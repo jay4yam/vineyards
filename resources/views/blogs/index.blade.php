@@ -1,20 +1,10 @@
-<x-front-layout>
+<x-front-layout :seoData="$seoData">
 
     <header class="relative flex items-center justify-center h-96 w-full" style="background: center/cover fixed url('{{ asset('images/bg-listing.webp') }}');">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow">
-            <a href="{{ route('home') }}">
-                <img data-aos="fade-down"
-                     data-aos-offset="0"
-                     data-aos-delay="500"
-                     data-aos-duration="1000"
-                     data-aos-easing="ease-in-out"
-                     data-aos-mirror="true"
-                     data-aos-once="false"
-                     data-aos-anchor-placement="top-center"
-                     class="h-64 p-12"
-                     height="200" src="{{ asset('images/logo-vineyards.svg') }}"
-                     alt="logo Michaël Zingraf Real Estate"/>
-            </a>
+            <span class="font-retro text-7xl text-white text-shadow">
+                {{ __('menu.blog') }}
+            </span>
         </div>
     </header>
 

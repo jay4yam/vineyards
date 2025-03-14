@@ -1,33 +1,25 @@
-<x-front-layout>
+<x-front-layout :seoData="$seoData">
+
 
     <!-- header de la page -->
     <header class="relative flex items-center justify-center h-96 w-full" style="background: center/cover fixed url('{{ asset('images/bg-listing.webp') }}');">
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow">
-            <a href="{{ route('home') }}">
-                <img data-aos="fade-down"
-                     data-aos-offset="0"
-                     data-aos-delay="500"
-                     data-aos-duration="1000"
-                     data-aos-easing="ease-in-out"
-                     data-aos-mirror="true"
-                     data-aos-once="false"
-                     data-aos-anchor-placement="top-center"
-                     class="h-64 p-12"
-                     height="200" src="{{ asset('images/logo-vineyards.svg') }}"
-                     alt="logo Michaël Zingraf Real Estate"/>
-            </a>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow text-center">
+            <span class="font-retro text-7xl text-white text-shadow">
+                {{ __('menu.properties') }}
+            </span>
+            <h1 class="text-xl font-eurostile text-white text-shadow">{{ __('property.h1') }}</h1>
         </div>
     </header>
     <!-- end header de la page -->
 
     <!-- moteur de recherche -->
-    <section class="bg-gray-100 p-4 lg:px-8 lg:py-4">
+    <section class="sticky top-[64px] z-40 bg-gray-100 p-4 lg:px-8 lg:py-2 drop-shadow">
         @include('partials._search')
     </section>
     <!-- end moteur de recherche -->
 
     <!-- breadcrumb -->
-    <div class="container mx-auto px-40 py-4">
+    <div class="container mx-auto px-40 py-4 text-xs">
         <ul class="flex gap-1 text-gray-400">
             <li>
                 <a href="{{ route('home', ) }}">{{ __('menu.home') }}</a>

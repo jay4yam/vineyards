@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\Front\BlogController;
-use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('{locale?}')->middleware( 'localization')->group(function (){
+Route::domain('vineyards.'.env('APP_DOMAIN', 'localhost'))->prefix('{locale?}')->middleware([\App\Http\Middleware\Localization::class, \App\Http\Middleware\SetDefaultLocale::class])->group(function (){
 
     //home page
     Route::get('/', [\App\Http\Controllers\Front\HomeController::class, 'index'])->name('home');
@@ -23,7 +21,7 @@ Route::prefix('{locale?}')->middleware( 'localization')->group(function (){
     Route::get('blog/{blog}/{slug}', [\App\Http\Controllers\Front\BlogController::class, 'show'])->name('blog.show');
 
     //contact page
-    Route::get('/contact', [\App\Http\Controllers\Front\ContactController::class, 'index'])->name('contact');
+    Route::get( __('routes.contact'), [\App\Http\Controllers\Front\ContactController::class, 'index'])->name('contact');
 
     //form submit
     Route::post('/contact/form/submit', [\App\Http\Controllers\FormController::class, 'contactFormSubmit'])->name('contact.form.submit');

@@ -1,4 +1,4 @@
-<x-front-layout>
+<x-front-layout :seoData="$seoData">
 
     @section('dedicated_css')
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -7,7 +7,7 @@
     @endsection
 
     <!-- header de la page -->
-    <header class="relative flex items-center justify-center h-screen w-full">
+    <header class="relative flex lg:items-center justify-center h-dvh w-full">
         <div class="swiper">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
@@ -32,7 +32,7 @@
     <!-- end header de la page -->
 
     <!-- breadcrumb -->
-    <div class="container mx-auto px-40 py-4">
+    <div class="container mx-auto px-40 py-4 text-xs">
         <ul class="flex gap-1 text-gray-400">
             <li>
                 <a href="{{ route('home') }}">{{ __('menu.home') }}</a>

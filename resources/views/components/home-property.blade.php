@@ -1,9 +1,9 @@
 <div data-aos="fade-up"
-     data-aos-offset="{{ $index * 100 }}"
+     data-aos-offset="{{ $index * 10 }}"
      data-aos-delay="500"
      data-aos-duration="1000"
      data-aos-easing="ease-in-out"
-     data-aos-mirror="true"
+     data-aos-mirror="false"
      data-aos-once="false"
      data-aos-anchor-placement="top-center"
      class="group relative flex items-center justify-center h-full w-fit overflow-hidden hover:cursor-pointer">

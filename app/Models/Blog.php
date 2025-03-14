@@ -6,6 +6,8 @@ use App\View\Composers\BlogComposer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\App;
@@ -18,15 +20,15 @@ class Blog extends Model
 
     protected $fillable = ['image', 'is_active', 'user_id'];
 
-    public function translates(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function translates(): HasMany
     {
         return $this->hasMany(Blog_Translate::class, 'blog_id', 'id');
     }
 
-    public function translate()
+    public function translate(): HasOne
     {
         return $this->hasOne(Blog_Translate::class, 'blog_id', 'id')
-            ->where('locale', app()->getLocale());
+            ->where('locale', '=',app()->getLocale());
     }
 
     /**

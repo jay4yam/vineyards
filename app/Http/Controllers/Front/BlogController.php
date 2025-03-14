@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Repositories\BlogRepository;
 use App\Services\BlogService;
+use App\traits\Seoable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    use Seoable;
+
     public function __construct(public BlogService $blogService)
     {}
 
@@ -21,19 +24,18 @@ class BlogController extends Controller
     {
         $blogs = $this->blogService->getPaginate();
 
-        return view('blogs.index', compact('blogs'));
+        return view('blogs.index', ['blogs' => $blogs, 'seoData' => $this->seoBlogIndex()]);
     }
 
     /**
      * Retourne la vue détaillée d'un article de blog
-     * @param string $locale
      * @param Blog $blog
      * @return View
      */
     public function show(string $locale, Blog $blog):View
     {
-        $blog->load(['user', 'tags', 'categories']);
+        $blog->load(['user', 'tags', 'categories', 'translate', 'translates']);
 
-        return view('blogs.show', compact('blog'));
+        return view('blogs.show', ['blog' => $blog, 'seoData' => $this->seoBlogShow($blog)]);
     }
 }

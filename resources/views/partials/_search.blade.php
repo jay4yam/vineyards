@@ -47,5 +47,5 @@
     </div>
     <!-- end sous-types de bien -->
 
-    <button class="w-full bg-red-800 hover:bg-red-900 text-white font-bold p-2">{{ __('property.search') }}</button>
+    <button class="w-full bg-red-800 hover:bg-red-900 text-white font-bold p-2 rounded-sm">{{ __('property.search') }}</button>
 </form>

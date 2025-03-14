@@ -3,8 +3,10 @@
 namespace App\Models\Properties;
 
 use App\Models\Catalogs\Property_Areas;
+use App\Models\Catalogs\Property_Category;
 use App\Models\Catalogs\Property_Subtype;
 use App\Models\Catalogs\Property_Type;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Region;
@@ -43,6 +45,11 @@ class Property extends Model
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function category()
+    {
+        return $this->hasOne(Property_Category::class, 'id', 'category_id');
     }
 
     public function type()

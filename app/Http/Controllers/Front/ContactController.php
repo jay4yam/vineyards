@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\AgencyRepository;
+use App\traits\Seoable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    use Seoable;
+
     public function __construct(private readonly AgencyRepository $agencyRepository)
     {
     }
@@ -21,6 +24,6 @@ class ContactController extends Controller
     {
         $agency = $this->agencyRepository->getAgency();
 
-        return view('contact.index', compact('agency'));
+        return view('contact.index', ['agency' => $agency, 'seoData' => $this->seoContact()]);
     }
 }

@@ -6,10 +6,10 @@
          data-aos-anchor-placement="top-bottom">
 
     <!-- image de l'article -->
-    <img src="{{ asset('storage/blog/'.$blog->image) }}" alt="{{ $blog->title }}">
+    <img class="cursor-pointer" src="{{ asset('storage/blog/'.$blog->image) }}" alt="{{ $blog->title }}" onclick="window.location='{{ route('blog.show', ['locale' => app()->getLocale(), 'slug' => \Illuminate\Support\Str::slug($blog->translate->title), 'blog' => $blog]) }}'">
 
     <!-- lien vers détail de l'article -->
-    <a href="{{ route('blog.show', ['slug' => \Illuminate\Support\Str::slug($blog->translate->title), 'blog' => $blog]) }}">
+    <a href="{{ route('blog.show', ['locale' => app()->getLocale(), 'slug' => \Illuminate\Support\Str::slug($blog->translate->title), 'blog' => $blog]) }}">
         <h2 class="pt-6 text-2xl font-bold">{{ $blog->translate->title }}</h2>
     </a>
 

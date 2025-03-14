@@ -1,20 +1,10 @@
-<x-front-layout>
+<x-front-layout :seoData="$seoData">
 
     <header class="relative flex items-center justify-center h-96 w-full" style="background: center/cover fixed url('{{ asset('images/bg-listing.webp') }}');">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow">
-            <a href="{{ route('home') }}">
-                <img data-aos="fade-down"
-                     data-aos-offset="0"
-                     data-aos-delay="500"
-                     data-aos-duration="1000"
-                     data-aos-easing="ease-in-out"
-                     data-aos-mirror="true"
-                     data-aos-once="false"
-                     data-aos-anchor-placement="top-center"
-                     class="h-64 p-12"
-                     height="200" src="{{ asset('images/logo-vineyards.svg') }}"
-                     alt="logo Michaël Zingraf Real Estate"/>
-            </a>
+            <span class="font-retro text-7xl text-white text-shadow">
+                {{ __('menu.blog') }}
+            </span>
         </div>
     </header>
 
@@ -23,7 +13,6 @@
 
         <!-- colonnes détail article -->
         <div class="w-3/4">
-
             <article>
                 <!-- titre -->
                 <h1 class="text-2xl font-bold">{{ $blog->translate->title }}</h1>
@@ -68,7 +57,7 @@
 
             <!-- about users -->
             <div class="flex gap-6 border-y border-gray-200 my-24 py-8">
-                <img class="w-32" src="{{ asset('storage/user/'.$blog->user->avatar) }}" alt="{{ $blog->user->firstname }} {{ $blog->user->lastname }}">
+                <img class="w-32 h-fit" src="{{ asset('storage/user/'.$blog->user->avatar) }}" alt="{{ $blog->user->firstname }} {{ $blog->user->lastname }}">
                 <div class="flex flex-col justify-around">
                     <h6 class="font-bold">{{ __('blog.about') }} {{ $blog->user->firstname }} {{ $blog->user->lastname }}</h6>
                     <div class="py-4 text-xs text-justify">{!! $blog->user->biography  !!}</div>

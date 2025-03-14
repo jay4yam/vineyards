@@ -1,10 +1,12 @@
-<nav class="absolute top-0 bg-white md:bg-transparent w-full z-50 drop-shadow-2xl text-white text-shadow font-eurostile">
+<nav class="sticky top-0 bg-white w-full z-50 font-eurostile text-gray-500 drop-shadow">
 
     <!-- menu responsive -->
     <div x-data="{ open: false }" class="sticky top-0 md:hidden flex justify-between p-4">
 
         <!-- logo -->
-        <img class="h-12" src="{{ asset('images/logo-vineyards-rouge.svg') }}" alt="logo vineyards">
+        <a href="{{ route('home') }}">
+            <img class="h-12" src="{{ asset('images/logo_main_nav_mzvineyards.png') }}" alt="logo vineyards">
+        </a>
 
         <!-- container du menu -->
         <div :class="{'block': open, 'hidden': !open}">
@@ -84,42 +86,71 @@
     </div>
 
     <!-- menu md | lg | xl -->
-    <div class="hidden md:flex mx-auto p-0 md:p-4">
+    <div class="hidden md:flex mx-auto items-center p-0 md:px-6 md:py-2">
+
+        <!-- logo -->
+        <a href="{{ route('home') }}">
+            <img class="h-12" src="{{ asset('images/logo_main_nav_mzvineyards.png') }}" alt="logo vineyards">
+        </a>
+
         <!-- menu -->
-        <ul class="mx-auto flex gap-12 font-black text-2xl">
-            <li><a href="{{ route('properties.index') }}">{{ __('menu.properties') }}</a></li>
-            <li><a href="{{ route('blog.index') }}">{{ __('menu.blog') }}</a></li>
-            <li><a href="">{{ __('menu.partners') }}</a></li>
-            <li><a href="{{ route('contact') }}">{{ __('menu.contact') }}</a></li>
+        <ul class="mx-auto flex gap-12 text-2xl">
+            <li>
+                <x-main-nav-link :href="route('properties.index')" :active="request()->routeIs('properties.index')">
+                    {{ __('menu.properties') }}
+                </x-main-nav-link>
+            </li>
+            <li>
+                <x-main-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')">
+                    {{ __('menu.blog') }}
+                </x-main-nav-link>
+            </li>
+            <li>
+                <x-main-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')">
+                    {{ __('menu.about') }}
+                </x-main-nav-link>
+            </li>
+            <li>
+                <x-main-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
+                    {{ __('menu.contact') }}
+                </x-main-nav-link>
+            </li>
         </ul>
         <!-- end menu -->
 
         <!-- menu user -->
-        <div class="absolute right-4 flex gap-6">
-            <ul class="flex gap-3">
+        <div class="flex gap-6">
+            <ul class="flex items-center gap-3">
                 @if(auth()->check())
-                    <li><a href="#">Admin</a></li>
+                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                 @else
-                    <li><a href="{{ route('login') }}">{{ __('menu.login') }}</a></li>
-                    <li><a href="{{ route('register') }}">{{ __('menu.register') }}</a></li>
+                    <li><a class="hover:text-red-800" href="{{ route('login') }}">{{ __('menu.login') }}</a></li>
+                    <li><a class="hover:text-red-800" href="{{ route('register') }}">{{ __('menu.register') }}</a></li>
+                    <li class="w-6">
+                        <!-- menu lang -->
+                        <ul class=" flex gap-2">
+                            <li class="group relative">
+                                <img class="h-4" src="{{ asset('images/flag_'. app()->getLocale() .'.webp') }}" alt="{{ app()->getLocale() }}">
+                                <ul class="hidden group-hover:block absolute">
+                                    @foreach( config('app.available_locales') as $lang)
+                                        @if($lang != app()->getLocale())
+                                            <li class="py-2">
+                                                <a href="{{ route('change.locale', ['lang' => $lang]) }}">
+                                                    <img class="h-4" src="{{ asset('images/flag_'.$lang.'.webp') }}" alt="traduction en {{ $lang }}">
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- end menu user -->
+                    </li>
                 @endif
             </ul>
             <!-- end menu user -->
 
-            <!-- menu lang -->
-            <ul class="flex gap-2">
-                <li class="group relative">
-                    <a href="#">{{ app()->getLocale() }}</a>
-                    <ul class="hidden group-hover:block absolute">
-                        @foreach( config('app.available_locales') as $lang)
-                            @if($lang != app()->getLocale())
-                                <li><a href="{{ route('change.locale', ['lang' => $lang]) }}">{{ $lang }}</a></li>
-                            @endif
-                        @endforeach
-                    </ul>
-                </li>
-            </ul>
-            <!-- end menu user -->
+
         </div>
         <!-- end menu user -->
     </div>

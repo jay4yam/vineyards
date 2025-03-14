@@ -1,30 +1,19 @@
-<x-front-layout>
+<x-front-layout :seoData="$seoData">
 
     <!-- header video -->
-    <header class="relative flex items-center justify-center h-screen w-full overflow-hidden">
+    <header class="relative flex items-center justify-center h-[calc(100vh-64px)] w-full overflow-hidden">
 
         <!--logo & baseline -->
         <div class="relative z-40 w-1/2 h-fit m-auto left-0 right-0 top-0 bottom-0 text-white drop-shadow text-center">
             <div class="flex flex-col gap-4">
-                <img data-aos="fade-down"
-                     data-aos-offset="0"
-                     data-aos-delay="1000"
-                     data-aos-duration="1000"
-                     data-aos-easing="ease-in-out"
-                     data-aos-mirror="true"
-                     data-aos-once="false"
-                     data-aos-anchor-placement="top-center"
-                     class="h-64 pb-20"
-                     height="200" src="{{ asset('images/logo-vineyards.svg') }}"
-                     alt="logo Michaël Zingraf Real Estate"/>
                 <h1 data-aos="fade-down"
                     data-aos-offset="0"
-                    data-aos-delay="1500"
+                    data-aos-delay="1000"
                     data-aos-duration="1000"
                     data-aos-easing="ease-in-out"
                     data-aos-mirror="true"
                     data-aos-once="false"
-                    class="font-eurostile text-shadow uppercase text-2xl font-bold z-50">{{ __('home.baseline') }}</h1>
+                    class="font-eurostile text-shadow uppercase text-4xl font-bold z-50">{{ __('home.baseline') }}</h1>
                 <h2 data-aos="fade-up"
                     data-aos-offset="0"
                     data-aos-delay="2000"
@@ -331,7 +320,7 @@
         </div>
 
         <!-- main form -->
-        <div class="w-full lg:w-1/2 h-fit lg:h-auto bg-form hover:cursor-pointer flex items-center justify-center">
+        <div class="w-full lg:w-1/2 h-fit lg:h-auto hover:cursor-pointer flex items-center justify-center" style="background: center/cover url('{{ asset('/images/bg-form.webp') }}')">
 
             <div class="my-10 lg:my-28 mx-12 lg:mx-44 w-full lg:w-2/3 bg-white rounded-md drop-shadow-2xl"
                  data-aos="flip-left"
@@ -458,7 +447,7 @@
     </section>
 
     <!-- adresse -->
-    <section class="flex justify-center items-center bg-address">
+    <section class="flex justify-center items-center" style="background: center/cover url('{{ asset('/images/bg-address-vineyards.webp') }}')">
 
         <div class="m-10 lg:m-28 w-full lg:w-1/3 bg-white rounded-md p-20 text-center"
              data-aos="zoom-in"

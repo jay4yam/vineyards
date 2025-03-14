@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Properties\Property;
 use App\Repositories\PropertyRepository;
 use App\Services\FilterProperties;
+use App\traits\Seoable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
+    use Seoable;
+
     public function __construct(public PropertyRepository $propertyRepository,
                                 public FilterProperties $filterProperties)
     {
@@ -29,7 +32,7 @@ class PropertyController extends Controller
         //gènère la pagination des résultats
         $properties = $datas->paginate(12);
 
-        return view('properties.index', compact('properties'));
+        return view('properties.index', ['properties' => $properties, 'seoData' => $this->seoProperties()]);
     }
 
 
@@ -42,8 +45,8 @@ class PropertyController extends Controller
      */
     public function show(string $locale, string $slug, Property $property):View
     {
-        $property->load(['user', 'subtype', 'type' ,'pictures', 'city' ,'region', 'areas', 'comment']);
+        $property->load(['category', 'user', 'subtype', 'type' ,'pictures', 'city' ,'region', 'areas', 'comment', 'comments']);
 
-        return view('properties.show', compact('property'));
+        return view('properties.show', ['property' => $property, 'seoData' => $this->seoPropertyShow($property)]);
     }
 }

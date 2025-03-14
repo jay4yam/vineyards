@@ -36,6 +36,12 @@
     height: 100vh;
 }
 
+@media (max-width: 640px)  {
+    .swiper{
+        height: fit-content;
+    }
+}
+
 .swiper-button-prev, .swiper-button-next{
     background-color: rgba(255, 255, 255, 50%);
     padding: 30px;
@@ -46,18 +52,6 @@
 
 .swiper-pagination-bullet-active{
     background:#7f1d1d!important;
-}
-
-.bg-form{
-    background: url('/images/bg-form.webp');
-    background-position: center;
-    background-size: cover;
-}
-
-.bg-address{
-    background: url('/images/bg-address-vineyards.webp');
-    background-position: center;
-    background-size: cover;
 }
 
 .text-shadow{
