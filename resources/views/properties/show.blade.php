@@ -6,120 +6,86 @@
               crossorigin=""/>
     @endsection
 
-    <!-- header de la page -->
-    <header class="relative flex lg:items-center justify-center h-dvh w-full">
-        <div class="swiper">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                @foreach($property->pictures as $picture)
-                <div class="swiper-slide">
-                    <figure>
-                        <img class="w-full" src="{{ asset('storage/properties/'.$picture->name) }}" alt="slide property">
-                    </figure>
-                </div>
-                @endforeach
-            </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
+    <!-- header -->
+    <header class="m-1">
 
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+        <!-- link list -->
+        @include('partials._property_link_list', ['property' => $property])
+        <!-- end link list -->
 
-        </div>
-    </header>
-    <!-- end header de la page -->
+        <!-- swiper and form -->
+        <div class="flex flex-col lg:flex-row gap-1 my-1">
 
-    <!-- breadcrumb -->
-    <div class="container mx-auto px-40 py-4 text-xs">
-        <ul class="flex gap-1 text-gray-400">
-            <li>
-                <a href="{{ route('home') }}">{{ __('menu.home') }}</a>
-            </li>
-            <li> > </li>
-            <li>
-                <a href="{{ route('properties.index') }}">{{ __('menu.properties') }}</a>
-            </li>
-            <li> > </li>
-            <li>
-                {{ \Illuminate\Support\Str::lower($property->comment->title) }}
-            </li>
-        </ul>
-    </div>
-    <!-- breadcrumb -->
+            <!-- swiper images -->
+            <div class="w-full lg:w-3/4">
 
-    <!-- listing des produits -->
-    <section class="container mx-auto flex flex-col lg:flex-row gap-4 p-4 lg:py-4 lg:px-40">
-
-        <!-- 1ere col: detail produit -->
-        <div class="basis-2/3">
-            <!-- info -->
-            <h1 class="italic text-gray-400">{{ $property->subtype->name }} - {{ $property->region->name }} - {{ $property->city->name }}</h1>
-            <!-- titre -->
-            <h2 class="text-xl font-bold text-red-800">{!! $property->comment->title !!}</h2>
-
-            <!-- surfaces -->
-            <ul class="flex gap-2 py-4 text-md text-gray-400">
-                <li class="flex items-center gap-2">
-                    <x-carbon-area class="h-6"/> <span>{{ $property->area_value }} {{ __('property.sqm') }}</span>
-                </li>
-                <li>|</li>
-                <li class="flex items-center gap-2">
-                    <x-mdi-fruit-grapes class="h-6"/> <span>{{ \Illuminate\Support\Number::format($property->surfTerrain(), 0, 0, app()->getLocale()) }} {{ __('property.sqm') }}</span>
-                </li>
-                <li>|</li>
-                <li class="flex items-center gap-2">
-                    <x-heroicon-o-currency-euro class="h-6" /> <span>{{ \Illuminate\Support\Number::currency($property->price, in:'Euro', locale: app()->getLocale(), precision: 0) }}</span>
-                </li>
-            </ul>
-            <!-- end surfaces -->
-
-            <!-- texte produit -->
-            <div class="py-4">
-                {!! $property->comment->comment !!}
-            </div>
-
-        </div>
-        <!-- end 1ere col: detail produit -->
-
-        <!-- 2eme col: info nego -->
-        <div class="basis-1/3 bg-gray-50 p-4">
-
-            <!-- info nego -->
-            <div class="flex gap-2 pb-4">
-                <img class="w-1/3" src="{{ asset('storage/user/'.$property->user->avatar) }}" alt="{{ $property->user->username }}">
-                <div class="flex flex-col justify-between">
-                    <div>
-                        <p class="text-red-800 font-bold">{{ $property->user->firstname }} {{ $property->user->lastname }}</p>
-                        <p class="italic text-gray-400">{{ $property->user->job_title }}</p>
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        @foreach($property->pictures as $picture)
+                            <div class="swiper-slide">
+                                <figure>
+                                    <img class="inset-0 w-full object-cover" src="{{ asset('storage/properties/'.$property->reference.'/'.$picture->name) }}" alt="slide property">
+                                </figure>
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="text-xs">
-                        <ul>
+
+                    <!-- pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                </div>
+
+            </div>
+            <!-- end swiper images -->
+
+            <!-- nego & form -->
+            <div class="flex flex-col justify-between w-full lg:w-1/4">
+
+                <!-- nego -->
+                <div class="flex gap-2 bg-gray-200">
+
+                    <!-- picture -->
+                    <img class="w-1/3" src="{{ asset('storage/user/'.$property->user->avatar) }}" alt="{{ $property->user->username }}">
+
+                    <!-- info nego -->
+                    <div class="flex flex-col justify-between p-4">
+
+                        <div>
+                            <p class="font-bold">{{ $property->user->firstname }} {{ $property->user->lastname }}</p>
+                            <p class="italic">{{ $property->user->job_title }}</p>
+                        </div>
+
+                        <ul class="italic text-xs">
                             <li>
-                                <a class="italic text-gray-400" href="mailto:{{$property->user->email}}">{{ $property->user->email }}</a>
+                                <a href="mailto:{{$property->user->email}}">{{ $property->user->email }}</a>
                             </li>
                             <li>
-                                <a class="italic text-gray-400" href="tel:{{$property->user->phone}}">{{ $property->user->phone }}</a>
+                                <a href="tel:{{$property->user->phone}}">{{ $property->user->phone }}</a>
                             </li>
                             <li>
-                                <a class="italic text-gray-400" href="tel:{{$property->user->mobile}}">{{ $property->user->mobile }}</a>
+                                <a href="tel:{{$property->user->mobile}}">{{ $property->user->mobile }}</a>
                             </li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- end info nego -->
 
-            <!-- form produit -->
-            <div class="py-2">
+                    </div>
+                    <!-- end info nego -->
+                </div>
+                <!-- end nego -->
+
+                <!-- form -->
                 <form action="{{ route('contact.form.submit') }}" method="post" class="flex flex-col gap-2 py-2">
                     @method('post')
                     @csrf
                     <input type="hidden" name="ip_address" value="{{ request()->getClientIp() }}">
                     <input type="hidden" name="sources" value="form_product">
                     <input type="hidden" name="reference" value="{{ $property->reference }}">
-                    <p class="text-red-800 font-bold">Send Request</p>
+                    <p class="font-bold">Send Request</p>
 
                     @if(! session()->has('form_contact_success'))
                         <div>
@@ -148,20 +114,121 @@
                             <p>{{ __('form.thanks') }}</p>
                         </div>
                     @endif
+
+                    <p x-init="$el.closest('form').scrollIntoView()" class="text-gray-400 text-xs">{{ __('form.rgpd') }}</p>
+
                 </form>
+                <!-- end form -->
 
-                <p x-init="$el.closest('form').scrollIntoView()" class="text-gray-400 text-xs">{{ __('form.rgpd') }}</p>
+                <!-- infos produit -->
+                <div class="grid grid-cols-3 gap-1 text-xs">
+
+                    <div class="flex items-center bg-gray-200 gap-1 col-span-3 text-xl p-2">
+                        <x-heroicon-o-currency-euro class="h-6" /> <span>{{ \Illuminate\Support\Number::currency($property->price, in:'Euro', locale: app()->getLocale(), precision: 0) }}</span>
+                        <span class="italic text-xs">{{ __('property.fees') }}</span>
+                    </div>
+
+                    <!-- region -->
+                    <ul class="bg-gray-200 flex flex-col gap-1 justify-center text-center py-6">
+                        <li>{{ __('property.region') }}</li>
+                        <li class="flex justify-center"><x-lucide-map-pinned class="h-6"/></li>
+                        <li class="font-bold lowercase">{{ $property->region->name }}</li>
+                    </ul>
+                    <!-- end region -->
+
+                    <!-- city -->
+                    <ul class="bg-gray-200 flex flex-col gap-1 text-center py-6">
+                        <li>{{ __('property.city') }}</li>
+                        <li class="flex justify-center"><x-lucide-map-pin class="h-6"/></li>
+                        <li class="font-bold lowercase">{{ $property->city->name }}</li>
+                    </ul>
+                    <!-- end city -->
+
+                    <!-- subtype -->
+                    <ul class="bg-gray-200 flex flex-col gap-0 text-center py-6">
+                        <li>{{ __('property.type') }}</li>
+                        <li class="flex justify-center"><x-hugeicons-house-02 class="h-8"/></li>
+                        <li class="font-bold lowercase">{{ $property->subtype->name }}</li>
+                    </ul>
+                    <!-- end subtype -->
+
+                    <!-- surface -->
+                    <ul class="bg-gray-200 flex flex-col gap-1 justify-center text-center py-6">
+                        <li class="lowercase">{{ __('property.area') }}</li>
+                        <li class="flex justify-center"><x-carbon-area class="h-6"/></li>
+                        <li class="font-bold lowercase">{{ $property->area_value }} {!! __('property.sqm') !!}</li>
+                    </ul>
+                    <!-- end surface -->
+
+                    <!-- terrain -->
+                    <ul class="bg-gray-200 flex flex-col gap-1 text-center py-6">
+                        <li class="lowercase">{{ __('property.land') }}</li>
+                        <li class="flex justify-center"><x-elemplus-grape class="h-6" /></li>
+                        <li class="font-bold lowercase">{{ $property->surfTerrain() / 10000 }} .Ha</li>
+                    </ul>
+                    <!-- end terrain -->
+
+                    <!-- rooms -->
+                    <ul class="bg-gray-200 flex flex-col gap-0 text-center py-6">
+                        <li class="lowercase">{{ __('property.rooms') }}</li>
+                        <li class="flex justify-center"><x-iconoir-house-rooms class="h-8"/></li>
+                        <li class="font-bold lowercase">{{ $property->rooms }}</li>
+                    </ul>
+                    <!-- end rooms -->
+
+                </div>
+                <!-- end infos produit -->
+
             </div>
-            <!-- end form produit -->
-
-            <!-- plan propriete -->
-            <div id="map"></div>
-            <!-- end plan propriete -->
+            <!-- end nego & form -->
         </div>
-        <!-- 2eme col: info nego -->
+        <!-- swiper and form -->
+
+    </header>
+    <!-- end header -->
+
+    <!-- breadcrumb -->
+    <div class="m-1 p-4 bg-gray-50 text-xs">
+        <ul class="flex gap-1">
+            <li>
+                <a href="{{ route('home') }}">{{ __('menu.home') }}</a>
+            </li>
+            <li> > </li>
+            <li>
+                <a href="{{ route('properties.index') }}">{{ __('menu.properties') }}</a>
+            </li>
+            <li> > </li>
+            <li>
+                {{ \Illuminate\Support\Str::lower($property->comment->title) }}
+            </li>
+        </ul>
+    </div>
+    <!-- breadcrumb -->
+
+    <!-- produit -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-1 m-1">
+
+        <!-- 1ere col: detail produit -->
+        <div class="w-full">
+            <!-- info -->
+            <h1 class="italic text-gray-400">{{ $property->subtype->name }} - {{ $property->region->name }} - {{ $property->city->name }}</h1>
+            <!-- titre -->
+            <h2 class="text-xl font-bold text-red-800">{!! $property->comment->title !!}</h2>
+
+            <!-- texte produit -->
+            <div class="py-4">
+                {!! $property->comment->comment !!}
+            </div>
+
+        </div>
+        <!-- end 1ere col: detail produit -->
+
+        <!-- plan -->
+        <div id="map"></div>
+        <!-- end plan -->
 
     </section>
-    <!-- end listing des produits -->
+    <!-- end produit -->
 
 @section("dedicated_js")
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"

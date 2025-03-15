@@ -85,7 +85,7 @@ class ApimoPropertiesImport extends ApimoImport
         foreach ($this->datas->properties as $property) {
 
             //ne prend en compte que les produits vignobles dont la reference commence par MZVST
-            if( str_starts_with($property->reference, 'MZVST') && $property->reference === 'MZVST006') {
+            if( str_starts_with($property->reference, 'MZVST') ) {
 
                 try {
 
@@ -351,7 +351,7 @@ class ApimoPropertiesImport extends ApimoImport
                                         'id' => $picture->id,
                                         'rank' => $picture->rank,
                                         'url' => $picture->url,
-                                        'name' => $this->uploadPropertyPicture($picture),
+                                        'name' => $this->uploadPropertyPicture($property->reference, $picture),
                                         'width_max' => $picture->width_max,
                                         'height_max' => $picture->height_max,
                                         'internet' => (bool)$picture->internet,

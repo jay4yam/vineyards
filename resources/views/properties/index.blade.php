@@ -1,6 +1,5 @@
 <x-front-layout :seoData="$seoData">
 
-
     <!-- header de la page -->
     <header class="relative flex items-center justify-center h-96 w-full" style="background: center/cover fixed url('{{ asset('images/bg-listing.webp') }}');">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow text-center">
@@ -13,9 +12,7 @@
     <!-- end header de la page -->
 
     <!-- moteur de recherche -->
-    <section class="sticky top-[64px] z-40 bg-gray-100 p-4 lg:px-8 lg:py-2 drop-shadow">
-        @include('partials._search')
-    </section>
+    @include('partials._search')
     <!-- end moteur de recherche -->
 
     <!-- breadcrumb -->

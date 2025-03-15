@@ -238,7 +238,7 @@ trait Uploadable
      * @param \stdClass $picture
      * @return string
      */
-    protected function uploadPropertyPicture(\stdClass $picture):string
+    protected function uploadPropertyPicture(string $reference, \stdClass $picture):string
     {
         //Récupère l'url de l'image
         $url = $picture->url;
@@ -259,7 +259,7 @@ trait Uploadable
             $image = Image::read($content);
 
             //set chemin des images small size
-            $pathSmall = public_path('storage/properties/');
+            $pathSmall = public_path('storage/properties/'.$reference.'/');
 
             //test les différents chemins
             if( ! is_dir($pathSmall) ){
@@ -267,7 +267,7 @@ trait Uploadable
             }
 
             //sauvegarde une version scaller à 800px
-            $image->scale(width: 800)->save( $pathSmall . $filename );
+            $image->scale(width: 1920)->save( $pathSmall . $filename );
 
             return $filename;
         }

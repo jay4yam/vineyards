@@ -17,6 +17,7 @@ class PropertyRepository
     public function getNewQuery()
     {
         return $this->property->with(['user', 'type','picture', 'picture', 'city' ,'region', 'areas'])
+            ->where('step_id', '=', 1)
             ->orderBy('price', 'desc')
             ->newQuery();
     }

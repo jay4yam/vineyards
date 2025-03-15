@@ -6,6 +6,7 @@ use App\View\Composers\BlogComposer;
 use App\View\Composers\ConnexePostComposer;
 use App\View\Composers\DashboardComposer;
 use App\View\Composers\PropertyHomeComposer;
+use App\View\Composers\PropertyLinkListComposer;
 use App\View\Composers\PropertySearchComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -31,5 +32,6 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('partials._search', PropertySearchComposer::class);
         View::composer('home', PropertyHomeComposer::class);
         View::composer('dashboard', DashboardComposer::class);
+        View::composer('partials._property_link_list', PropertyLinkListComposer::class);
     }
 }

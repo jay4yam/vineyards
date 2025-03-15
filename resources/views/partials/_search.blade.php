@@ -1,4 +1,5 @@
-<form action="{{ route('properties.index') }}" class="lg:container mx-auto grid grid-cols-1 lg:grid-cols-6 gap-2 justify-between items-center lg:px-40">
+<section class="sticky top-[64px] z-40 bg-gray-100 p-4 lg:px-8 lg:py-2 drop-shadow">
+    <form action="{{ route('properties.index') }}" class="lg:container mx-auto grid grid-cols-1 lg:grid-cols-6 gap-2 justify-between items-center lg:px-40">
     <div class="text-gray-400">{{ __('property.filters') }}</div>
 
     <!-- types des biens -->
@@ -49,3 +50,4 @@
 
     <button class="w-full bg-red-800 hover:bg-red-900 text-white font-bold p-2 rounded-sm">{{ __('property.search') }}</button>
 </form>
+</section>
