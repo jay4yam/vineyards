@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\View\Composers\BlogComposer;
+use App\View\Composers\ChangeLangageComposer;
 use App\View\Composers\ConnexePostComposer;
 use App\View\Composers\DashboardComposer;
 use App\View\Composers\PropertyHomeComposer;
@@ -33,5 +34,6 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('home', PropertyHomeComposer::class);
         View::composer('dashboard', DashboardComposer::class);
         View::composer('partials._property_link_list', PropertyLinkListComposer::class);
+        View::composer('partials._langage', ChangeLangageComposer::class);
     }
 }

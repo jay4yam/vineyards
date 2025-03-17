@@ -9,13 +9,13 @@
     <div class="flex flex-wrap gap-4 py-12 max-w-7xl mx-auto px-8">
 
         <div class="w-full">
-            <a href="{{ route('backblog.index', app()->getLocale() ) }}" class="w-1/10 bg-gray-300 text-gray-500 p-2 rounded-md">< back</a>
+            <a href="{{ route('back.blog.index', app()->getLocale() ) }}" class="w-1/10 bg-gray-300 text-gray-500 p-2 rounded-md">< back</a>
         </div>
 
         <!-- edition de l'article -->
         <div class="w-full basis-full bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900">
 
-            <form action="{{ route('backblog.store', app()->getLocale() ) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('back.blog.store', app()->getLocale() ) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('post')
                 <div class="flex flex-col gap-1">

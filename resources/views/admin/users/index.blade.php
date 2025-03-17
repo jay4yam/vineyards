@@ -8,7 +8,7 @@
     <div class="flex flex-wrap gap-4 py-12 max-w-7xl mx-auto px-8">
 
         <div class="w-full flex justify-end">
-            <a href="{{ route('backuser.create', app()->getLocale()) }}" class="text-right w-1/10 bg-gray-500 text-white p-2 rounded-md">
+            <a href="{{ route('back.user.create') }}" class="text-right w-1/10 bg-gray-500 text-white p-2 rounded-md">
                 Nouvel Utilisateur
             </a>
         </div>
@@ -52,10 +52,10 @@
                             <td>
                                 <div class="flex gap-2">
                                     <!-- lien edition article -->
-                                    <x-edit-backoffice href="{{ route('backuser.edit', [app()->getLocale(), 'backuser' => $user]) }}" />
+                                    <x-edit-backoffice href="{{ route('back.user.edit', ['user' => $user]) }}" />
 
                                     <!-- lien voir article -->
-                                    <x-form-delete-backoffice action="{{ route('backuser.destroy', [app()->getLocale(), 'backuser' => $user]) }}"/>
+                                    <x-form-delete-backoffice action="{{ route('back.user.destroy', ['user' => $user]) }}"/>
                                 </div>
                             </td>
                         </tr>

@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Properties\Comment;
 use App\Models\District;
 use App\Models\Properties\Picture;
+use App\Models\Properties\Price;
 use App\Models\Properties\Property;
 use App\Models\Region;
 use App\Models\Properties\Regulation;
@@ -181,7 +182,6 @@ class ApimoPropertiesImport extends ApimoImport
                         'rooms' => $property->rooms,
                         'bedrooms' => $property->bedrooms,
                         'sleeps' => $property->sleeps,
-                        'price' => $property->price->value ?? 0,
                         'currency' => $property->price->currency,
                         'view_type_id' => $property->view?->type,
                         'landscape' => json_encode($property->view->landscape),
@@ -210,6 +210,20 @@ class ApimoPropertiesImport extends ApimoImport
                         'services' => json_encode($property->services),
                         'proximities' => json_encode($property->proximities),
                     ]);
+
+                    if( ! empty($property->price)){
+                        Price::updateOrCreate(
+                            [ 'property_id' => $property->id ],
+                            [
+                                'property_id' => $property->id,
+                                'value' => $property->price->value,
+                                'currency' => $property->price->currency,
+                                'commission_owner' => $property->price->commission_owner,
+                                'commission_customer' => $property->price->commission_customer,
+                                'net_seller' => $property->price->net_seller,
+                            ]
+                        );
+                    }
 
                     //Enregistrement des tag_customized
                     if ( ! empty($property->tags_customized) ) {

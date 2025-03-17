@@ -51,7 +51,7 @@ class BlogController extends Controller
 
             toast('article inserted successfully', 'success', 'top-right');
 
-            return redirect()->route('backblog.edit', [app()->getLocale(), 'backblog' => $blog]);
+            return redirect()->route('back.blog.edit', [app()->getLocale(), 'blog' => $blog]);
 
         }catch (\Exception $exception){
             Log::error($exception->getMessage());
@@ -68,23 +68,23 @@ class BlogController extends Controller
      * @param Blog $backblog
      * @return View
      */
-    public function edit(string $locale, Blog $backblog): View
+    public function edit(Blog $blog): View
     {
-        return view('admin.blogs.edit', compact('backblog'));
+        return view('admin.blogs.edit', compact('blog'));
     }
 
     /**
      * Met à jour un article
      * @param Request $request
      * @param string $locale
-     * @param Blog $backblog
+     * @param Blog $blog
      * @return RedirectResponse
      */
-    public function update(Request $request, string $locale, Blog $backblog): RedirectResponse
+    public function update(Request $request, Blog $blog): RedirectResponse
     {
         try{
 
-            $this->blogRepository->update($request, $backblog);
+            $this->blogRepository->update($request, $blog);
 
         }catch (\Exception $exception){
             Log::error($exception);
@@ -102,13 +102,13 @@ class BlogController extends Controller
     /**
      * Supprime un article de blog
      * @param string $locale
-     * @param Blog $backblog
+     * @param Blog $blog
      * @return RedirectResponse
      */
-    public function destroy(string $locale, Blog $backblog): RedirectResponse
+    public function destroy(Blog $blog): RedirectResponse
     {
         try{
-            $backblog->delete();
+            $blog->delete();
 
             toast('article deleted with success', 'warning', 'top-right');
 

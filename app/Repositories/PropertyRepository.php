@@ -16,9 +16,8 @@ class PropertyRepository
      */
     public function getNewQuery()
     {
-        return $this->property->with(['user', 'type','picture', 'picture', 'city' ,'region', 'areas'])
+        return $this->property->with(['user', 'type','picture', 'picture', 'city' ,'region', 'areas', 'price'])
             ->where('step_id', '=', 1)
-            ->orderBy('price', 'desc')
             ->newQuery();
     }
 
@@ -28,9 +27,8 @@ class PropertyRepository
      */
     public function getPaginate()
     {
-        return $this->property->with(['user', 'type','picture', 'picture', 'city' ,'region', 'areas'])
+        return $this->property->with(['user', 'type','picture', 'picture', 'city' ,'region', 'areas', 'price'])
             ->newQuery()
-            ->orderBy('price', 'desc')
             ->paginate();
     }
 

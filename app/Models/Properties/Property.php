@@ -35,29 +35,50 @@ class Property extends Model
         'block_name', 'lot_reference', 'cadastre_reference', 'address', 'address_more', 'is_published_address',
         'country', 'region_id', 'city_id', 'district_id', 'longitude', 'latitude', 'radius', 'altitude',
         'area_id', 'area_value', 'area_total', 'area_weighted', 'plot_net_floor', 'plot_floor_area',
-        'rooms', 'bedrooms', 'price', 'currency', 'view_type_id', 'landscape', 'construction_method_id',
+        'rooms', 'bedrooms', 'currency', 'view_type_id', 'landscape', 'construction_method_id',
         'construction_year', 'construction_step_id', 'floor_id', 'floor_value', 'floor_level', 'floor_total',
         'heating_device_id', 'heating_access_id', 'heating_type_id', 'water_hot_device_id', 'hot_water_access_id',
         'hot_water_access_id', 'waste_water_id', 'condition_id', 'standing_id', 'style', 'facade', 'availability_id',
         'available_at', 'delivered_at', 'activities', 'orientations', 'services', 'proximities'
     ];
 
+    /**
+     * Utilisateur d'un bien
+     * @return HasOne
+     */
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    /**
+     * Category
+     * @return HasOne
+     */
     public function category()
     {
         return $this->hasOne(Property_Category::class, 'id', 'category_id');
     }
 
+    public function price()
+    {
+        return $this->hasOne(Price::class, 'property_id', 'id');
+    }
+
+    /**
+     * Type de bien
+     * @return HasOne
+     */
     public function type()
     {
         return $this->hasOne(Property_Type::class, 'id', 'type_id')
             ->where('locale', '=',  app()->getLocale());
     }
 
+    /**
+     * Sous-type de bien
+     * @return HasOne
+     */
     public function subtype()
     {
         return $this->hasOne(Property_Subtype::class, 'id', 'subtype_id')
@@ -91,6 +112,10 @@ class Property extends Model
         return $this->hasOne(District::class, 'id', 'district_id');
     }
 
+    /**
+     * Photos d'un bien
+     * @return HasMany
+     */
     public function pictures():HasMany
     {
         return $this->hasMany(Picture::class, 'property_id', 'id');
@@ -106,28 +131,35 @@ class Property extends Model
             ->orderBy('rank');
     }
 
+    /**
+     * Les textes d'un bien
+     * @return HasMany
+     */
     public function comments()
     {
         return $this->hasMany(Comment::class, 'property_id', 'id');
     }
 
+    /**
+     * Texte d'un bien dans la langue du site
+     * @return HasOne
+     */
     public function comment()
     {
         return $this->hasOne(Comment::class, 'property_id', 'id')
             ->where('locale', '=', app()->getLocale());
     }
 
+    /**
+     * Surfaces d'un bien
+     * @return HasMany
+     */
     public function areas()
     {
         return $this->hasMany(Area::class, 'property_id', 'id')
             ->with(['areaType' => function ($query) {
                 $query->where('locale', '=', app()->getLocale());
             }]);
-    }
-
-    public function regulations()
-    {
-        return $this->hasMany(Regulation::class, 'property_id', 'id');
     }
 
     /**
@@ -141,4 +173,15 @@ class Property extends Model
             ->whereIn('property_area_id', ['49', '50','51'])
             ->sum('area');
     }
+
+    /**
+     * DPE et autres joyeuseté
+     * @return HasMany
+     */
+    public function regulations()
+    {
+        return $this->hasMany(Regulation::class, 'property_id', 'id');
+    }
+
+
 }

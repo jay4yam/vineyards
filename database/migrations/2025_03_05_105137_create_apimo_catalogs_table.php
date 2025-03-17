@@ -27,10 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        /*
+
         foreach ( config('catalogs') as $key => $value ) {
             Schema::dropIfExists("catalog_".$key);
         }
-        */
     }
 };

@@ -10,7 +10,7 @@
         @foreach($properties as $property)
             <div class="w-full">
                 <div class="relative">
-                    <img class="w-full" src="{{ asset('storage/properties/'.$property->picture->name) }}" alt="{{$property->name}}">
+                    <img class="w-full" src="{{ asset('storage/properties/'.$property->reference.'/'.$property->picture->name) }}" alt="{{$property->name}}">
                     <div class="absolute flex justify-between top-0 bg-white w-full p-2 text-xs">
                         <span>{{ $property->reference }}</span>
                         <span>{{ $property->subtype->name }}</span>
@@ -22,7 +22,7 @@
                         <p>{{ $property->region->name }}</p>
                         <p>{{ $property->city->name }}</p>
                     </div>
-                    <div> price : {{ \Illuminate\Support\Number::currency( $property->price, in: 'Euro', locale: app()->getLocale(), precision: 0 ) }}</div>
+                    <div> price : {{ \Illuminate\Support\Number::currency( $property->price->value, in: 'Euro', locale: app()->getLocale(), precision: 0 ) }}</div>
                     <div class="flex justify-between">
                         <div class="flex gap-2"><x-mdi-fruit-grapes class="h-4"/> {{ $property->surfTerrain() }}</div>
                         <div class="flex gap-2"><x-carbon-area class="h-4"/> {{ $property->area_value }} {!! __('property.sqm') !!}</div>

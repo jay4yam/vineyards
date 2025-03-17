@@ -10,7 +10,7 @@
         <!-- users -->
         <div class="w-full bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900">
 
-            <form action="{{ route('backuser.store', [app()->getLocale()]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('back.user.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <!-- container -->

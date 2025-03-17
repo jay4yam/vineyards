@@ -71,7 +71,7 @@
         </div>
         <!-- end users -->
 
-        <!-- users -->
+        <!-- blog -->
         <div class="col-span-2 w-full bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900">
 
             <h2>Blog</h2>
@@ -97,13 +97,13 @@
                             <td class="py-2 text-sm">
                                 <div class="flex gap-2">
                                     <!-- lien edition article -->
-                                    <x-edit-backoffice href="{{ route('backblog.edit', ['backblog' => $blog]) }}" />
+                                    <x-edit-backoffice href="{{ route('back.blog.edit', ['blog' => $blog]) }}" />
 
                                     <!-- lien voir article -->
                                     <x-show-backoffice target="_blank" href="{{ route('blog.show', ['blog' => $blog, 'slug' => \Illuminate\Support\Str::slug($blog->translate->title)]) }}"/>
 
                                     <!-- lien voir article -->
-                                    <x-form-delete-backoffice action="{{ route('backblog.destroy', ['backblog' => $blog]) }}"/>
+                                    <x-form-delete-backoffice action="{{ route('back.blog.destroy', ['blog' => $blog]) }}"/>
                                 </div>
                             </td>
                         </tr>
@@ -115,7 +115,7 @@
             <a href="" class="bg-red-800 text-white px-4 py-2 float-right hover:ring-1 hover:ring-red-800 hover:bg-white hover:text-red-800">voir</a>
 
         </div>
-        <!-- end users -->
+        <!-- end blogs -->
 
     </div>
 </x-app-layout>

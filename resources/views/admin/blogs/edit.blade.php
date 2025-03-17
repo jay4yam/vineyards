@@ -9,21 +9,23 @@
     <div class="flex flex-wrap gap-4 py-12 max-w-7xl mx-auto px-8">
 
         <div class="w-full flex justify-between items-center ">
-            <a href="{{ route('backblog.index', []) }}" class="w-1/10 bg-gray-300 text-gray-500 p-2 rounded-md">< back</a>
-            <a href="{{ route('blog.translate', [app()->getLocale(), 'blog' => $backblog]) }}" class="flex items-center gap-1 w-1/10 bg-blue-500 text-white p-2 rounded-md"><x-fas-language class="h-4"/><span>Translate</span></a>
+            <a href="{{ route('back.blog.index', []) }}" class="w-1/10 bg-gray-300 text-gray-500 p-2 rounded-md">< back</a>
+            <a href="{{ route('back.blog.translate', ['blog' => $blog]) }}" class="flex items-center gap-1 w-1/10 bg-blue-500 text-white p-2 rounded-md">
+                <x-fas-language class="h-4"/><span>Translate</span>
+            </a>
         </div>
 
         <!-- edition de l'article -->
         <div class="w-full basis-full bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900">
 
-            <form action="{{ route('backblog.update', [app()->getLocale(), 'backblog' => $backblog] ) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('back.blog.update', ['blog' => $blog] ) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
                 <div class="flex flex-col gap-1">
                     <label for="user_id" class="w-full">Rédacteur:</label>
                     <select name="user_id" class="border-gray-200">
                         @foreach(\App\Models\User::redactor()->get() as $user)
-                            <option value="{{ $user->id }}" @selected($user->id === $backblog->user_id)>{{ $user->fullname }}</option>
+                            <option value="{{ $user->id }}" @selected($user->id === $blog->user_id)>{{ $user->fullname }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -33,7 +35,7 @@
 
                     <!-- button tabs -->
                     <div class="flex overflow-hidden rounded-t-lg border-b-2 border-gray-900">
-                        @foreach($backblog->translates as $translate)
+                        @foreach($blog->translates as $translate)
                             <button type="button"
                                     class="px-4 py-2 w-full"
                                     x-on:click="current = {{ $loop->index }}"
@@ -43,7 +45,7 @@
 
                     <!-- item tabs -->
                     <div>
-                        @foreach($backblog->translates as $translate)
+                        @foreach($blog->translates as $translate)
                             <div x-show="current === {{ $loop->index }}" class="p-3 mt-6 flex flex-col gap-4">
                                 <input type="hidden" name="translate[{{$translate->locale}}][id]" value="{{ $translate->id }}">
 
@@ -93,7 +95,13 @@
 
                                 </div>
 
-
+                                <div>
+                                    <select name="category_id" class="w-full border-gray-200">
+                                    @foreach($blog->categories as $category)
+                                        <option>{{ $category-> }}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
                                 <!-- intro de l'article -->
                                 <div>
                                     <label for="translate[{{$translate->locale}}][intro]">Intro :</label>
@@ -102,6 +110,7 @@
                                               name="translate[{{$translate->locale}}][intro]">{{ old($translate->intro, $translate->intro) }}</textarea>
                                 </div>
 
+                                <!-- content de l'article -->
                                 <div>
                                     <label for="translate[{{$translate->locale}}][content]">Content :</label>
                                     <textarea class="w-full rounded-md p-3"
@@ -117,8 +126,8 @@
                 <div class="flex gap-2 p-2">
                     <!-- image de l'article -->
                     <div class="w-1/2">
-                        @if($backblog->image)
-                            <img class="w-full py-2" src="{{ asset('storage/blog/'.$backblog->image) }}" alt="none">
+                        @if($blog->image)
+                            <img class="w-full py-2" src="{{ asset('storage/blog/'.$blog->image) }}" alt="none">
                         @endif
                         <input type="file" name="image" class="border-gray-200">
                     </div>

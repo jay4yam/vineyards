@@ -63,14 +63,9 @@
                 <li>
                     <!-- menu lang -->
                     <ul class="flex gap-2 w-full">
-                        @foreach( config('app.available_locales') as $lang)
-                            <li class="w-full">
-                                <a  href="{{ route('change.locale', ['lang' => $lang]) }}"
-                                    class="flex justify-center items-center gap-2 text-center px-4 py-2 text-gray-800 hover:bg-red-800 hover:text-white">
-                                    <img class="h-4" src="{{ asset('images/flag_'.$lang.'.webp') }}" alt=""><span>{{ $lang }}</span>
-                                </a>
-                            </li>
-                        @endforeach
+                        <!-- menu lang -->
+                        @include('partials._langage', ['seoData' => $seoData])
+                        <!-- menu lang -->
                     </ul>
                     <!-- end menu user -->
                 </li>
@@ -122,29 +117,14 @@
         <div class="flex gap-6">
             <ul class="flex items-center gap-3">
                 @if(auth()->check())
-                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ route('back.home') }}">Dashboard</a></li>
                 @else
                     <li><a class="hover:text-red-800" href="{{ route('login') }}">{{ __('menu.login') }}</a></li>
                     <li><a class="hover:text-red-800" href="{{ route('register') }}">{{ __('menu.register') }}</a></li>
                     <li class="w-6">
                         <!-- menu lang -->
-                        <ul class=" flex gap-2">
-                            <li class="group relative">
-                                <img class="h-4" src="{{ asset('images/flag_'. app()->getLocale() .'.webp') }}" alt="{{ app()->getLocale() }}">
-                                <ul class="hidden group-hover:block absolute">
-                                    @foreach( config('app.available_locales') as $lang)
-                                        @if($lang != app()->getLocale())
-                                            <li class="py-2">
-                                                <a href="{{ route('change.locale', ['lang' => $lang]) }}">
-                                                    <img class="h-4" src="{{ asset('images/flag_'.$lang.'.webp') }}" alt="traduction en {{ $lang }}">
-                                                </a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </li>
-                        </ul>
-                        <!-- end menu user -->
+                        @include('partials._langage', ['seoData' => $seoData])
+                        <!-- menu lang -->
                     </li>
                 @endif
             </ul>
@@ -154,5 +134,4 @@
         </div>
         <!-- end menu user -->
     </div>
-
 </nav>

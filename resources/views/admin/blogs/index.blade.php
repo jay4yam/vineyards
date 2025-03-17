@@ -8,7 +8,7 @@
     <div class="flex flex-wrap gap-4 py-12 max-w-7xl mx-auto px-8">
 
         <div class="w-full flex justify-end">
-            <a href="{{ route('backblog.create', ) }}" class="text-right w-1/10 bg-orange-500 text-white p-2 rounded-md">Nouvel Article</a>
+            <a href="{{ route('back.blog.create', ) }}" class="text-right w-1/10 bg-orange-500 text-white p-2 rounded-md">Nouvel Article</a>
         </div>
 
         <!-- article -->
@@ -49,13 +49,13 @@
                             <td>
                                 <div class="flex gap-2">
                                     <!-- lien edition article -->
-                                    <x-edit-backoffice href="{{ route('backblog.edit', [app()->getLocale(), 'backblog' => $article]) }}" />
+                                    <x-edit-backoffice href="{{ route('back.blog.edit', [app()->getLocale(), 'blog' => $article]) }}" />
 
                                     <!-- lien voir article -->
                                     <x-show-backoffice target="_blank" href="{{ route('blog.show', ['locale' => app()->getLocale(), 'blog' => $article, 'slug' => \Illuminate\Support\Str::slug($article->translate->title)]) }}"/>
 
                                     <!-- lien voir article -->
-                                    <x-form-delete-backoffice action="{{ route('backblog.destroy', [app()->getLocale(), 'backblog' => $article]) }}"/>
+                                    <x-form-delete-backoffice action="{{ route('back.blog.destroy', [app()->getLocale(), 'blog' => $article]) }}"/>
                                 </div>
                             </td>
                         </tr>

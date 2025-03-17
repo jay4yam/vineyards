@@ -12,8 +12,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(\App\Http\Middleware\Localization::class);
-        $middleware->append(\App\Http\Middleware\SetDefaultLocale::class);
+        $middleware->web(append:[\App\Http\Middleware\Localization::class]);
+        $middleware->web(append:[\App\Http\Middleware\SetDefaultLocale::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

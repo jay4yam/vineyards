@@ -9,7 +9,7 @@
      class="group relative flex items-center justify-center h-full w-fit overflow-hidden hover:cursor-pointer">
 
     <div class="transition ease-in-out delay-100 hover:brightness-75 h-full">
-        <img class="group-hover:blur-sm group-hover:scale-110 group-hover:duration-300 h-full object-cover" src="{{ asset('storage/properties/'.$property->picture->name) }}" alt="{{ $property->name }}"/>
+        <img class="group-hover:blur-sm group-hover:scale-110 group-hover:duration-300 h-full object-cover" src="{{ asset('storage/properties/'.$property->reference.'/'.$property->picture->name) }}" alt="{{ $property->name }}"/>
     </div>
 
     <ul class="absolute hidden group-hover:block group-hover:duration-300 text-white text-lg font-black uppercase text-shadow text-center gap-2">

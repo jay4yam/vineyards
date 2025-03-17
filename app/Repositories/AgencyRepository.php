@@ -16,6 +16,6 @@ class AgencyRepository
      */
     public function getAgency():Agency
     {
-        return $this->agency->where('id', '=', 2421)->first();
+        return $this->agency->with('users')->where('id', '=', 2421)->first();
     }
 }

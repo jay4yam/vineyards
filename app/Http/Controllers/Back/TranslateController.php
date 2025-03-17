@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class TranslateController extends Controller
 {
-    public function blogTranslate($locale, Blog $blog): \Illuminate\Http\RedirectResponse
+    public function blogTranslate(Blog $blog): \Illuminate\Http\RedirectResponse
     {
         $blog->load('translate');
 
@@ -27,6 +27,6 @@ class TranslateController extends Controller
 
         toast('traduction en cours...patience', 'warning', 'top-right');
 
-        return redirect()->route('backblog.edit', [app()->getLocale(), 'backblog' => $blog]);
+        return redirect()->route('back.blog.edit', [app()->getLocale(), 'blog' => $blog]);
     }
 }

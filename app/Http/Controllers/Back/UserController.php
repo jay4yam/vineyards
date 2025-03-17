@@ -29,13 +29,12 @@ class UserController extends Controller
 
     /**
      * Retourne la vue d'édition d'un utilisateur
-     * @param string $locale
-     * @param User $backuser
+     * @param User $user
      * @return View
      */
-    public function edit(string $locale, User $backuser): View
+    public function edit(User $user): View
     {
-        return view('admin.users.edit')->with(['user' => $backuser]);
+        return view('admin.users.edit')->with(['user' => $user]);
     }
 
     /**
@@ -45,11 +44,11 @@ class UserController extends Controller
      * @param User $backuser
      * @return RedirectResponse
      */
-    public function update(string $locale, Request $request, User $backuser):RedirectResponse
+    public function update(Request $request, User $user):RedirectResponse
     {
         try{
 
-            $this->userRepository->update($request, $backuser);
+            $this->userRepository->update($request, $user);
 
             toast('user updated successfully!', 'success', 'top-right');
 
@@ -85,7 +84,7 @@ class UserController extends Controller
 
             $user = $this->userRepository->store($request);
 
-            return redirect()->route('backuser.edit', [ app()->getLocale(), 'backuser' => $user ]);
+            return redirect()->route('back.user.edit', [ app()->getLocale(), 'user' => $user ]);
 
         }catch (\Exception $exception){
             Log::error('error store user '. $exception->getMessage());
@@ -102,14 +101,14 @@ class UserController extends Controller
      * @param User $backuser
      * @return RedirectResponse
      */
-    public function destroy(string $locale, User $backuser): RedirectResponse
+    public function destroy(User $backuser): RedirectResponse
     {
         try{
             $backuser->delete();
 
             toast('user deleted successfully!', 'success', 'top-right');
 
-            return redirect()->route('backuser.index', app()->getLocale());
+            return redirect()->route('back.user.index', app()->getLocale());
 
         }catch (\Exception $exception){
             Log::error('error delete user '. $exception->getMessage());

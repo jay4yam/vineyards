@@ -19,7 +19,7 @@ class Localization
     public function handle(Request $request, Closure $next): Response
     {
         //si la requete est en GET
-        if ($request->method() === 'GET') {
+        if ($request->method() === 'GET' && $request->segment(1) != 'dashboard') {
 
             //récupère le premier segment de l'url
             $segment = $request->segment(1);

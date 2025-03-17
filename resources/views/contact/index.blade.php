@@ -15,81 +15,134 @@
     </header>
 
     <!-- section form -->
-    <section class="pt-16">
+    <section class="container mx-auto w-3/4 pt-16 font-eurostile">
 
-        <h1 class="text-center text-red-700 text-3xl font-eurostile uppercase">{{ __('contact.getintouch') }}</h1>
+        <div class="flex gap-2">
 
-        <!-- form -->
-        <form class="mx-auto w-full lg:w-2/3 p-6">
+            <!-- form -->
+            <form action="{{ route('contact.form.submit') }}" method="post" class="w-full lg:w-8/12 p-6">
+                @csrf
+                @method('post')
+                <input type="hidden" name="ip_address" value="{{ request()->getClientIp() }}">
+                <input type="hidden" name="sources" value="form_contact">
 
-            <p class="text-justify text-gray-500 py-12">{{ __('contact.content') }}</p>
-            <!-- Name -->
-            <div>
-                <x-input-label for="name" :value="__('form.name')" class="text-gray-700"/>
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required/>
-                <x-input-error :messages="$errors->get('name')" class="mt-2"/>
-            </div>
+                <h1 class="text-center text-red-800 text-3xl uppercase">{{ __('contact.getintouch') }}</h1>
 
-            <!-- phone -->
-            <div class="mt-4">
-                <x-input-label for="phone" :value="__('form.phone')" class="text-gray-700"/>
-                <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required/>
-                <x-input-error :messages="$errors->get('phone')" class="mt-2"/>
-            </div>
+                @if(! session()->has('form_contact_success'))
+                    <p class="text-justify text-gray-500 py-12">{{ __('contact.content') }}</p>
+                    <!-- Name -->
+                    <div>
+                        <x-input-label for="name" :value="__('form.name')" class="text-gray-700"/>
+                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required/>
+                        <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+                    </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-input-label for="email" :value="__('form.email')" class="text-gray-700"/>
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required/>
-                <x-input-error :messages="$errors->get('email')" class="mt-2"/>
-            </div>
+                    <!-- phone -->
+                    <div class="mt-4">
+                        <x-input-label for="phone" :value="__('form.phone')" class="text-gray-700"/>
+                        <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required/>
+                        <x-input-error :messages="$errors->get('phone')" class="mt-2"/>
+                    </div>
 
-            <!-- Message -->
-            <div class="mt-4">
-                <x-input-label for="message" :value="__('form.message')" class="text-gray-700"/>
-                <x-text-area id="message" class="block mt-1 w-full" name="message" :value="old('message')" required/>
-                <x-input-error :messages="$errors->get('message')" class="mt-2"/>
-            </div>
+                    <!-- Email Address -->
+                    <div class="mt-4">
+                        <x-input-label for="email" :value="__('form.email')" class="text-gray-700"/>
+                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required/>
+                        <x-input-error :messages="$errors->get('email')" class="mt-2"/>
+                    </div>
 
-            <p class="mt-4 text-gray-400 text-sm text-justify">
-                Les informations collectées à partir de ce formulaire permettent aux équipes de Michaël Zingraf Vineyards de traiter votre demande.
-                Elle sont conservées uniquement à cette seule fin et ne sont pas transmises à des tiers.
-            </p>
+                    <!-- Message -->
+                    <div class="mt-4">
+                        <x-input-label for="message" :value="__('form.message')" class="text-gray-700"/>
+                        <x-text-area id="message" class="block mt-1 w-full" name="message" :value="old('message')" required/>
+                        <x-input-error :messages="$errors->get('message')" class="mt-2"/>
+                    </div>
 
-            <div class="text-center rounded-sm pt-12">
-                <button type="submit" class="rounded-sm bg-red-700 hover:bg-red-600 p-2 text-white">{{ __('form.send') }}</button>
-            </div>
+                    <p class="mt-4 text-gray-400 text-sm text-justify">
+                        {!! __('contact.rgpd') !!}
+                    </p>
+
+                    <div class="text-center rounded-sm pt-12">
+                        <button type="submit" class="rounded-sm bg-red-700 hover:bg-red-600 p-2 text-white">{{ __('form.send') }}</button>
+                    </div>
+                @else
+                    <div x-init="$el.closest('form').scrollIntoView()">
+                        <p>{{ __('form.thanks') }}</p>
+                    </div>
+                @endif
         </form>
 
-        <!-- repique addresse -->
-        <div class="flex flex-col lg:flex-row items-center gap-2 lg:gap-12 p-8 lg:p-16 bg-gray-100">
+            <div class="w-4/12 p-6">
 
-            <!-- photo agence -->
-            <div class="w-full lg:w-1/2">
-                <img class="w-full lg:w-1/2 float-right drop-shadow-lg rounded-md" src="{{ asset('images/photo_agence.webp') }}" alt="photo agence Michaël Zingraf Real Estate">
+                <h2 class="text-center text-red-800 text-3xl uppercase">{{ __('contact.call_expert') }}</h2>
+
+                <!-- auto pub -->
+                <div class="group my-4 md:my-12 relative cursor-pointer overflow-hidden">
+
+                    <!-- titre -->
+                    <div class="text-center z-20 w-full absolute text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6">
+                        <h2 class="text-2xl font-bold italic text-shadow-black">{{ __('contact.sale_your_vineyards') }}</h2>
+                        <span class="font-bold text-shadow-black">{{ __('contact.with_mzre') }}</span>
+                    </div>
+
+                    <!-- bg-opaque -->
+                    <div class="absolute top-0 w-full h-full bg-black/20 z-10"></div>
+
+                    <!-- img sell vignoble -->
+                    <img class="w-full transition ease-in-out delay-200 group-hover:scale-110 rounded-sm" loading="lazy" src="{{ asset('images/vignoble-a-vendre.webp') }}" alt="">
+
+                </div>
+
+                <!-- pub -->
+                <div class="group my-4 md:my-12 relative cursor-pointer overflow-hidden">
+
+                    <!-- titre -->
+                    <div class="text-center z-20 w-full absolute text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6">
+                        <a href="{{ route('blog.index') }}">
+                            <h2 class="text-2xl font-bold italic text-shadow-black">{{ __('contact.guide_vineyards') }}</h2>
+                            <span class="font-bold text-shadow-black">{{ __('contact.by_mzre') }}</span>
+                        </a>
+                    </div>
+
+                    <!-- bg-opaque -->
+                    <div class="absolute top-0 w-full h-full bg-black/20 z-10"></div>
+
+                    <!-- img guide vignoble -->
+                    <img class="w-full transition ease-in-out delay-200 group-hover:scale-110 rounded-sm" loading="lazy" src="{{ asset('images/guide-vignoble.webp') }}" alt="">
+
+                </div>
             </div>
-
-            <!-- addresse -->
-            <div class="w-full lg:w-1/2 flex flex-col gap-6">
-                <div class="flex flex-col text-black font-crimson italic">
-                    <span class="text-lg font-bold">{{ __('contact.address') }}</span>
-                    <span>{{ $agency->address }}<br>{{ $agency->city->zipcode }} {{ $agency->city->name }}</span>
-                </div>
-                <!-- téléphone -->
-                <div class="flex flex-col text-black font-crimson italic">
-                    <span class="text-lg font-bold">{{ __('contact.phone') }}</span>
-                    <span><a class="hover:text-red-800" href="tel:{{ $agency->phone }}">{{ $agency->phone }}</a></span>
-                </div>
-                <!-- email -->
-                <div class="flex flex-col text-black font-crimson italic">
-                    <span class="text-lg font-bold">{{ __('contact.email') }}</span>
-                    <span><a class="hover:text-red-800" href="mailto:vineyards@michaelzingraf.com">vineyards@michaelzingraf.com</a></span>
-                </div>
-            </div>
-
         </div>
 
     </section>
+
+    <!-- repique addresse -->
+    <div class="flex flex-col lg:flex-row items-center gap-2 lg:gap-12 p-8 lg:p-16 bg-gray-100">
+
+        <!-- photo agence -->
+        <div class="w-full lg:w-1/2">
+            <img class="w-full lg:w-1/2 float-right drop-shadow-lg rounded-md" src="{{ asset('images/photo_agence.webp') }}" alt="photo agence Michaël Zingraf Real Estate">
+        </div>
+
+        <!-- addresse -->
+        <div class="w-full lg:w-1/2 flex flex-col gap-6">
+            <div class="flex flex-col text-black font-crimson italic">
+                <span class="text-lg font-bold">{{ __('contact.address') }}</span>
+                <span>{{ $agency->address }}<br>{{ $agency->city->zipcode }} {{ $agency->city->name }}</span>
+            </div>
+            <!-- téléphone -->
+            <div class="flex flex-col text-black font-crimson italic">
+                <span class="text-lg font-bold">{{ __('contact.phone') }}</span>
+                <span><a class="hover:text-red-800" href="tel:{{ $agency->phone }}">{{ $agency->phone }}</a></span>
+            </div>
+            <!-- email -->
+            <div class="flex flex-col text-black font-crimson italic">
+                <span class="text-lg font-bold">{{ __('contact.email') }}</span>
+                <span><a class="hover:text-red-800" href="mailto:vineyards@michaelzingraf.com">vineyards@michaelzingraf.com</a></span>
+            </div>
+        </div>
+
+    </div>
 
     <!-- carte/map -->
     <section class="relative">

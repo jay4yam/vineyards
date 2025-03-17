@@ -16,7 +16,7 @@
     <!-- end moteur de recherche -->
 
     <!-- breadcrumb -->
-    <div class="container mx-auto px-40 py-4 text-xs">
+    <div class="container mx-auto px-4 lg:px-40 py-4 text-xs">
         <ul class="flex gap-1 text-gray-400">
             <li>
                 <a href="{{ route('home', ) }}">{{ __('menu.home') }}</a>
@@ -30,7 +30,7 @@
     <!-- breadcrumb -->
 
     <!-- filtre affichage tri -->
-    <div class="flex items-center justify-between container mx-auto px-40 py-4">
+    <div class="flex items-center justify-between container mx-auto px-4 lg:px-40 py-4">
 
         <form action="{{ route('properties.index') }}" class="text-gray-400 w-1/2">
             <select class="border-gray-200" name="order_by" id="order_by" onchange="this.form.submit()">
@@ -40,7 +40,7 @@
             </select>
         </form>
 
-        <div class="w-1/3">
+        <div class="w-1/2 lg:w-1/3">
             {{ $properties->links() }}
         </div>
 

@@ -51,7 +51,6 @@ return new class extends Migration
             $table->integer('rooms')->default(0);
             $table->integer('bedrooms')->default(0);
             $table->integer('sleeps')->default(0);
-            $table->integer('price')->default(0);
             $table->string('currency')->nullable();
             $table->foreignId('view_type_id')->nullable()->constrained('catalog_property_view_type');
             $table->json('landscape')->nullable();
@@ -80,6 +79,16 @@ return new class extends Migration
             $table->json('services')->nullable();
             $table->json('proximities')->nullable();
             $table->timestamps();
+        });
+
+        Schema::create('prices', function (Blueprint $table){
+            $table->id();
+            $table->integer('value')->default(0);
+            $table->string('currency')->default('EUR');
+            $table->float('commission_owner')->default(0);
+            $table->float('commission_customer')->default(0);
+            $table->float('net_seller')->default(0);
+            $table->foreignId('property_id')->constrained('properties')->cascadeOnDelete();
         });
 
         Schema::create('tags_customized', function (Blueprint $table) {
@@ -174,6 +183,10 @@ return new class extends Migration
             $table->dropForeign('regulations_property_regulation_id_foreign');
         });
 
+        Schema::table('prices', function (Blueprint $table){
+            $table->dropForeign('prices_property_id_foreign');
+        });
+
         Schema::dropIfExists('tags_customized');
         Schema::dropIfExists('property_tag');
         Schema::dropIfExists('pictures');
@@ -208,6 +221,7 @@ return new class extends Migration
             $table->dropForeign('properties_standing_id_foreign');
             $table->dropForeign('properties_availability_id_foreign');
         });
+        Schema::dropIfExists('prices');
         Schema::dropIfExists('properties');
     }
 };
