@@ -49,13 +49,13 @@
                             <td>
                                 <div class="flex gap-2">
                                     <!-- lien edition article -->
-                                    <x-edit-backoffice href="{{ route('back.blog.edit', [app()->getLocale(), 'blog' => $article]) }}" />
+                                    <x-edit-backoffice href="{{ route('back.blog.edit', ['blog' => $article]) }}" />
 
                                     <!-- lien voir article -->
                                     <x-show-backoffice target="_blank" href="{{ route('blog.show', ['locale' => app()->getLocale(), 'blog' => $article, 'slug' => \Illuminate\Support\Str::slug($article->translate->title)]) }}"/>
 
                                     <!-- lien voir article -->
-                                    <x-form-delete-backoffice action="{{ route('back.blog.destroy', [app()->getLocale(), 'blog' => $article]) }}"/>
+                                    <x-form-delete-backoffice action="{{ route('back.blog.destroy', ['blog' => $article]) }}"/>
                                 </div>
                             </td>
                         </tr>

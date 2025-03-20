@@ -34,7 +34,7 @@
             <div class="grid grid-cols-3 gap-1 text-xs">
 
                 <div class="flex gap-1 items-center col-span-3 p-2 bg-gray-200 text-xl">
-                    <p class="font-bold italic">{{ \Illuminate\Support\Number::currency($property->price, in:'EUR', locale: app()->getLocale(), precision: 0) }}</p>
+                    <p class="font-bold italic">{{ \Illuminate\Support\Number::currency($property->price->value, in:'EUR', locale: app()->getLocale(), precision: 0) }}</p>
                     <p class="italic text-xs">{{ __('property.fees') }}</p>
                 </div>
 

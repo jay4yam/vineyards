@@ -15,7 +15,7 @@
         <!-- edition de l'article -->
         <div class="w-full basis-full bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900">
 
-            <form action="{{ route('back.blog.store', app()->getLocale() ) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('back.blog.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('post')
                 <div class="flex flex-col gap-1">
@@ -35,68 +35,80 @@
 
                         <div  class="p-3 mt-6 flex flex-col gap-4">
 
-                                <!-- title de l'article -->
-                                <div>
-                                    <label for="translate[fr][title]">Titre :</label>
-                                    <input type="text"
-                                           value="{{ old('translate[fr][title]') }}"
-                                           class="w-full rounded-md p-3"
-                                           id="translate[fr][title]"
-                                           name="translate[fr][title]" required>
-                                </div>
-
-                                <!-- seo -->
-                                <div class="bg-gray-50 p-4">
-
-                                    <span>SEO</span>
-
-                                    <div>
-                                        <label for="translate[fr][slug]">Slug :</label>
-                                        <input type="text"
-                                               value="{{ old('translate[fr][slug]') }}"
-                                               class="w-full rounded-md p-3"
-                                               id="translate[fr][slug]"
-                                               name="translate[fr][slug]" required>
-                                    </div>
-
-                                    <!-- meta_title de l'article -->
-                                    <div>
-                                        <label for="translate[fr][meta_title]">meta_title :</label>
-                                        <input type="text"
-                                               value="{{ old('translate[fr][meta_title]') }}"
-                                               class="w-full rounded-md p-3"
-                                               id="translate[fr][meta_title]"
-                                               name="translate[fr][meta_title]" required>
-                                    </div>
-
-                                    <!-- meta_desc de l'article -->
-                                    <div>
-                                        <label for="translate[fr][meta_desc]">meta_desc :</label>
-                                        <input type="text"
-                                               value="{{ old('translate[fr][meta_desc]') }}"
-                                               class="w-full rounded-md p-3"
-                                               id="translate[fr][meta_desc]"
-                                               name="translate[fr][meta_desc]" required>
-                                    </div>
-
-                                </div>
-
-
-                                <!-- intro de l'article -->
-                                <div>
-                                    <label for="translate[fr][intro]">Intro :</label>
-                                    <textarea class="w-full rounded-md p-3"
-                                              id="translate[fr][intro]"
-                                              name="translate[fr][intro]">{{ old('translate[fr][intro]') }}</textarea>
-                                </div>
-
-                                <div>
-                                    <label for="translate[fr][content]">Content :</label>
-                                    <textarea class="w-full rounded-md p-3"
-                                              id="translate[fr][content]"
-                                              name="translate[fr][content]">{{ old('translate[fr][content') }}</textarea>
-                                </div>
+                            <!-- title de l'article -->
+                            <div>
+                                <label for="translate[fr][title]">Titre :</label>
+                                <input type="text"
+                                       value="{{ old('translate[fr][title]') }}"
+                                       class="w-full rounded-md p-3"
+                                       id="translate[fr][title]"
+                                       name="translate[fr][title]" required>
                             </div>
+
+                            <!-- seo -->
+                            <div class="bg-gray-50 p-4">
+
+                                <span>SEO</span>
+
+                                <div>
+                                    <label for="translate[fr][slug]">Slug :</label>
+                                    <input type="text"
+                                           value="{{ old('translate[fr][slug]') }}"
+                                           class="w-full rounded-md p-3"
+                                           id="translate[fr][slug]"
+                                           name="translate[fr][slug]" required>
+                                </div>
+
+                                <!-- meta_title de l'article -->
+                                <div>
+                                    <label for="translate[fr][meta_title]">meta_title :</label>
+                                    <input type="text"
+                                           value="{{ old('translate[fr][meta_title]') }}"
+                                           class="w-full rounded-md p-3"
+                                           id="translate[fr][meta_title]"
+                                           name="translate[fr][meta_title]" required>
+                                </div>
+
+                                <!-- meta_desc de l'article -->
+                                <div>
+                                    <label for="translate[fr][meta_desc]">meta_desc :</label>
+                                    <input type="text"
+                                           value="{{ old('translate[fr][meta_desc]') }}"
+                                           class="w-full rounded-md p-3"
+                                           id="translate[fr][meta_desc]"
+                                           name="translate[fr][meta_desc]" required>
+                                </div>
+
+                            </div>
+
+                            <!-- categories -->
+                            <div>
+                                <label for="category_id">Catégorie</label>
+                                <select name="category['fr'][category_id]" class="w-full border-gray-200">
+                                    @foreach(\App\Models\Category::where('locale', 'fr')->get() as $category)
+                                        <option value="{{ $category->id }}">
+                                            {{ $category->name }} ({{ $category->locale }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- intro de l'article -->
+                            <div>
+                                <label for="translate[fr][intro]">Intro :</label>
+                                <textarea class="w-full rounded-md p-3"
+                                          id="translate[fr][intro]"
+                                          name="translate[fr][intro]">{{ old('translate[fr][intro]') }}</textarea>
+                            </div>
+
+                            <!-- content de l'article -->
+                            <div>
+                                <label for="translate[fr][content]">Content :</label>
+                                <textarea class="w-full rounded-md p-3"
+                                          id="translate[fr][content]"
+                                          name="translate[fr][content]">{{ old('translate[fr][content') }}</textarea>
+                            </div>
+                        </div>
 
                     </div><!-- ./end item tabs -->
 

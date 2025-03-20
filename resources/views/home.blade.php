@@ -38,7 +38,7 @@
              data-aos-easing="ease-in-out"
              data-aos-mirror="true"
              data-aos-once="false"
-             class="absolute w-48 z-50 bottom-4 animate-fade-up animate-once animate-delay-[3500ms] animate-ease-in-out"
+             class="absolute w-48 z-40 bottom-4 animate-fade-up animate-once animate-delay-[3500ms] animate-ease-in-out"
              src="{{ asset('images/cire_logo.svg') }}" alt="logo christie's international real estate">
 
     </header>
@@ -63,34 +63,15 @@
         <div class="w-full lg:w-1/2 p-8 lg:p-28 text-justify">
             <h2 class="uppercase font-black text-3xl text-black py-4 text-center">{{ __('home.metier_passion') }}</h2>
             <h3 class="font-crimson font-bold">
-                Dans chaque verre de vin se reflète l'essence d'un terroir,
-                et derrière chaque domaine viticole, une demeure rêvée où l'art de vivre
-                se marie à la perfection avec l'immobilier de prestige.
+                {{ __('home.intro_mz') }}
             </h3>
             <div class="text-gray-500 font-crimson pt-12">
-                <p class="py-2">En tant que fondateur du groupe Michaël Zingraf Real Estate,
-                    j'ai toujours souhaité marier mes passions pour l'immobilier
-                    et la pierre et le monde exquis du vin. C'est avec une grande fierté
-                    que nous avons lançé notre département Vineyards, une initiative
-                    qui reflète cette fusion de passions. Ce nouveau département offre
-                    à nos clients une sélection exclusive de vignobles, des domaines familiaux intimes
-                    aux châteaux emblématiques, tous choisis pour leur caractère unique
-                    et leur excellence en matière de vinification.</p>
+                <p class="py-2">{{ __('home.p1_mz') }}</p>
 
-                <p class="py-2">Ma vision et celle de mon équipe sont claires :
-                    Offrir une expérience d'achat incomparable dans le secteur des propriétés viticoles,
-                    en mettant à profit notre expertise reconnue dans l'immobilier de luxe.
-                    Nous guidons nos clients à chaque étape, de la sélection de la propriété parfaite
-                    à la gestion après l'achat, en mettant l'accent sur l'authenticité et la tradition.
-                </p>
+                <p class="py-2">{{ __('home.p2_mz') }}</p>
 
-                <p class="py-2">Lancer le département vineyards est plus qu'un ajout
-                    à Michaël Zingraf Real Estate ; c'est une invitation
-                    à nos clients de partager notre amour pour le vin et de
-                    réaliser leur rêve de posséder un morceau de la tradition viticole.
-                    Avec nous, investir dans un vignoble devient non seulement un choix passionné
-                    mais aussi un investissement des plus enrichissants.
-                </p>
+                <p class="py-2">{{ __('home.p3_mz') }}</p>
+
                 <p data-aos="fade-up"
                    data-aos-offset="0"
                    data-aos-delay="50"
@@ -109,33 +90,21 @@
 
         <!-- intro -->
         <div class="w-full lg:w-1/2 order-2 lg:order-1 p-8 lg:p-28 text-justify">
-            <h2 class="uppercase font-black text-3xl text-black py-4 text-center">Notre Philosophie</h2>
-            <h3 class="font-crimson font-bold">
-                Vendre un domaine viticole, c'est transmettre un héritage de passion et d'excellence,
-                où chaque vignoble raconte l'histoire d'une terre et d'un savoir-faire ancestral.
-            </h3>
-            <div class="text-gray-500 font-crimson pt-14">
-                <p class="py-2">
-                    La philosophie de Michaël Zingraf Vineyards repose sur l'harmonie
-                    entre notre passion pour le vin et notre expertise en immobilier de luxe,
-                    guidée par nos valeurs fondamentales : excellence, discrétion, intégrité, et confiance.
-                    Nous recherchons l'excellence dans la sélection de chaque vignoble,
-                    assurant un service personnalisé et d'exception. La discrétion est primordiale,
-                    respectant la confidentialité de nos clients à chaque étape. L'intégrité anime notre démarche,
-                    garantissant transparence et authenticité dans nos conseils. La confiance,
-                    pierre angulaire de nos relations, se forge à travers un accompagnement sur mesure
-                    et dévoué, répondant aux attentes les plus élevées.
-                </p>
 
-                <p class="py-2">
-                    Chez Michaël Zingraf Vineyards, nous promettons une expérience unique,
-                    où l'amour du vin et le luxe de l'immobilier se rencontrent pour créer des histoires uniques,
-                    capturant l'essence de terroirs exceptionnels dans chaque propriété sélectionnée.
-                </p>
+            <h2 class="uppercase font-black text-3xl text-black py-4 text-center">{{ __('home.philosophy_title') }}</h2>
+
+            <h3 class="font-crimson font-bold">{{ __('home.philosophy_intro') }}</h3>
+
+            <div class="text-gray-500 font-crimson pt-14">
+
+                <p class="py-2">{{ __('home.philosophy_p1') }}</p>
+
+                <p class="py-2">{{ __('home.philosophy_p2') }}</p>
 
                 <div class="text-center rounded-sm pt-12">
-                    <button class="bg-red-700 hover:bg-red-600 p-3 text-white ">Contactez-nous</button>
+                    <a href="{{ route('contact') }}" class="bg-red-800 hover:bg-red-700 p-3 text-white">{{ __('contact.contact_us') }}</a>
                 </div>
+
             </div>
         </div>
 
@@ -167,39 +136,17 @@
 
         <!-- texte présentation -->
         <div class="basis-full lg:basis-1/2 p-8 lg:p-28 text-justify">
-            <h2 class="uppercase font-black text-3xl text-black py-4 text-center">Nos Propriétés</h2>
-            <h3 class="font-crimson font-bold">
-                Découvrez les Trésors Viticoles en Provence et dans le monde avec Michaël Zingraf Vineyards.
-                Au cœur de notre succès, une équipe d'experts, spécialistes en immobilier de luxe, en œnologie et en
-                cession d'entreprise
-                conjuguent leurs savoirs pour vous offrir un accompagnement sur-mesure dans l'acquisition de propriétés
-                viticoles d'exception.
-            </h3>
 
-            <p class="text-gray-500 font-crimson pt-14">
-                Au cœur des paysages envoûtants où les vignes se dessinent à l'horizon,
-                Michaël Zingraf Vineyards vous invite à explorer une collection exclusive
-                de propriétés viticoles en Provence et au-delà. Notre réputation,
-                bâtie sur la passion du terroir et l'excellence du savoir-faire,
-                nous positionne comme le partenaire privilégié des amateurs
-                de vin et des investisseurs à la recherche de domaines d'exception.
-                Nos propriétés viticoles à la vente sont plus qu'un investissement;
-                elles sont le reflet d'un art de vivre, d'une histoire et d'un héritage.
-                En Provence, terre bénie des dieux, où la vigne se marie à la lavande sous un ciel d'azur,
-                nous proposons des domaines où tradition et modernité se rencontrent pour produire des vins de
-                caractère.
-            </p>
+            <h2 class="uppercase font-black text-3xl text-black py-4 text-center">{{ __('home.properties_title') }}</h2>
 
-            <p class="text-gray-500 font-crimson pt-2"><strong>Un Accompagnement Sur-Mesure</strong><br>
-                Acheter une propriété viticole est une démarche unique qui demande une expertise spécifique.
-                Chez Michaël Zingraf Vineyards, nous comprenons les enjeux liés à cet investissement.
-                Notre équipe d'experts vous accompagne à chaque étape, depuis la sélection de
-                votre domaine jusqu'à la concrétisation de votre projet, en vous fournissant conseils juridiques,
-                techniques et commerciaux.
-            </p>
+            <h3 class="font-crimson font-bold">{{ __('home.properties_intro') }}</h3>
+
+            <p class="text-gray-500 font-crimson pt-14">{{ __('home.properties_p1') }}</p>
+
+            <p class="text-gray-500 font-crimson pt-14">{!! __('home.properties_p2') !!}</p>
 
             <div class="text-center rounded-sm pt-12">
-                <button class="bg-red-700 hover:bg-red-600 p-3 text-white ">Découvrez toutes nos propriétés</button>
+                <a href="{{ route('properties.index') }}" class="bg-red-800 hover:bg-red-700 p-3 text-white">{{ __('home.discover_properties') }}</a>
             </div>
         </div>
     </section>
@@ -339,14 +286,12 @@
                     @csrf
                     @if(! session()->has('form_contact_success'))
                         <div class="flex flex-col gap-6 pb-6">
-                            <img class="mx-auto w-20" src="{{ asset('images/logo-vineyards-rouge.svg') }}"
-                                 alt="logo Michaël Zingraf Vineyards">
+
+                            <img class="mx-auto w-20" src="{{ asset('images/logo-vineyards-rouge.svg') }}" alt="logo Michaël Zingraf Vineyards">
+
                             <h4 class="uppercase text-center font-black text-xl">{{ __('form.contact-us') }}</h4>
-                            <p class="text-base text-justify text-gray-500 hidden lg:block">
-                                Prêt à explorer l'univers des vignobles d'exception ?<br>
-                                Laissez-nous vous accompagner dans cette quête passionnante.
-                                Remplissez le formulaire ci-dessous et un membre de notre équipe d'experts
-                                vous contactera pour donner vie à votre projet viticole.</p>
+
+                            <p class="text-base text-justify text-gray-500 hidden lg:block">{!! __('home.contact_intro') !!}</p>
                         </div>
                         <!-- Name -->
                         <div>
@@ -365,8 +310,7 @@
                         <!-- Email Address -->
                         <div class="mt-4">
                             <x-input-label for="email" :value="__('form.email')" class="text-gray-700"/>
-                            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                          :value="old('email')" required/>
+                            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required/>
                             <x-input-error :messages="$errors->get('email')" class="mt-2"/>
                         </div>
 
@@ -396,6 +340,7 @@
     <!-- réassurance -->
     <section class="flex flex-col lg:flex-row gap-y-12 w-full p-10 lg:p-20 justify-center items-start text-gray-500 font-crimson">
 
+        <!-- expertise -->
         <div data-aos="fade-right"
              data-aos-delay="100"
              data-aos-duration="500"
@@ -403,16 +348,17 @@
              data-aos-mirror="true"
              data-aos-anchor-placement="center-bottom"
              class="w-full lg:w-1/3 flex flex-col justify-center">
+
             <x-iconsax-lin-award class="h-10 text-black"/>
-            <h3 class="uppercase font-black text-md text-black py-4 text-center">Une Expertise Confirmé</h3>
-            <p class="px-0 lg:px-8 text-center lg:text-justify text-md">
-                Depuis 1977, l'expérience dans le domaine viticole et immobilier de luxe,
-                de Michaël Zingraf Vineyards est reconnu pour son expertise approfondie,
-                assurant une connaissance inégalée du marché et des opportunités d'investissement les plus prestigieuses
-            </p>
+
+            <h3 class="uppercase font-black text-md text-black py-4 text-center">{{ __('home.expertise_intro') }}</h3>
+
+            <p class="px-0 lg:px-8 text-center lg:text-justify text-md">{{ __('home.expertise_text') }}</p>
+
         </div>
+        <!-- end expertise -->
 
-
+        <!-- network -->
         <div data-aos="fade-up"
              data-aos-delay="200"
              data-aos-duration="500"
@@ -420,15 +366,17 @@
              data-aos-mirror="true"
              data-aos-anchor-placement="center-bottom"
              class="w-full lg:w-1/3 flex flex-col justify-center">
-            <x-iconsax-lin-award class="h-10 text-black"/>
-            <h3 class="uppercase font-black text-md text-black py-4 text-center">Un Réseau Exclusif</h3>
-            <p class="px-0 lg:px-8 text-center lg:text-justify text-md">Bénéficiez de notre réseau exclusif
-                d'opportunités privées et de contacts dans le monde entier,
-                permettant un accès privilégié à des propriétés viticoles d'exception qui ne sont souvent
-                pas disponibles sur le marché ouvert.
-            </p>
-        </div>
 
+            <x-iconsax-lin-award class="h-10 text-black"/>
+
+            <h3 class="uppercase font-black text-md text-black py-4 text-center">{{ __('home.network_intro') }}</h3>
+
+            <p class="px-0 lg:px-8 text-center lg:text-justify text-md">{{ __('home.network_text') }}</p>
+
+        </div>
+        <!-- end network -->
+
+        <!-- support -->
         <div data-aos="fade-left"
              data-aos-delay="300"
              data-aos-duration="500"
@@ -436,14 +384,14 @@
              data-aos-mirror="true"
              data-aos-anchor-placement="center-bottom"
              class="w-full lg:w-1/3 flex flex-col justify-center">
+
             <x-iconsax-lin-award class="h-10 text-black"/>
-            <h3 class="uppercase font-black text-md text-black py-4 text-center">Un Accompagnement Personnalisé</h3>
-            <p class="px-0 lg:px-8 text-center lg:text-justify text-md">Notre équipe de spécialistes en immobilier,
-                œnologie,
-                et cession d'entreprise offre un accompagnement personnalisé à chaque étape de votre projet,
-                garantissant une expérience d'achat ou de vente fluide et sans souci.
-            </p>
+
+            <h3 class="uppercase font-black text-md text-black py-4 text-center">{{ __('home.support_intro') }}</h3>
+
+            <p class="px-0 lg:px-8 text-center lg:text-justify text-md">{{ __('home.support_text') }}</p>
         </div>
+        <!-- end support -->
     </section>
 
     <!-- adresse -->
@@ -461,11 +409,8 @@
 
             <h3 class="uppercase text-center font-black text-xl">Michaël Zingraf Vineyards</h3>
 
-            <p class="font-crimson text-sm text-center p-6">
-                Venez découvrir l'élégance intemporelle chez Michael Zingraf Vineyards,
-                où chaque vignoble est une porte ouverte sur un monde où le luxe
-                et la terre se rencontrent en harmonie parfaite.
-            </p>
+            <p class="font-crimson text-sm text-center p-6">{{ __('home.contact_text') }}</p>
+
             <div class="w-full flex p-6">
                 <x-fas-map-marker-alt class="mx-auto h-12 text-red-600"/>
             </div>

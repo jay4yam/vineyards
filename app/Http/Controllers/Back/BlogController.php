@@ -51,7 +51,7 @@ class BlogController extends Controller
 
             toast('article inserted successfully', 'success', 'top-right');
 
-            return redirect()->route('back.blog.edit', [app()->getLocale(), 'blog' => $blog]);
+            return redirect()->route('back.blog.edit', ['blog' => $blog]);
 
         }catch (\Exception $exception){
             Log::error($exception->getMessage());
@@ -76,7 +76,6 @@ class BlogController extends Controller
     /**
      * Met à jour un article
      * @param Request $request
-     * @param string $locale
      * @param Blog $blog
      * @return RedirectResponse
      */
@@ -86,6 +85,10 @@ class BlogController extends Controller
 
             $this->blogRepository->update($request, $blog);
 
+            toast('article updated with success', 'success', 'top-right');
+
+            return back();
+
         }catch (\Exception $exception){
             Log::error($exception);
 
@@ -93,15 +96,10 @@ class BlogController extends Controller
 
             return back();
         }
-
-        toast('article updated with success', 'success', 'top-right');
-
-        return back();
     }
 
     /**
      * Supprime un article de blog
-     * @param string $locale
      * @param Blog $blog
      * @return RedirectResponse
      */

@@ -1,10 +1,12 @@
 <x-app-layout>
+    @push('dedicated_css')
+        <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+    @endpush
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Blogs Edit') }}
         </h2>
     </x-slot>
-
 
     <div class="flex flex-wrap gap-4 py-12 max-w-7xl mx-auto px-8">
 
@@ -95,27 +97,35 @@
 
                                 </div>
 
+                                <!-- categories -->
                                 <div>
-                                    <select name="category_id" class="w-full border-gray-200">
-                                    @foreach($blog->categories as $category)
-                                        <option>{{ $category-> }}</option>
-                                    @endforeach
+                                    <label for="category_id">Catégorie</label>
+                                    <select name="category[{{$translate->locale}}][category_id]" class="w-full border-gray-200">
+                                        @foreach(\App\Models\Category::where('locale', $translate->locale)->get() as $category)
+                                            <option value="{{ $category->id }}" @if($blog->categories()->locale()->first()) @selected($blog->categories()->locale()->first()->id === $category->id) @endif>
+                                                {{ $category->name }} ({{ $category->locale }})
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
+
+                                <!-- tags -->
+                                <div class="flex flex-col gap-1">
+                                    <label for="tags">Tags</label>
+                                    <input name="tags[{{$translate->locale}}]" type="text" class="border-gray-200">
+                                    <input type="hidden" name="tags_list[{{$translate->locale}}]" value="">
+                                </div>
+
                                 <!-- intro de l'article -->
                                 <div>
                                     <label for="translate[{{$translate->locale}}][intro]">Intro :</label>
-                                    <textarea class="w-full rounded-md p-3"
-                                              id="translate[{{$translate->locale}}][intro]"
-                                              name="translate[{{$translate->locale}}][intro]">{{ old($translate->intro, $translate->intro) }}</textarea>
+                                    <textarea class="w-full rounded-md p-3" name="translate[{{$translate->locale}}][intro]">{{ old($translate->intro, $translate->intro) }}</textarea>
                                 </div>
 
                                 <!-- content de l'article -->
                                 <div>
                                     <label for="translate[{{$translate->locale}}][content]">Content :</label>
-                                    <textarea class="w-full rounded-md p-3"
-                                              id="translate[{{$translate->locale}}][content]"
-                                              name="translate[{{$translate->locale}}][content]">{{ old($translate->content, $translate->content) }}</textarea>
+                                    <textarea class="w-full rounded-md p-3" name="translate[{{$translate->locale}}][content]">{{ old($translate->content, $translate->content) }}</textarea>
                                 </div>
                             </div>
                         @endforeach
@@ -155,5 +165,74 @@
                 selector: 'textarea',
             });
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+        @foreach(config('app.available_locales') as $locale)
+            @php
+
+            @endphp
+            <script type="module">
+                let input = document.querySelector('input[name="tags[{{$locale}}]"]');
+
+                let tag_list_input = document.querySelector('input[name="tags_list[{{ $locale }}]"]');
+
+                // initialize Tagify on the above input node reference
+                let tagify = new Tagify(input, {
+                    whitelist: {!! json_encode($tagsList) !!},
+                    maxTags: 10,
+                    dropdown: {
+                        maxItems: 20,           // <- mixumum allowed rendered suggestions
+                        classname: 'tags-look', // <- custom classname for this dropdown, so it could be targeted
+                        enabled: 0,             // <- show suggestions on focus
+                        closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+                    },
+                    texts: {
+                        duplicate: "Duplicates are not allowed"
+                    },
+                    callbacks:{
+                        add: function (e){
+                            //init un tableau
+                            let listTag = [];
+
+
+                            //si l'input tag_list n'est pas vide
+                            if(tag_list_input.value !== "")
+                            {
+                                //transform la chaine contenue dans l'input en array
+                                let array = [tag_list_input.value.split(',')];
+
+                                //itère sur le tableau,
+                                array.forEach( function (value){
+                                    //ajoute chaque valeur dans le tableau
+                                    listTag.push( String(value));
+                                });
+                            }
+
+                            //pousse le contenu du tagify dans le tableau
+                            listTag.push( String(e.detail.data.id) );
+
+                            //ajoute les valeurs de tags dans l'input caché
+                            tag_list_input.value = listTag;
+                        },
+                        remove:function (e){
+                            let arrayTagList = tag_list_input.value.split(',');
+                            document.querySelector('input[name=tags_list]').value = arrayTagList.splice(e.detail.data.index, 1);
+                        }
+                    }
+                })
+            </script>
+            </script>
+        @endforeach
+            @php
+                $tags = $blog->tags()->get(['id', 'name', 'locale'])->toArray();
+                $tagsList = array_map(function ($tag){
+                    return array(
+                        'id' => $tag['id'],
+                        'value' => $tag['name'].'-('.$tag['locale'].')',
+                    );
+                }, $tags);
+            @endphp
+            // The DOM element you wish to replace with Tagify
+
     @endpush
 </x-app-layout>

@@ -11,6 +11,6 @@ class CategoryRepository
 
     public function getCategories()
     {
-        return $this->category->withCount('posts')->get(['id', 'name']);
+        return $this->category->locale()->withCount('posts')->get(['id', 'name']);
     }
 }

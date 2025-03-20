@@ -67,6 +67,7 @@ class BlogRepository
 
         //3. met à jour la partie contenu
         if($request->has('translate')) {
+
             //itère sur les langues envoyées par le formulaire d'edition
             foreach ($request['translate'] as $locale => $translation) {
 
@@ -83,6 +84,21 @@ class BlogRepository
                         'meta_title' => $translation['meta_title'],
                         'meta_desc' => $translation['meta_desc'],
                     ]);
+            }
+        }
+
+        //4. met à jour la catégorie de l'article
+        if($request->has('category')) {
+
+            //récupère toutes les catégories en cours de l'article
+            $blog_categories = $blog->categories()->pluck('id')->toArray();
+
+            //détache toutes les catégories d'un article en cours
+            $blog->categories()->detach($blog_categories);
+
+            //sauv. et lie le blog avec les catégories
+            foreach ($request['category'] as $locale => $b_category) {
+                $blog->categories()->attach($b_category);
             }
         }
 

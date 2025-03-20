@@ -92,11 +92,11 @@ return [
     | List all locales that your application works with
     |
     */
-        'available_locales' => [
-            'french' => 'fr',
-            'english' => 'en',
-            'german' => 'de',
-        ],
+    'available_locales' => [
+        'french' => 'fr',
+        'english' => 'en',
+        'german' => 'de',
+    ],
 
     /*
     |--------------------------------------------------------------------------

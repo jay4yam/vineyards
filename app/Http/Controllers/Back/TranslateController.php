@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class TranslateController extends Controller
 {
+    public function __construct()
+    {
+        //obligation de mettre l'application en français
+        app()->setLocale('fr');
+    }
+
     public function blogTranslate(Blog $blog): \Illuminate\Http\RedirectResponse
     {
         $blog->load('translate');
@@ -27,6 +33,6 @@ class TranslateController extends Controller
 
         toast('traduction en cours...patience', 'warning', 'top-right');
 
-        return redirect()->route('back.blog.edit', [app()->getLocale(), 'blog' => $blog]);
+        return redirect()->route('back.blog.edit', ['blog' => $blog]);
     }
 }

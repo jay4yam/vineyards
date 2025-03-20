@@ -6,7 +6,7 @@
         <ul class="list-disc list-inside">
             @foreach($allCategories as $cat)
                 <li class="text-xs italic py-1 px-4">
-                    <a href="" class="hover:text-red-800">{{ $cat->name }} ({{ $cat->posts_count }})</a>
+                    <a href="" class="hover:text-red-800">{{ ucfirst($cat->name) }} ({{ $cat->posts_count }})</a>
                 </li>
             @endforeach
         </ul>

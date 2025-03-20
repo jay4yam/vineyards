@@ -28,32 +28,32 @@
     <!-- social network -->
     <div class="flex gap-16 w-full lg:w-1/4 justify-between mx-auto pt-28 ">
 
-        <a href="#" target="_blank" rel="noreferrer noopener" class="text-xl">
+        <a href="{{ config('socials.linkedin') }}" target="_blank" rel="noreferrer noopener" class="text-xl">
             <x-fab-linkedin class="h-12 hover:scale-110"/>
         </a>
 
-        <a href="#" target="_blank" rel="noreferrer noopener" class="text-xl">
+        <a href="{{ config('socials.instagram') }}" target="_blank" rel="noreferrer noopener" class="text-xl">
             <x-fab-instagram class="h-12 hover:scale-110"/>
         </a>
 
-        <a href="#" target="_blank" rel="noreferrer noopener" class="text-xl">
+        <a href="{{ config('socials.youtube') }}" target="_blank" rel="noreferrer noopener" class="text-xl">
             <x-fab-youtube  class="h-12 hover:scale-110"/>
         </a>
 
-        <a href="#" target="_blank" rel="noreferrer noopener" class="text-xl">
-            <x-fab-tiktok class="h-12 hover:scale-110"/>
+        <a href="{{ config('socials.facebook') }}" target="_blank" rel="noreferrer noopener" class="text-xl">
+            <x-fab-facebook class="h-12 hover:scale-110"/>
         </a>
 
     </div>
 
     <!-- liens footer -->
     <nav class="pt-14 pb-8 mx-auto w-fit">
-        <ul id="menu_footer" class="flex gap-2 font-bold text-lg uppercase">
-            <li class="menu-item menu-item-143"><a href="home3.html"><span>Home</span></a></li>
-            <li class="menu-item menu-item-675"><a href="about-us.html"><span>Our philosophy</span></a></li>
-            <li class="menu-item menu-item-677"><a href="wine-list.html"><span>What we craft</span></a></li>
-            <li class="menu-item menu-item-147"><a href="shop.html"><span>Shop</span></a></li>
-            <li class="menu-item menu-item-676"><a href="contacts.html"><span>Privacy policy</span></a></li>
+        <ul id="menu_footer" class="flex gap-12 font-bold text-lg uppercase">
+            <li class="menu-item menu-item-143"><a href="{{ route('home') }}"><span>Home</span></a></li>
+            <li class="menu-item menu-item-675"><a href="{{ route('properties.index') }}"><span>Properties</span></a></li>
+            <li class="menu-item menu-item-677"><a href="{{ route('blog.index') }}"><span>Blog</span></a></li>
+            <li class="menu-item menu-item-147"><a href="{{ route('blog.index') }}"><span>About</span></a></li>
+            <li class="menu-item menu-item-676"><a href="{{ route('contact') }}"><span>Contact</span></a></li>
         </ul>
     </nav>
 
@@ -63,7 +63,7 @@
         <div class="flex flex-col lg:flex-row text-center text-xs">
             <span>Michaël Zingraf Vineyards</span>
             <span class="hidden lg:block">&nbsp;-&nbsp;</span>
-            <span>une marque du groupe Michaël Zingraf Real Estate ©{{ date('Y') }}</span>
+            <span>{{ __('home.footer_brand') }} ©{{ date('Y') }}</span>
         </div>
 
     </div>

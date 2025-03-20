@@ -28,7 +28,7 @@
                 <span>{{ $property->city->name }}</span>
             </div>
         </li>
-        <li class="text-lg">{{ \Illuminate\Support\Number::currency($property->price, in:'Euro', locale: app()->getLocale(), precision: 0) }}</li>
+        <li class="text-lg">{{ \Illuminate\Support\Number::currency($property->price->value, in:'Euro', locale: app()->getLocale(), precision: 0) }}</li>
     </ul>
 
 </div>

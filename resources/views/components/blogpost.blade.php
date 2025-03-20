@@ -22,8 +22,8 @@
         </li>
         <li>|</li>
         <li>
-            @foreach($blog->categories as $cat)
-                {{ $cat->name }} @if(!$loop->last),@endif
+            @foreach($blog->categories()->locale()->get() as $cat)
+                {{ ucfirst($cat->name) }}
             @endforeach
         </li>
         <li>|</li>

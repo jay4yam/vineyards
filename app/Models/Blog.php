@@ -28,7 +28,7 @@ class Blog extends Model
     public function translate(): HasOne
     {
         return $this->hasOne(Blog_Translate::class, 'blog_id', 'id')
-            ->where('locale', '=',app()->getLocale());
+            ->where('locale', '=', app()->getLocale() );
     }
 
     /**

@@ -124,7 +124,7 @@
                 <div class="grid grid-cols-3 gap-1 text-xs">
 
                     <div class="flex items-center bg-gray-200 gap-1 col-span-3 text-xl p-2">
-                        <x-heroicon-o-currency-euro class="h-6" /> <span>{{ \Illuminate\Support\Number::currency($property->price, in:'Euro', locale: app()->getLocale(), precision: 0) }}</span>
+                        <x-heroicon-o-currency-euro class="h-6" /> <span>{{ \Illuminate\Support\Number::currency($property->price->value, in:'Euro', locale: app()->getLocale(), precision: 0) }}</span>
                         <span class="italic text-xs">{{ __('property.fees') }}</span>
                     </div>
 

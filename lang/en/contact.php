@@ -4,6 +4,7 @@
         'address' => 'Address',
         'phone' => 'Phone',
         'email' => 'E-mail',
+        'contact_us' => 'Contact Us',
         'getintouch' => 'Get In Touch',
         'call_expert' => 'Contact our experts',
         'sale_your_vineyards' => 'Selling your vineyard',
