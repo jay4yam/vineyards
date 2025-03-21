@@ -155,84 +155,91 @@
 
     </div>
 
-    @push('dedicated_js')
-        <!-- Place the first <script> tag in your HTML's <head> -->
-        <script src="https://cdn.tiny.cloud/1/dsnrqd6wanwpw9ttx90g1id6n31mhs3ooj2njnn63k3brdq9/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+@push('dedicated_js')
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/dsnrqd6wanwpw9ttx90g1id6n31mhs3ooj2njnn63k3brdq9/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
-        <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
-        <script>
-            tinymce.init({
-                selector: 'textarea',
-            });
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-        @foreach(config('app.available_locales') as $locale)
-            @php
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+    tinymce.init({
+        selector: 'textarea',
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+@foreach(config('app.available_locales') as $locale)
+    @php
+    $currentTagsList[$locale] = array();
 
-            @endphp
-            <script type="module">
-                let input = document.querySelector('input[name="tags[{{$locale}}]"]');
+    foreach ( $blog->tags()->get() as $tag )
+    {
+        if( $tag->locale === $locale){
+            $currentTagsList[$locale][] = ['id' => $tag->id ,'value' => $tag->name];
+        }
+    }
 
-                let tag_list_input = document.querySelector('input[name="tags_list[{{ $locale }}]"]');
+    $localeTagList[$locale] = array();
 
-                // initialize Tagify on the above input node reference
-                let tagify = new Tagify(input, {
-                    whitelist: {!! json_encode($tagsList) !!},
-                    maxTags: 10,
-                    dropdown: {
-                        maxItems: 20,           // <- mixumum allowed rendered suggestions
-                        classname: 'tags-look', // <- custom classname for this dropdown, so it could be targeted
-                        enabled: 0,             // <- show suggestions on focus
-                        closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
-                    },
-                    texts: {
-                        duplicate: "Duplicates are not allowed"
-                    },
-                    callbacks:{
-                        add: function (e){
-                            //init un tableau
-                            let listTag = [];
+    foreach (\App\Models\Tag::all() as $tag)
+    {
+        if( $tag->locale === $locale){
+            $localeTagList[$locale][] = ['id' => $tag->id ,'value' => $tag->name];
+        }
+    }
 
+    @endphp
+    <script type="module">
+    let input_{{$locale}} = document.querySelector('input[name="tags[{{$locale}}]"]');
 
-                            //si l'input tag_list n'est pas vide
-                            if(tag_list_input.value !== "")
-                            {
-                                //transform la chaine contenue dans l'input en array
-                                let array = [tag_list_input.value.split(',')];
+    let tag_list_input_{{$locale}} = document.querySelector('input[name="tags_list[{{ $locale }}]"]');
 
-                                //itère sur le tableau,
-                                array.forEach( function (value){
-                                    //ajoute chaque valeur dans le tableau
-                                    listTag.push( String(value));
-                                });
-                            }
+    // initialize Tagify on the above input node reference
+    let tagify_{{$locale}} = new Tagify(input_{{$locale}}, {
+        whitelist: {!! json_encode($localeTagList[$locale]) !!},
+        maxTags: 10,
+        dropdown: {
+            maxItems: 20,           // <- mixumum allowed rendered suggestions
+            classname: 'tags-look', // <- custom classname for this dropdown, so it could be targeted
+            enabled: 0,             // <- show suggestions on focus
+            closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+        },
+        texts: {
+            duplicate: "Duplicates are not allowed"
+        },
+        callbacks:{
+            add: function (e){
+                //init un tableau
+                let listTag = [];
 
-                            //pousse le contenu du tagify dans le tableau
-                            listTag.push( String(e.detail.data.id) );
+                //si l'input tag_list n'est pas vide
+                if(tag_list_input_{{$locale}}.value !== "")
+                {
+                    //transform la chaine contenue dans l'input en array
+                    let array = [tag_list_input_{{$locale}}.value.split(',')];
 
-                            //ajoute les valeurs de tags dans l'input caché
-                            tag_list_input.value = listTag;
-                        },
-                        remove:function (e){
-                            let arrayTagList = tag_list_input.value.split(',');
-                            document.querySelector('input[name=tags_list]').value = arrayTagList.splice(e.detail.data.index, 1);
-                        }
-                    }
-                })
-            </script>
-            </script>
-        @endforeach
-            @php
-                $tags = $blog->tags()->get(['id', 'name', 'locale'])->toArray();
-                $tagsList = array_map(function ($tag){
-                    return array(
-                        'id' => $tag['id'],
-                        'value' => $tag['name'].'-('.$tag['locale'].')',
-                    );
-                }, $tags);
-            @endphp
-            // The DOM element you wish to replace with Tagify
+                    //itère sur le tableau,
+                    array.forEach( function (value){
+                        //ajoute chaque valeur dans le tableau
+                        listTag.push( String(value));
+                    });
+                }
 
-    @endpush
+                //pousse le contenu du tagify dans le tableau
+                listTag.push( String(e.detail.data.id) );
+
+                //ajoute les valeurs de tags dans l'input caché
+                tag_list_input_{{$locale}}.value = listTag;
+            },
+            remove:function (e){
+                let arrayTagList = tag_list_input_{{$locale}}.value.split(',');
+                tag_list_input_{{$locale}}.value = arrayTagList.splice(e.detail.data.index, 1);
+            }
+        }
+    });
+
+    //ajoute dynamiquement les tags dans l'input.
+    tagify_{{$locale}}.addTags( {!! json_encode($currentTagsList[$locale]) !!} );
+</script>
+@endforeach
+@endpush
 </x-app-layout>

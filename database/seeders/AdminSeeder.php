@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Biography_Translate;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,7 +15,7 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+       $user = User::create([
             'id' => 1,
             'agency_id' => 1,
             'firstname' => 'super',
@@ -28,6 +29,12 @@ class AdminSeeder extends Seeder
             'email' => 'j.pohier@michaelzingraf.com',
             'avatar' => 'default_user.jpeg',
             'password' => Hash::make('password'),
+        ]);
+
+        Biography_Translate::create([
+            'user_id' => $user->id,
+            'locale' => 'fr',
+            'content' => 'biographie de l\'utilisateur',
         ]);
     }
 }

@@ -102,6 +102,27 @@ class BlogRepository
             }
         }
 
+        //5. met à jour les tags de l'article
+        if($request->has('tags_list')) {
+
+            //récupère tous les tags attaché à un article
+            $blog_tags = $blog->tags()->pluck('id')->toArray();
+
+            //détache tous les tags déjà liés à un article
+            $blog->tags()->detach($blog_tags);
+
+            //itère sur les tags
+            foreach ($request['tags_list'] as $locale => $tag) {
+
+                //transforme la string en array
+                $tagArray = explode(',', $tag);
+
+                //attach un tag et un article de blog
+                $blog->tags()->attach($tagArray);
+            }
+        }
+
+        //sauv. l'article.
         $blog->save();
     }
 }

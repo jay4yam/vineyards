@@ -24,7 +24,7 @@ class UserRepository
      */
     public function getAll():LengthAwarePaginator
     {
-        return $this->user->withCount(['blogs', 'properties'])->paginate(10);
+        return $this->user->with(['biotranslates'])->withCount(['blogs', 'properties'])->paginate(10);
     }
 
     /**
@@ -36,32 +36,9 @@ class UserRepository
     {
         $user = new User();
 
-        $user->id = rand(2, 10000000);
-        $user->firstname = $request->firstname;
-        $user->slug_firstname = Str::slug( $request->firstname );
-        $user->lastname = $request->lastname;
-        $user->slug_lastname = Str::slug( $request->lastname);
-        $user->username = Str::slug( $request->firstname ).'-'.Str::slug( $request->lastname);
-        $user->role = $request->role;
-        $user->job_title = $request->job_title;
-        $user->mobile = $request->mobile;
-        $user->phone = $request->phone;
-        $user->email = $request->email;
-        $user->linkedin_profile_url = $request->linkedin_profile_url;
-        $user->facebook_profile_url = $request->facebook_profile_url;
-        $user->youtube_profile_url = $request->youtube_profile_url;
-        $user->instagram_profile_url = $request->instagram_profile_url;
-        $user->avatar = $request->avatar;
-        $user->biography = $request->biography;
-        $user->password = Hash::make('password');
+        $user->id = random_int(2, 99999999);
 
-        $user->save();
-
-        if($request->has('avatar')){
-            $filename = $this->uploadAvatar($request->file('avatar'));
-            $user->avatar = $filename;
-            $user->save();
-        }
+        $this->update($request, $user);
 
         return $user;
     }
@@ -83,15 +60,36 @@ class UserRepository
      * @param User $user
      * @return void
      */
-    private function save(Request $request, User $user)
+    private function save(Request $request, User $user): void
     {
         $user->fill($request->all());
 
+        //si la requete contient avatar/image
         if($request->has('avatar')){
             $filename = $this->uploadAvatar($request->file('avatar'));
             $user->avatar = $filename;
         }
 
         $user->save();
+
+        //si la requête contient biotranslate
+        if($request->has('biotranslate')){
+
+            //itère sur les langues envoyées par le formulaire d'edition
+            foreach ($request['biotranslate'] as $locale => $translation) {
+
+                //mets à jour le model translate par langue
+                $user->biotranslates()
+                    ->where('locale', '=', $locale)
+                    ->updateOrCreate([
+                        'locale' => $locale,
+                        'user_id' => $user->id,
+                    ], [
+                        'locale' => $locale,
+                        'content' => $translation['content'],
+                    ]);
+            }
+        }
+
     }
 }

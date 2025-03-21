@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Back;
+namespace App\Repositories;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use App\Repositories\BlogRepository;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,7 +11,8 @@ use Illuminate\Support\Facades\Log;
 
 class BlogController extends Controller
 {
-    public function __construct(public BlogRepository $blogRepository)
+    public function __construct(public BlogRepository $blogRepository,
+                                public CategoryRepository $categoryRepository)
     {
         //obligatoire de mettre le site en fr
         app()->setLocale('fr');
@@ -26,7 +26,9 @@ class BlogController extends Controller
     {
         $articles = $this->blogRepository->getAll();
 
-        return view('admin.blogs.index', compact('articles'));
+        $categories = $this->categoryRepository->getAll();
+
+        return view('admin.blogs.index', compact('articles', 'categories'));
     }
 
     /**

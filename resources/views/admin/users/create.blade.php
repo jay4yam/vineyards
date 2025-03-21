@@ -57,6 +57,22 @@
                         </div>
                         <!-- end job title / role -->
 
+                        <!-- company name -->
+                        <div class="flex flex-col w-full py-2">
+                            <label for="company_name">Company Name</label>
+                            <input class="border-gray-200 w-full" type="text" name="company_name" value="{{ old('company_name') }}">
+                            @error('company_name')<p class="text-red-600">{{ $message }}</p>@enderror
+                        </div>
+                        <!-- end company name -->
+
+                        <!-- website -->
+                        <div class="flex flex-col w-full py-2">
+                            <label for="website">Website</label>
+                            <input class="border-gray-200 w-full" type="text" name="website" value="{{ old('website') }}">
+                            @error('website')<p class="text-red-600">{{ $message }}</p>@enderror
+                        </div>
+                        <!-- end website -->
+
                         <!-- email -->
                         <div class="flex flex-col w-full py-2">
                             <label for="email">Email</label>
@@ -130,7 +146,7 @@
                         <!-- end avatar -->
 
                         <div>
-                            <textarea name="biography" class="border-gray-200 w-full py-2"></textarea>
+                            <textarea name="biotranslate[fr][content]" class="border-gray-200 w-full py-2"></textarea>
                         </div>
                     </div>
                 </div>

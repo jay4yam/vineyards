@@ -25,10 +25,10 @@ class BlogSeeder extends Seeder
                     ->state( new Sequence(['locale' => 'en'],['locale' => 'fr'])), 'translates'
             )
             ->hasAttached(
-                Tag::factory()->count(3)->state(new Sequence( ['locale' => 'en'],['locale' => 'fr'], ['locale' => 'de']))
+                Tag::factory()->count(1)->state(new Sequence( ['locale' => 'en'],['locale' => 'fr'], ['locale' => 'de']))
             )
             ->hasAttached(
-                Category::factory()->count(2)->state(new Sequence( ['locale' => 'en'],['locale' => 'fr'], ['locale' => 'de']))
+                Category::factory()->count(1)->state(new Sequence( ['locale' => 'en'],['locale' => 'fr'], ['locale' => 'de']))
             )
             ->create();
     }

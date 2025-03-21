@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class User extends Authenticatable
@@ -35,6 +37,8 @@ class User extends Authenticatable
         'username',
         'role',
         'job_title',
+        'company_name',
+        'website',
         'mobile',
         'phone',
         'email',
@@ -43,7 +47,6 @@ class User extends Authenticatable
         'youtube_profile_url',
         'instagram_profile_url',
         'avatar',
-        'biography',
         'password',
     ];
 
@@ -56,6 +59,16 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public static function booted()
+    {
+        static::creating(function (self $user) {
+            $user->slug_firstname = Str::slug($user->firstname);
+            $user->slug_lastname = Str::slug($user->lastname);
+            $user->username = Str::slug($user->firstname).'-'.Str::slug($user->lastname);
+            $user->password = Hash::make('password');
+        });
+    }
 
     protected function fullname():Attribute
     {
@@ -98,5 +111,16 @@ class User extends Authenticatable
     public function properties():HasMany
     {
         return $this->hasMany(Property::class, 'user_id', 'id');
+    }
+
+    public function biotranslates(): HasMany
+    {
+        return $this->hasMany(Biography_Translate::class, 'user_id', 'id');
+    }
+
+    public function biotranslate(): HasOne
+    {
+        return $this->hasOne(Biography_Translate::class, 'user_id', 'id')
+            ->where('locale', '=', app()->getLocale() );
     }
 }

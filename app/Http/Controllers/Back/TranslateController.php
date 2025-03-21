@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\ProcessTranslate;
+use App\Jobs\ProcessUserTranslate;
+use App\Jobs\x‹ProcessUserTranslate;
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -34,5 +37,18 @@ class TranslateController extends Controller
         toast('traduction en cours...patience', 'warning', 'top-right');
 
         return redirect()->route('back.blog.edit', ['blog' => $blog]);
+    }
+
+    public function userTranslate(User $user)
+    {
+        $user->load('biotranslate');
+
+        $array = ['content' => $user->biotranslate->content];
+
+        ProcessUserTranslate::dispatch($user, $array);
+
+        toast('traduction en cours...patience', 'warning', 'top-right');
+
+        return redirect()->route('back.user.edit', ['user' => $user]);
     }
 }

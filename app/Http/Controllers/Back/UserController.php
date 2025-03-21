@@ -34,6 +34,8 @@ class UserController extends Controller
      */
     public function edit(User $user): View
     {
+        $user->load('biotranslates');
+
         return view('admin.users.edit')->with(['user' => $user]);
     }
 
@@ -84,20 +86,19 @@ class UserController extends Controller
 
             $user = $this->userRepository->store($request);
 
-            return redirect()->route('back.user.edit', [ app()->getLocale(), 'user' => $user ]);
+            return redirect()->route('back.user.edit', ['user' => $user ]);
 
         }catch (\Exception $exception){
             Log::error('error store user '. $exception->getMessage());
 
             toast('error store user '. $exception->getMessage(), 'error', 'top-right');
 
-            return back();
+            return back()->withInput();
         }
     }
 
     /**
      * Gère la suppréssion d'un utilisateur
-     * @param string $locale
      * @param User $backuser
      * @return RedirectResponse
      */

@@ -4,6 +4,7 @@ namespace App\Libraries\APIMO;
 
 use App\Libraries\APIMO\ApimoImport;
 use App\Models\Agency;
+use App\Models\Biography_Translate;
 use App\Models\User;
 use App\Traits\Uploadable;
 use Illuminate\Http\Client\ConnectionException;
@@ -79,7 +80,7 @@ class ApimoUsersImport extends ApimoImport
                 $agency = Agency::find((int)$user->agency);
 
                 //sauv. ou met à jour l'utilisateur.
-                User::updateOrCreate(
+                $user = User::updateOrCreate(
                     [
                         'id' => $user->id,
                     ],
@@ -105,6 +106,11 @@ class ApimoUsersImport extends ApimoImport
                         'instagram_profile_url' => config('socials.instagram'),
                     ]);
 
+                Biography_Translate::create([
+                    'user_id' => $user->id,
+                    'locale' => 'fr',
+                    'content' => 'biographie de l\'utilisateur',
+                ]);
                 sleep(1);
             }
         }
