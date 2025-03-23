@@ -13,7 +13,7 @@ class City extends Model
 
     public $incrementing = false;
 
-    protected $fillable = ['id', 'name', 'zipcode', 'slug'];
+    protected $fillable = ['id', 'name', 'zipcode', 'prefix_code','slug'];
 
     public $timestamps = false;
 

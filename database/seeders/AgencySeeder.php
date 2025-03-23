@@ -19,6 +19,7 @@ class AgencySeeder extends Seeder
             'id' => 1,
             'name' => 'cloud',
             'zipcode' => '404',
+            'prefix_code' => '404',
             'slug' => 'cloud'
         ]);
 

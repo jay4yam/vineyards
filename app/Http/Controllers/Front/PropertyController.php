@@ -29,8 +29,15 @@ class PropertyController extends Controller
         //gère les filtres du moteur de recherche
         $datas = $this->filterProperties->handle($request);
 
-        //gènère la pagination des résultats
+        //génère la pagination des résultats
         $properties = $datas->paginate(12);
+
+        /*orderby paginator
+        $properties->setCollection(
+            $properties->sortBy(function ($item){
+                return $item->price->value;
+            }, SORT_REGULAR, 'desc'));
+        */
 
         return view('properties.index', ['properties' => $properties, 'seoData' => $this->seoProperties()]);
     }

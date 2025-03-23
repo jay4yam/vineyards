@@ -15,6 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id')->primary();
             $table->string('name');
             $table->string('zipcode');
+            $table->string('prefix_code');
             $table->string('slug');
             $table->timestamps();
         });

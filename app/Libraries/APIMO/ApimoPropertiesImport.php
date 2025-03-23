@@ -82,11 +82,20 @@ class ApimoPropertiesImport extends ApimoImport
      */
     protected function save(): void
     {
+        //1. set un tableau contenant toutes les refs en bdd.
+        $properties_in_bdd = Property::all()->pluck('reference')->toArray();
+
+        //2. set un tableau vide
+        $property_ref_in_api = array();
+
         //itère sur les données pour enregistrement
         foreach ($this->datas->properties as $property) {
 
             //ne prend en compte que les produits vignobles dont la reference commence par MZVST
-            if( str_starts_with($property->reference, 'MZVST') ) {
+            if( str_starts_with($property->reference, 'MZVST') && $property->status === 1 ) {
+
+                //ajoute la ref du produit en cours au tableau de ref
+                $property_ref_in_api[] = $property->reference;
 
                 try {
 
@@ -118,6 +127,7 @@ class ApimoPropertiesImport extends ApimoImport
                                 'id' => $property->city->id,
                                 'name' => $property->city->name,
                                 'zipcode' => $property->city->zipcode,
+                                'prefix_code' => substr($property->city->zipcode, 0, 2),
                                 'slug' => Str::slug($property->city->name)
                             ]);
                     }
@@ -390,6 +400,9 @@ class ApimoPropertiesImport extends ApimoImport
                 }
             }
         }
+
+        //supprime les produits qui ne sont pas retournés par l'api mais qui étaient encore en bdd.
+        self::deleteOldProduct($properties_in_bdd, $property_ref_in_api);
     }
 
     /**
@@ -403,5 +416,20 @@ class ApimoPropertiesImport extends ApimoImport
         }
 
         return null;
+    }
+
+    /**
+     * Supprime les produits en bdd qui ne sont pas renvoyés par l'api
+     * @param array $refInBdd
+     * @param array $refInApi
+     * @return void
+     */
+    private static function deleteOldProduct(array $refInBdd, array $refInApi):void
+    {
+        $refNotInApi = array_diff($refInBdd, $refInApi);
+
+        foreach ($refNotInApi as $ref) {
+            Property::where('reference', $ref)->delete();
+        }
     }
 }

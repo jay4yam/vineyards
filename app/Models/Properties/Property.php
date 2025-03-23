@@ -46,7 +46,7 @@ class Property extends Model
      * Utilisateur d'un bien
      * @return HasOne
      */
-    public function user()
+    public function user():HasOne
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
@@ -55,12 +55,16 @@ class Property extends Model
      * Category
      * @return HasOne
      */
-    public function category()
+    public function category():HasOne
     {
         return $this->hasOne(Property_Category::class, 'id', 'category_id');
     }
 
-    public function price()
+    /**
+     * Prix
+     * @return HasOne
+     */
+    public function price():HasOne
     {
         return $this->hasOne(Price::class, 'property_id', 'id');
     }
@@ -69,7 +73,7 @@ class Property extends Model
      * Type de bien
      * @return HasOne
      */
-    public function type()
+    public function type():HasOne
     {
         return $this->hasOne(Property_Type::class, 'id', 'type_id')
             ->where('locale', '=',  app()->getLocale());
@@ -79,7 +83,7 @@ class Property extends Model
      * Sous-type de bien
      * @return HasOne
      */
-    public function subtype()
+    public function subtype():HasOne
     {
         return $this->hasOne(Property_Subtype::class, 'id', 'subtype_id')
             ->where('locale', '=',  app()->getLocale());
@@ -135,7 +139,7 @@ class Property extends Model
      * Les textes d'un bien
      * @return HasMany
      */
-    public function comments()
+    public function comments():HasMany
     {
         return $this->hasMany(Comment::class, 'property_id', 'id');
     }
@@ -144,7 +148,7 @@ class Property extends Model
      * Texte d'un bien dans la langue du site
      * @return HasOne
      */
-    public function comment()
+    public function comment():HasOne
     {
         return $this->hasOne(Comment::class, 'property_id', 'id')
             ->where('locale', '=', app()->getLocale());
@@ -154,7 +158,7 @@ class Property extends Model
      * Surfaces d'un bien
      * @return HasMany
      */
-    public function areas()
+    public function areas():HasMany
     {
         return $this->hasMany(Area::class, 'property_id', 'id')
             ->with(['areaType' => function ($query) {
@@ -178,7 +182,7 @@ class Property extends Model
      * DPE et autres joyeuseté
      * @return HasMany
      */
-    public function regulations()
+    public function regulations():HasMany
     {
         return $this->hasMany(Regulation::class, 'property_id', 'id');
     }

@@ -3,7 +3,7 @@
         'home' => 'Accueil',
         'about' => 'A Propos',
         'properties' => 'Propriétés',
-        'blog' => 'Blog',
+        'handbook' => 'Guide',
         'partners' => 'Partenaires',
         'contact' => 'Contactez-nous',
         'login' => 'Connexion',

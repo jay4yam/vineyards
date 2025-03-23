@@ -34,16 +34,19 @@ Route::domain('vineyards.'.env('APP_DOMAIN', 'localhost'))
         Route::get('/', [\App\Http\Controllers\Front\HomeController::class, 'index'])->name('home');
 
         //index produits
-        Route::get( __('routes.properties'), [\App\Http\Controllers\Front\PropertyController::class, 'index'])->name('properties.index');
+        Route::match(['get', 'post'],  __('routes.properties'), [\App\Http\Controllers\Front\PropertyController::class, 'index'])->name('properties.index');
 
         //show produit
         Route::get(__('routes.properties').'/{slug}/{property}', [\App\Http\Controllers\Front\PropertyController::class, 'show'])->name('properties.show');
 
         //index blog
-        Route::get('/blog', [\App\Http\Controllers\Front\BlogController::class, 'index'])->name('blog.index');
+        Route::get(__('routes.handbook'), [\App\Http\Controllers\Front\BlogController::class, 'index'])->name('blog.index');
 
         //show blog
-        Route::get('blog/{blog}/{slug}', [\App\Http\Controllers\Front\BlogController::class, 'show'])->name('blog.show');
+        Route::get(__('routes.handbook').'/{blog}/{slug}', [\App\Http\Controllers\Front\BlogController::class, 'show'])->name('blog.show');
+
+        //about
+        Route::get(__('routes.about'), [\App\Http\Controllers\Front\HomeController::class, 'about'])->name('about');
 
         //contact page
         Route::get( __('routes.contact'), [\App\Http\Controllers\Front\ContactController::class, 'index'])->name('contact');

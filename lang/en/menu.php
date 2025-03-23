@@ -3,7 +3,7 @@
         'home'=> 'Home',
         'about' => 'About',
         'properties' => 'Properties',
-        'blog' => 'Blog',
+        'handbook' => 'Handbook',
         'partners' => 'Partners',
         'contact' => 'Contact',
         'login' => 'Login',

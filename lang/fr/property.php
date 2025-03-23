@@ -19,4 +19,5 @@
         'next' => 'suivant',
         'back' => 'Retour Liste',
         'cta' => 'Découvrir la propriété',
+        'department' => 'Département',
     ];

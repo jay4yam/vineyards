@@ -112,7 +112,7 @@ trait Uploadable
                 $image = Image::read($content);
 
                 //set chemin des images full size
-                $pathFull = public_path('storage/agencies');
+                $pathFull = public_path('storage/agencies/');
 
                 //test les différents chemins
                 if(!is_dir($pathFull)){
@@ -161,7 +161,7 @@ trait Uploadable
                 $image = Image::read($content);
 
                 //set chemin des images full size
-                $pathFull = public_path('storage/agencies');
+                $pathFull = public_path('storage/agencies/');
 
                 //test les différents chemins
                 if(!is_dir($pathFull) ){
@@ -247,7 +247,7 @@ trait Uploadable
         $pathInfo = pathinfo($url);
 
         //génère un nom de fichier avant enregistrement
-        $filename = $picture->id.'-'.time().'.'.$pathInfo['extension'];
+        $filename = $pathInfo['basename'];
 
         //récupère le fichier image
         $content = file_get_contents($url);

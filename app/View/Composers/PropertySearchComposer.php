@@ -7,36 +7,59 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\PropertyRepository;
 use App\Repositories\TagRepository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
-class PropertySearchComposer
+readonly class PropertySearchComposer
 {
-    public function __construct(private readonly PropertyRepository $propertyRepository)
+    public function __construct(private PropertyRepository $propertyRepository)
     {}
 
     /**
-     * Récupère tous les types de propriétés
-     * @return \Illuminate\Support\Collection
+     * Retourne la liste des régions dans lesquelles nous avons des produits
+     * @return array
      */
-    public function getTypes()
+    public function getRegions():array
     {
-        return $this->propertyRepository->getAllPropertiesTypes();
+        return Cache::remember('regions', 3600, function () {
+            return $this->propertyRepository->getAllPropertiesRegions();
+        });
     }
 
-    public function getSubtypes()
+    public function getDepartments():array
     {
-        return $this->propertyRepository->getAllPropertiesSubtypes();
+        return Cache::remember('departments', 3600, function () {
+            return $this->propertyRepository->getDepartments();
+        });
     }
 
-    public function getRegions()
+    /**
+     * Retourne la liste des prix
+     * @return array
+     */
+    public function getPrices():array
     {
-        return $this->propertyRepository->getAllPropertiesRegions();
+        return Cache::remember('prices', 3600, function () {
+            return $this->propertyRepository->getPrices();
+        });
+    }
+
+    /**
+     * Retourne la liste des surfaces
+     * @return array
+     */
+    public function getSurfaces():array
+    {
+        return Cache::remember('surfaces', 3600, function () {
+            return $this->propertyRepository->getSurfaces();
+        });
     }
 
     public function compose(View $view): void
     {
-        $view->with('allTypes', $this->getTypes());
-        $view->with('allSubtypes', $this->getSubtypes());
         $view->with('allRegions', $this->getRegions());
+        $view->with('allDepartments', $this->getDepartments());
+        $view->with('allPrices', $this->getPrices());
+        $view->with('allSurfaces', $this->getSurfaces());
     }
 }

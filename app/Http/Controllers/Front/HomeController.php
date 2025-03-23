@@ -19,4 +19,13 @@ class HomeController extends Controller
     {
         return view('home', ['seoData' => $this->seoHome()]);
     }
+
+    /**
+     * Affiche la vue about / a-propos
+     * @return View
+     */
+    public function about():View
+    {
+        return view('about', ['seoData' => $this->seoHome()]);
+    }
 }

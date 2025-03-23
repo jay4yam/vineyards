@@ -1,53 +1,62 @@
 <section class="sticky top-[64px] z-40 bg-gray-100 p-4 lg:px-8 lg:py-2 drop-shadow">
-    <form action="{{ route('properties.index') }}" class="lg:container mx-auto grid grid-cols-1 lg:grid-cols-6 gap-2 justify-between items-center lg:px-40">
-    <div class="text-gray-400">{{ __('property.filters') }}</div>
 
-    <!-- types des biens -->
-    <div class="w-full">
-        <select name="type" id="type" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
-            <option value="">{{ __('property.types') }}</option>
-            @foreach($allTypes as $id => $name)
-                <option value="{{ $id }}" @selected($id == request()->get('type'))>{{ $name }}</option>
-            @endforeach
-        </select>
-    </div>
-    <!-- end types des biens -->
+    <form action="{{ route('properties.index') }}" method="post" class="lg:container mx-auto grid grid-cols-1 lg:grid-cols-7 gap-2 justify-between items-center lg:px-40">
+        @csrf
 
-    <!-- sous-types des biens -->
-    <div>
-        <select name="subtype" id="subtype" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
-            <option value="">{{ __('property.subtypes') }}</option>
-            @foreach($allSubtypes as $id => $name)
-                <option value="{{ $id}}" @selected($id == request()->get('subtype'))>{{ $name }}</option>
-            @endforeach
-        </select>
-    </div>
-    <!-- end sous-types des biens -->
+        <div class="text-gray-400">{{ __('property.filters') }}</div>
 
-    <!-- regions des biens -->
-    <div>
-        <select name="region" id="region" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
-            <option value="">{{ __('property.regions') }}</option>
-            @foreach($allRegions as $id => $name)
-                <option value="{{ $id }}" @selected($id == request()->get('region'))>{{ $name }}</option>
-            @endforeach
-        </select>
-    </div>
-    <!-- end sous-types de bien -->
+        <!-- regions -->
+        <div class="w-full">
+            <select name="region" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
+                <option value="">{{ __('property.regions') }}</option>
+                @foreach($allRegions as $region => $value)
+                    <option value="{{ implode(',', $value) }}">{{ $region }}</option>
+                @endforeach
+            </select>
+        </div>
+        <!-- end regions -->
 
-    <!-- prix des biens -->
-    <div>
-        <select name="price" id="price" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
-            <option value="">{{ __('property.price') }}</option>
-            <option value="< 1 000 000 €">< 1 000 000 €</option>
-            <option value="1 000 000 € - 2 000 000 €">1 000 000 € - 2 000 000 €</option>
-            <option value="2 000 000 € - 5 000 000 €">2 000 000 € - 5 000 000 €</option>
-            <option value="5 000 000 € - 10 000 000 €">5 000 000 € - 10 000 000 €</option>
-            <option value="> 10 000 000 €">> 10 000 000 €</option>
-        </select>
-    </div>
-    <!-- end sous-types de bien -->
+        <!-- departements -->
+        <div class="w-full">
+            <select name="department" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
+                <option value="">{{ __('property.department') }}</option>
+                @foreach($allDepartments as $zip => $name)
+                    <option value="{{ $zip }}">{{ $name }} ({{ $zip }})</option>
+                @endforeach
+            </select>
+        </div>
+        <!-- end département -->
 
-    <button class="w-full bg-red-800 hover:bg-red-900 text-white font-bold p-2 rounded-sm">{{ __('property.search') }}</button>
-</form>
+        <!-- surface des biens -->
+        <div>
+            <select name="surface" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
+                <option value="">{{ __('property.land') }}</option>
+                @foreach($allSurfaces as $label => [$min, $max])
+                    <option value="{{ $min }},{{ $max }}">{{ $label }}</option>
+                @endforeach
+            </select>
+        </div>
+        <!-- end surface des biens -->
+
+        <!-- prix des biens -->
+        <div>
+            <select name="price" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
+                <option value="">{{ __('property.price') }}</option>
+                @foreach($allPrices as $label => [$min, $max])
+                    <option value="{{ $min }},{{ $max }}">{{ $label }}</option>
+                @endforeach
+            </select>
+        </div>
+        <!-- end prix des biens -->
+
+        <!-- référence -->
+        <div>
+            <input name="reference" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400 placeholder:text-gray-400" placeholder="Reference">
+        </div>
+        <!-- end référence -->
+
+        <button type="submit" class="w-full bg-red-800 hover:bg-red-900 text-white font-bold p-2 rounded-sm">{{ __('property.search') }}</button>
+
+    </form>
+
 </section>

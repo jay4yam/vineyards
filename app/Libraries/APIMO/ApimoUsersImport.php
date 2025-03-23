@@ -118,7 +118,7 @@ class ApimoUsersImport extends ApimoImport
 
     /**
      * Test si un utilisateur existe pour ne pas changer le mot de passe ou en fournir un nouveau
-     * @param array $user
+     * @param \StdClass $user
      * @return string
      */
     private function checkPassword(\StdClass $user)
@@ -130,6 +130,6 @@ class ApimoUsersImport extends ApimoImport
             return $testUser->password;
         }
 
-        return Hash::make('MZRE@06400');
+        return Hash::make('password');
     }
 }

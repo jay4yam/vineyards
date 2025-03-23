@@ -159,110 +159,13 @@
             <h2 class="uppercase font-black text-3xl text-black py-4 text-center">{{ __('home.brand') }}</h2>
             <h3 class="font-crimson font-bold text-center">{{ __('home.staff') }}</h3>
 
-            <div class="flex flex-wrap gap-y-6 p-6">
+            <div class="flex flex-wrap gap-y-6 p-6 font-crimson">
 
                 <!-- staff -->
-                <div data-aos="fade-up"
-                     data-aos-offset="200"
-                     data-aos-delay="50"
-                     data-aos-duration="500"
-                     data-aos-easing="ease-in-out"
-                     data-aos-mirror="true"
-                     data-aos-once="false"
-                     class="w-1/2 flex flex-col gap-2 items-center text-gray-600 text-sm">
-                    <img class="mx-auto w-full lg:w-1/2 rounded-md" src="{{ asset('images/staff/caroline-carlini-loup.webp') }}" alt="caroline carlini loup">
-                    <p>
-                        Caroline <span class="uppercase font-bold">Carlini-Loup</span>
-                    </p>
-                    <p>
-                        Vineyards Broker
-                    </p>
-                    <div class="flex gap-4 justify-center">
-                        <a href="#"><x-fab-linkedin class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fab-facebook-square class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fas-envelope class="h-6 hover:text-red-800" /></a>
-                    </div>
-                </div>
+                @foreach($partners as $partner)
+                    <x-partner-home :partner="$partner"/>
+                @endforeach
 
-                <!-- staff -->
-                <div class="w-1/2 flex flex-col gap-2 items-center text-gray-600 text-sm">
-                    <img class="mx-auto w-full lg:w-1/2 rounded-md" src="{{ asset('images/staff/caroline-carlini-loup.webp') }}" alt="caroline carlini loup">
-                    <p>
-                        Caroline <span class="uppercase font-bold">Carlini-Loup</span>
-                    </p>
-                    <p>
-                        Vineyards Broker
-                    </p>
-                    <div class="flex gap-4 justify-center">
-                        <a href="#"><x-fab-linkedin class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fab-facebook-square class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fas-envelope class="h-6 hover:text-red-800" /></a>
-                    </div>
-                </div>
-
-                <!-- staff -->
-                <div class="w-1/2 flex flex-col gap-2 items-center text-gray-600 text-sm">
-                    <img class="mx-auto w-full lg:w-1/2 rounded-md" src="{{ asset('images/staff/caroline-carlini-loup.webp') }}" alt="caroline carlini loup">
-                    <p>
-                        Caroline <span class="uppercase font-bold">Carlini-Loup</span>
-                    </p>
-                    <p>
-                        Vineyards Broker
-                    </p>
-                    <div class="flex gap-4 justify-center">
-                        <a href="#"><x-fab-linkedin class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fab-facebook-square class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fas-envelope class="h-6 hover:text-red-800" /></a>
-                    </div>
-                </div>
-
-                <!-- staff -->
-                <div class="w-1/2 flex flex-col gap-2 items-center text-gray-600 text-sm">
-                    <img class="mx-auto w-full lg:w-1/2 rounded-md" src="{{ asset('images/staff/caroline-carlini-loup.webp') }}" alt="caroline carlini loup">
-                    <p>
-                        Caroline <span class="uppercase font-bold">Carlini-Loup</span>
-                    </p>
-                    <p>
-                        Vineyards Broker
-                    </p>
-                    <div class="flex gap-4 justify-center">
-                        <a href="#"><x-fab-linkedin class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fab-facebook-square class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fas-envelope class="h-6 hover:text-red-800" /></a>
-                    </div>
-                </div>
-
-                <!-- staff -->
-                <div class="w-1/2 flex flex-col gap-2 items-center text-gray-600 text-sm">
-                    <img class="mx-auto w-full lg:w-1/2 rounded-md" src="{{ asset('images/staff/caroline-carlini-loup.webp') }}" alt="caroline carlini loup">
-                    <p>
-                        Caroline <span class="uppercase font-bold">Carlini-Loup</span>
-                    </p>
-                    <p>
-                        Vineyards Broker
-                    </p>
-                    <div class="flex gap-4 justify-center">
-                        <a href="#"><x-fab-linkedin class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fab-facebook-square class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fas-envelope class="h-6 hover:text-red-800" /></a>
-                    </div>
-                </div>
-
-                <!-- staff -->
-                <div class="w-1/2 flex flex-col gap-2 items-center text-gray-600 text-sm">
-                    <img class="mx-auto w-full lg:w-1/2 rounded-md" src="{{ asset('images/staff/caroline-carlini-loup.webp') }}" alt="caroline carlini loup">
-                    <p>
-                        Caroline <span class="uppercase font-bold">Carlini-Loup</span>
-                    </p>
-                    <p>
-                        Vineyards Broker
-                    </p>
-                    <div class="flex gap-4 justify-center">
-                        <a href="#"><x-fab-linkedin class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fab-facebook-square class="h-6 hover:text-red-800"/></a>
-                        <a href="#"><x-fas-envelope class="h-6 hover:text-red-800" /></a>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -291,7 +194,7 @@
 
                             <h4 class="uppercase text-center font-black text-xl">{{ __('form.contact-us') }}</h4>
 
-                            <p class="text-base text-justify text-gray-500 hidden lg:block">{!! __('home.contact_intro') !!}</p>
+                            <p class="text-base text-justify text-gray-500 hidden lg:block font-crimson">{!! __('home.contact_intro') !!}</p>
                         </div>
                         <!-- Name -->
                         <div>

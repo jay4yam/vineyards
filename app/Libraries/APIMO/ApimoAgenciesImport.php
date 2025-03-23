@@ -106,6 +106,7 @@ class ApimoAgenciesImport extends ApimoImport
             'id' => $city->id,
             'name' => $city->name,
             'zipcode' => $city->zipcode,
+            'prefix_code' => substr($city->zipcode, 0, 2),
             'slug' => Str::slug($city->name),
         ]);
 

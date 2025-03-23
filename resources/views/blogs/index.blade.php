@@ -3,7 +3,7 @@
     <header class="relative flex items-center justify-center h-96 w-full" style="background: center/cover fixed url('{{ asset('images/bg-listing.webp') }}');">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow">
             <span class="font-retro text-7xl text-white text-shadow">
-                {{ __('menu.blog') }}
+                {{ __('menu.handbook') }}
             </span>
         </div>
     </header>

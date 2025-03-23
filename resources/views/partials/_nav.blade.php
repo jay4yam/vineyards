@@ -23,15 +23,15 @@
                 </li>
                 <li>
                     <a href="{{ route('blog.index') }}"
-                       class="block px-4 py-2 text-gray-800 hover:bg-red-800 hover:text-white">{{ __('menu.blog') }}</a>
+                       class="block px-4 py-2 text-gray-800 hover:bg-red-800 hover:text-white">{{ __('menu.handbook') }}</a>
                 </li>
                 <li>
                     <a href="#"
                        class="block px-4 py-2 text-gray-800 hover:bg-red-800 hover:text-white">{{ __('menu.partners') }}</a>
                 </li>
                 <li>
-                    <a href="#"
-                       class="block px-4 py-2 text-gray-800 hover:bg-red-800 hover:text-white">À propos</a>
+                    <a href="{{ route('about') }}"
+                       class="block px-4 py-2 text-gray-800 hover:bg-red-800 hover:text-white">{{ __('menu.about') }}</a>
                 </li>
                 <li>
                     <a href="{{ route('contact') }}"
@@ -97,11 +97,11 @@
             </li>
             <li>
                 <x-main-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')">
-                    {{ __('menu.blog') }}
+                    {{ __('menu.handbook') }}
                 </x-main-nav-link>
             </li>
             <li>
-                <x-main-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')">
+                <x-main-nav-link :href="route('about')" :active="request()->routeIs('about')">
                     {{ __('menu.about') }}
                 </x-main-nav-link>
             </li>

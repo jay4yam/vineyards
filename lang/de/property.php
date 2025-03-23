@@ -13,7 +13,11 @@
         'type' => 'Typ',
         'fees' => 'inklusive Honorare',
         'area' => 'Fläche',
-        'terrain' => 'Grundstücke',
+        'land' => 'Grundstücke',
         'rooms' => 'Räume',
-        'cta' => 'Entdecken Sie das Anwesen',
+        'prev' => 'previous',
+        'next' => 'next',
+        'back' => 'back to list',
+        'cta' => 'Discover the property',
+        'department' => 'Abteilung',
     ];

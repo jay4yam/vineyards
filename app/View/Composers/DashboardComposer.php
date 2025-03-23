@@ -3,12 +3,8 @@
 namespace App\View\Composers;
 
 use App\Models\Blog;
-use App\Models\Category;
 use App\Models\Contact;
 use App\Models\User;
-use App\Repositories\BlogRepository;
-use App\Repositories\CategoryRepository;
-use App\Repositories\TagRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 

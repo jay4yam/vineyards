@@ -29,8 +29,18 @@ class FilterProperties
             $this->query->where('subtype_id', '=',$request->get('subtype'));
         }
 
-        if(request()->filled('region')) {
-            $this->query->where('region_id', '=',$request->get('region'));
+        if(request()->filled('region') && request('region') != null) {
+
+            $arrayZipCode = explode(',', request('region'));
+
+            $this->query->with(['city' => function ($city) use ($arrayZipCode) {
+                     $city->orWhere(function ($item) use($arrayZipCode){
+                         dd($item);
+                         foreach ($arrayZipCode as $zipCode) {
+                             return substr($item->zipcode, 0, 2) === $zipCode;
+                         }
+                    });
+            }]);
         }
 
         if(request()->filled('order_by')) {

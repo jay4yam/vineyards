@@ -17,12 +17,12 @@ class BlogSeeder extends Seeder
      */
     public function run(): void
     {
-        Blog::factory()->count(15)
+        Blog::factory()->count(5)
             ->for(User::find(110607))
             ->has(
                 Blog_Translate::factory()
                     ->count(2)
-                    ->state( new Sequence(['locale' => 'en'],['locale' => 'fr'])), 'translates'
+                    ->state( new Sequence(['locale' => 'fr'])), 'translates'
             )
             ->hasAttached(
                 Tag::factory()->count(1)->state(new Sequence( ['locale' => 'en'],['locale' => 'fr'], ['locale' => 'de']))
