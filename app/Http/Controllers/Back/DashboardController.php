@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        app()->setLocale('fr');
+    }
+
     /**
      * Retourne la vue index du dashboard
      * @return View

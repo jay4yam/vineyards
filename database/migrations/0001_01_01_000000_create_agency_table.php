@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('zipcode');
             $table->string('prefix_code');
             $table->string('slug');
-            $table->timestamps();
         });
 
         Schema::create('regions', function (Blueprint $table) {

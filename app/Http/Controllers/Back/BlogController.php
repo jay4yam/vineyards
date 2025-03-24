@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Repositories\BlogRepository;
+use App\Repositories\CategoryRepository;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use mysql_xdevapi\Exception;
 
 class BlogController extends Controller
 {
@@ -60,7 +63,7 @@ class BlogController extends Controller
 
             toast('error '. $exception->getMessage(),'error', 'top-right');
 
-            return back();
+            return back()->withInput();
         }
     }
 
@@ -96,7 +99,7 @@ class BlogController extends Controller
 
             toast('error update article '.$exception->getMessage(), 'error', 'top-right');
 
-            return back();
+            return back()->withInput();
         }
     }
 

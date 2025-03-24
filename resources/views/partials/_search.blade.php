@@ -7,10 +7,10 @@
 
         <!-- regions -->
         <div class="w-full">
-            <select name="region" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
+            <select name="region" @class([ 'border-red-800' => request('region'), 'w-full', 'border-gray-200', 'ring-red-800', 'focus:ring-red-800', 'text-gray-400' ])>
                 <option value="">{{ __('property.regions') }}</option>
                 @foreach($allRegions as $region => $value)
-                    <option value="{{ implode(',', $value) }}">{{ $region }}</option>
+                    <option value="{{ implode(',', $value) }}" @selected( explode(',', request('region')) === $value)>{{ $region }}</option>
                 @endforeach
             </select>
         </div>
@@ -18,7 +18,7 @@
 
         <!-- departements -->
         <div class="w-full">
-            <select name="department" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
+            <select name="department" @class([ 'border-red-800' => request('department'), 'w-full', 'border-gray-200', 'ring-red-800', 'focus:ring-red-800', 'text-gray-400' ])>
                 <option value="">{{ __('property.department') }}</option>
                 @foreach($allDepartments as $zip => $name)
                     <option value="{{ $zip }}">{{ $name }} ({{ $zip }})</option>
@@ -29,7 +29,7 @@
 
         <!-- surface des biens -->
         <div>
-            <select name="surface" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
+            <select name="plot_surface" @class([ 'border-red-800' => request('plot_surface'), 'w-full', 'border-gray-200', 'ring-red-800', 'focus:ring-red-800', 'text-gray-400' ])>
                 <option value="">{{ __('property.land') }}</option>
                 @foreach($allSurfaces as $label => [$min, $max])
                     <option value="{{ $min }},{{ $max }}">{{ $label }}</option>
@@ -40,7 +40,7 @@
 
         <!-- prix des biens -->
         <div>
-            <select name="price" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400">
+            <select name="price" @class([ 'border-red-800' => request('price'), 'w-full', 'border-gray-200', 'ring-red-800', 'focus:ring-red-800', 'text-gray-400' ])>
                 <option value="">{{ __('property.price') }}</option>
                 @foreach($allPrices as $label => [$min, $max])
                     <option value="{{ $min }},{{ $max }}">{{ $label }}</option>
@@ -51,7 +51,7 @@
 
         <!-- référence -->
         <div>
-            <input name="reference" class="w-full border-gray-200 ring-red-800 focus:ring-red-800 text-gray-400 placeholder:text-gray-400" placeholder="Reference">
+            <input name="reference" @class([ 'border-red-800' => request('reference'), 'w-full', 'border-gray-200', 'ring-red-800', 'focus:ring-red-800', 'text-gray-400' ]) placeholder="Reference">
         </div>
         <!-- end référence -->
 

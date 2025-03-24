@@ -2,23 +2,21 @@
 
 namespace App\Jobs;
 
-use App\Models\Blog;
+use App\Models\ListeSeo;
 use App\traits\ChatGpT;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Str;
 
-class ProcessTranslate implements ShouldQueue
+class ProcessListeSeoTranslate implements ShouldQueue
 {
     use Queueable, ChatGpT;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(public Blog $blog, public array $itemToTranslate)
-    {
-        //
-    }
+    public function __construct(public ListeSeo $listeseo, public array $itemToTranslate)
+    {}
 
     /**
      * Execute the job.
@@ -41,18 +39,17 @@ class ProcessTranslate implements ShouldQueue
             if( ! empty($arrayTranslated) ) {
 
                 //5. sauv. les traductions des articles
-                $this->blog->translates()
+                $this->listeseo->translates()
                     ->where('locale', '=', $locale)
-                    ->updateOrCreate([
-                        'blog_id' => $this->blog->id,
-                    ], [
+                    ->updateOrCreate(
+                        ['seo_liste_id' => $this->listeseo->id,],
+                        [
                         'locale' => $locale,
-                        'title' => $arrayTranslated['title'],
+                        'meta_title_seo' => $arrayTranslated['meta_title_seo'],
+                        'meta_description_seo' => $arrayTranslated['meta_description_seo'],
+                        'header_h1' => $arrayTranslated['header_h1'],
                         'intro' => $arrayTranslated['intro'],
                         'content' => $arrayTranslated['content'],
-                        'slug' => Str::slug($arrayTranslated['slug']),
-                        'meta_title' => $arrayTranslated['meta_title'],
-                        'meta_desc' => $arrayTranslated['meta_desc'],
                     ]);
             }
         }

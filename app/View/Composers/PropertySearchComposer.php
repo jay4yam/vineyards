@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
-readonly class PropertySearchComposer
+class PropertySearchComposer
 {
     public function __construct(private PropertyRepository $propertyRepository)
     {}

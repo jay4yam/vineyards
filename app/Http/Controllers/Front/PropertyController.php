@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\ListeSeo;
 use App\Models\Properties\Property;
 use App\Repositories\PropertyRepository;
 use App\Services\FilterProperties;
@@ -32,13 +33,6 @@ class PropertyController extends Controller
         //génère la pagination des résultats
         $properties = $datas->paginate(12);
 
-        /*orderby paginator
-        $properties->setCollection(
-            $properties->sortBy(function ($item){
-                return $item->price->value;
-            }, SORT_REGULAR, 'desc'));
-        */
-
         return view('properties.index', ['properties' => $properties, 'seoData' => $this->seoProperties()]);
     }
 
@@ -50,10 +44,29 @@ class PropertyController extends Controller
      * @param Property $property
      * @return View
      */
-    public function show(string $locale, string $slug, Property $property):View
+    public function show(string $slug, Property $property):View
     {
         $property->load(['category', 'user', 'subtype', 'type' ,'pictures', 'city' ,'region', 'areas', 'comment', 'comments']);
 
         return view('properties.show', ['property' => $property, 'seoData' => $this->seoPropertyShow($property)]);
+    }
+
+    /**
+     * Retourne la vue d'une liste seo
+     * @param string $locale
+     * @param ListeSeo $listeseo
+     * @param string $slug
+     * @param Request $request
+     * @return View
+     */
+    public function region(string $locale, ListeSeo $listeseo, string $slug, Request $request): View
+    {
+        $datas = $this->filterProperties->dataforListSeo($listeseo, $request);
+
+        $properties = $datas->paginate(12);
+
+        $listeseo->load('translate');
+
+        return view('properties.listeseo', ['properties' => $properties, 'listeseo' => $listeseo, 'seoData' => $this->seoProperties()]);
     }
 }

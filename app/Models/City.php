@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Properties\Property;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,6 +25,6 @@ class City extends Model
 
     public function properties()
     {
-        return $this->belongsTo(Property::class);
+        return $this->belongsTo(Property::class, 'id', 'city_id');
     }
 }

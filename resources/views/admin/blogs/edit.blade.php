@@ -11,7 +11,7 @@
     <div class="flex flex-wrap gap-4 py-12 max-w-7xl mx-auto px-8">
 
         <div class="w-full flex justify-between items-center ">
-            <a href="{{ route('back.blog.index', []) }}" class="w-1/10 bg-gray-300 text-gray-500 p-2 rounded-md">< back</a>
+            <a href="{{ route('back.blog.index') }}" class="w-1/10 bg-gray-300 text-gray-500 p-2 rounded-md">< back</a>
             <a href="{{ route('back.blog.translate', ['blog' => $blog]) }}" class="flex items-center gap-1 w-1/10 bg-blue-500 text-white p-2 rounded-md">
                 <x-fas-language class="h-4"/><span>Translate</span>
             </a>
@@ -58,7 +58,7 @@
                                            class="w-full rounded-md p-3"
                                            id="translate[{{$translate->locale}}][title]"
                                            name="translate[{{$translate->locale}}][title]"
-                                           value="{{ old($translate->title, $translate->title) }}">
+                                           value="{{ old('translate.'.$translate->locale.'.title') ?? $translate->title }}">
                                 </div>
 
                                 <!-- seo -->
@@ -66,13 +66,14 @@
 
                                     <span>SEO</span>
 
+                                    <!-- slug de l'article -->
                                     <div>
                                         <label for="translate[{{$translate->locale}}][slug]">Slug :</label>
                                         <input type="text"
                                                class="w-full rounded-md p-3"
                                                id="translate[{{$translate->locale}}][slug]"
                                                name="translate[{{$translate->locale}}][slug]"
-                                               value="{{ old($translate->slug, $translate->slug) }}">
+                                               value="{{ old('translate.'.$translate->locale.'.slug') ?? $translate->slug }}">
                                     </div>
 
                                     <!-- meta_title de l'article -->
@@ -82,7 +83,7 @@
                                                class="w-full rounded-md p-3"
                                                id="translate[{{$translate->locale}}][meta_title]"
                                                name="translate[{{$translate->locale}}][meta_title]"
-                                               value="{{ old($translate->meta_title, $translate->meta_title) }}">
+                                               value="{{ old('translate.'.$translate->locale.'.meta_title') ?? $translate->meta_title }}">
                                     </div>
 
                                     <!-- meta_desc de l'article -->
@@ -92,7 +93,7 @@
                                                class="w-full rounded-md p-3"
                                                id="translate[{{$translate->locale}}][meta_desc]"
                                                name="translate[{{$translate->locale}}][meta_desc]"
-                                               value="{{ old($translate->meta_desc, $translate->meta_desc) }}">
+                                               value="{{ old('translate.'.$translate->locale.'.meta_desc') ?? $translate->meta_desc }}">
                                     </div>
 
                                 </div>
@@ -119,13 +120,13 @@
                                 <!-- intro de l'article -->
                                 <div>
                                     <label for="translate[{{$translate->locale}}][intro]">Intro :</label>
-                                    <textarea class="w-full rounded-md p-3" name="translate[{{$translate->locale}}][intro]">{{ old($translate->intro, $translate->intro) }}</textarea>
+                                    <textarea class="w-full rounded-md p-3" name="translate[{{$translate->locale}}][intro]">{!! old('translate.'.$translate->locale.'.intro') ?? $translate->intro !!}</textarea>
                                 </div>
 
                                 <!-- content de l'article -->
                                 <div>
                                     <label for="translate[{{$translate->locale}}][content]">Content :</label>
-                                    <textarea class="w-full rounded-md p-3" name="translate[{{$translate->locale}}][content]">{{ old($translate->content, $translate->content) }}</textarea>
+                                    <textarea class="w-full rounded-md p-3" name="translate[{{$translate->locale}}][content]">{!! old('translate.'.$translate->locale.'.content') ?? $translate->content !!}</textarea>
                                 </div>
                             </div>
                         @endforeach
@@ -188,7 +189,7 @@
     }
 
     @endphp
-    <script type="module">
+<script type="module">
     let input_{{$locale}} = document.querySelector('input[name="tags[{{$locale}}]"]');
 
     let tag_list_input_{{$locale}} = document.querySelector('input[name="tags_list[{{ $locale }}]"]');

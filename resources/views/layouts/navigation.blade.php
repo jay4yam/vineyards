@@ -20,6 +20,10 @@
                         {{ __('Properties') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('back.listeseo.index')" :active="request()->routeIs('back.listeseo.index')">
+                        {{ __('Liste Seo') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('back.blog.index')" :active="request()->routeIs('backblog.index')">
                         {{ __('Blogs') }}
                     </x-nav-link>

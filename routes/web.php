@@ -10,18 +10,21 @@ Route::domain('vineyards.'. env('APP_DOMAIN', 'localhost'))
 
         Route::get('/', \App\Http\Controllers\Back\DashboardController::class)->name('home');
 
-        Route::resource('blog', \App\Repositories\BlogController::class)->except(['show']);
+        Route::resource('blog', \App\Http\Controllers\Back\BlogController::class)->except(['show']);
         Route::get('translate/blog/{blog}', [\App\Http\Controllers\Back\TranslateController::class, 'blogTranslate'])->name('blog.translate');
 
         Route::patch('/update/{category?}', [\App\Http\Controllers\Back\CategoryController::class, 'update'])->name('category.update_or_create');
         Route::delete('/delete/{category?}', [\App\Http\Controllers\Back\CategoryController::class, 'destroy'])->name('category.destroy');
 
         Route::resource('user', \App\Http\Controllers\Back\UserController::class)->except(['show']);
-        Route::get('translate/user/{user}', [\App\Http\Controllers\Back\TranslateController::class, 'userTranslate'])->name('user.translate');
+        Route::get('/translate/user/{user}', [\App\Http\Controllers\Back\TranslateController::class, 'userTranslate'])->name('user.translate');
 
         Route::resource('contact', \App\Http\Controllers\Back\ContactController::class);
 
-        Route::get('properties', [\App\Http\Controllers\Back\PropertyController::class, 'index'])->name('properties.index');
+        Route::get('/properties', [\App\Http\Controllers\Back\PropertyController::class, 'index'])->name('properties.index');
+
+        Route::resource('listeseo', \App\Http\Controllers\Back\ListSeoController::class);
+        Route::get('/translate/listeseo/{listeseo}', [\App\Http\Controllers\Back\TranslateController::class, 'listeseoTranslate'])->name('listeseo.translate');
     });
 
 //routes frontoffice
@@ -38,6 +41,9 @@ Route::domain('vineyards.'.env('APP_DOMAIN', 'localhost'))
 
         //show produit
         Route::get(__('routes.properties').'/{slug}/{property}', [\App\Http\Controllers\Front\PropertyController::class, 'show'])->name('properties.show');
+
+        //route par région avec optimisation seo
+        Route::match(['get', 'post'],__('routes.region').'/{listeseo}/{slug}', [\App\Http\Controllers\Front\PropertyController::class, 'region'])->name('properties.region');
 
         //index blog
         Route::get(__('routes.handbook'), [\App\Http\Controllers\Front\BlogController::class, 'index'])->name('blog.index');

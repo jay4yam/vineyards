@@ -21,6 +21,9 @@ class PropertyRepository
         return $this->property
             ->where('status_id', '=', 1)
             ->with(['user', 'type', 'pictures', 'city' ,'region', 'areas', 'picture', 'pictures', 'comment', 'price'])
+            ->join('prices', 'properties.id', '=', 'prices.property_id')
+            ->orderBy('prices.value', 'desc')
+            ->select('properties.*') // important pour éviter d’écraser les champs du modèle
             ->newQuery();
     }
 
@@ -42,12 +45,10 @@ class PropertyRepository
     public function getAllPropertiesRegions(): array
     {
         //1. récupère toutes les codes postaux des produits
-        $departements = $this->property->with('city:zipcode,id')
+        $departements = $this->property->with('city:prefix_code,id')
             ->get()
-            ->pluck('city.zipcode')
-            ->map(function ($item) {
-                return substr($item, 0, 2);
-            })->toArray();
+            ->pluck('city.prefix_code')
+            ->toArray();
 
         //2. récupère les régions du fichier config => ['provence' => ['13','83','04','06'], etc...
         $regions = config('property_regions');

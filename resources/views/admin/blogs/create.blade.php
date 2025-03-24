@@ -39,8 +39,8 @@
                             <div>
                                 <label for="translate[fr][title]">Titre :</label>
                                 <input type="text"
-                                       value="{{ old('translate[fr][title]') }}"
-                                       class="w-full rounded-md p-3"
+                                       value="{{ old('translate.fr.title') }}"
+                                       class="w-full rounded-md p-2 border-gray-200"
                                        id="translate[fr][title]"
                                        name="translate[fr][title]" required>
                             </div>
@@ -53,8 +53,8 @@
                                 <div>
                                     <label for="translate[fr][slug]">Slug :</label>
                                     <input type="text"
-                                           value="{{ old('translate[fr][slug]') }}"
-                                           class="w-full rounded-md p-3"
+                                           value="{{ old('translate.fr.slug') }}"
+                                           class="w-full rounded-md p-2 border-gray-200"
                                            id="translate[fr][slug]"
                                            name="translate[fr][slug]" required>
                                 </div>
@@ -63,8 +63,8 @@
                                 <div>
                                     <label for="translate[fr][meta_title]">meta_title :</label>
                                     <input type="text"
-                                           value="{{ old('translate[fr][meta_title]') }}"
-                                           class="w-full rounded-md p-3"
+                                           value="{{ old('translate.fr.meta_title') }}"
+                                           class="w-full rounded-md p-2 border-gray-200"
                                            id="translate[fr][meta_title]"
                                            name="translate[fr][meta_title]" required>
                                 </div>
@@ -73,9 +73,9 @@
                                 <div>
                                     <label for="translate[fr][meta_desc]">meta_desc :</label>
                                     <input type="text"
-                                           value="{{ old('translate[fr][meta_desc]') }}"
-                                           class="w-full rounded-md p-3"
-                                           id="translate[fr][meta_desc]"
+                                           value="{{ old('translate.fr.meta_desc') }}"
+                                           class="w-full rounded-md p-2 border-gray-200"
+                                           id="translate.fr.meta_desc"
                                            name="translate[fr][meta_desc]" required>
                                 </div>
 
@@ -98,7 +98,7 @@
                                 <label for="translate[fr][intro]">Intro :</label>
                                 <textarea class="w-full rounded-md p-3"
                                           id="translate[fr][intro]"
-                                          name="translate[fr][intro]">{{ old('translate[fr][intro]') }}</textarea>
+                                          name="translate[fr][intro]">{{ old('translate.fr.intro') }}</textarea>
                             </div>
 
                             <!-- content de l'article -->
@@ -106,7 +106,7 @@
                                 <label for="translate[fr][content]">Content :</label>
                                 <textarea class="w-full rounded-md p-3"
                                           id="translate[fr][content]"
-                                          name="translate[fr][content]">{{ old('translate[fr][content') }}</textarea>
+                                          name="translate[fr][content]">{{ old('translate.fr.content') }}</textarea>
                             </div>
                         </div>
 
