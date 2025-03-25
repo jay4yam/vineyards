@@ -1,33 +1,33 @@
 <footer class="bg-stone-800 pt-32 px-10 lg:px-32 text-white">
 
     <div class="flex gap-12 justify-center">
-        <div class="w-1/3 justify-end">
-            <!-- logo et lien vers la home -->
-            <div class="w-fit flex flex-col">
-                <a class="mx-auto" href="{{ route('home') }}">
-                    <img data-aos="fade-down"
-                         data-aos-offset="0"
-                         data-aos-delay="50"
-                         data-aos-duration="1000"
-                         data-aos-easing="ease-in-out"
-                         data-aos-mirror="true"
-                         data-aos-once="false"
-                         data-aos-anchor-placement="top-center"
-                         class="w-48 " src="{{ asset('images/logo-vineyards-rouge.svg') }}" alt="logo Vineyards" />
-                </a>
-                <!-- logo christie's -->
-                <img data-aos="fade-up"
-                     data-aos-offset="-50"
+
+        <!-- logo mz et christie's -->
+        <div class="w-fit flex flex-col">
+            <!-- logo mz -->
+            <a class="mx-auto" href="{{ route('home') }}">
+                <img data-aos="fade-down"
+                     data-aos-offset="0"
                      data-aos-delay="50"
-                     data-aos-duration="500"
+                     data-aos-duration="1000"
                      data-aos-easing="ease-in-out"
                      data-aos-mirror="true"
                      data-aos-once="false"
                      data-aos-anchor-placement="top-center"
-                    class="mx-auto w-48 z-50 bottom-4 pt-10" src="{{ asset('images/cire_logo.svg') }}" alt="logo christie's international real estate">
-            </div>
-
+                     class="w-48 " src="{{ asset('images/logo-vineyards-rouge.svg') }}" alt="logo Vineyards" />
+            </a>
+            <!-- logo christie's -->
+            <img data-aos="fade-up"
+                 data-aos-offset="-50"
+                 data-aos-delay="50"
+                 data-aos-duration="500"
+                 data-aos-easing="ease-in-out"
+                 data-aos-mirror="true"
+                 data-aos-once="false"
+                 data-aos-anchor-placement="top-center"
+                 class="mx-auto w-48 z-50 bottom-4 pt-10" src="{{ asset('images/cire_logo.svg') }}" alt="logo christie's international real estate">
         </div>
+        <!-- end logo mz et christie's -->
 
         <div class="w-1/3">
             <h2 class="font-bold uppercase">Les Régions viticoles en France et à l'internationale</h2>
