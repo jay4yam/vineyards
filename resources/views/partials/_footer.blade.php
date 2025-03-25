@@ -31,7 +31,7 @@
 
         <div class="w-1/3">
             <h2 class="font-bold uppercase">Les Régions viticoles en France et à l'internationale</h2>
-            <ul class="list-inside py-4 flex gap-4">
+            <ul class="flex flex-wrap list-inside py-4 gap-4">
             @foreach($allListesSeo as $listeseo)
                 <li>
                     <a href="{{ route('properties.region', ['listeseo' => $listeseo, 'slug' => $listeseo->slug]) }}" title="{{ $listeseo->translate->header_h1 }}">{{ $listeseo->name }}</a>
