@@ -1,7 +1,7 @@
 <footer class="bg-stone-800 pt-32 px-10 lg:px-32 text-white">
 
     <div class="flex gap-12 justify-center">
-        <div>
+        <div class="w-1/2">
             <!-- logo et lien vers la home -->
             <div class="w-full flex flex-col">
                 <a class="mx-auto" href="{{ route('home') }}">
@@ -29,7 +29,7 @@
 
         </div>
 
-        <div>
+        <div class="w-1/3">
             <h2 class="font-bold uppercase">Les Régions viticoles en France et à l'internationale</h2>
             <ul class="list-inside py-4 flex gap-4">
             @foreach($allListesSeo as $listeseo)
