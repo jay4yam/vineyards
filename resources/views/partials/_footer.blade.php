@@ -1,9 +1,9 @@
 <footer class="bg-stone-800 pt-32 px-10 lg:px-32 text-white">
 
     <div class="flex gap-12 justify-center">
-        <div class="w-1/2">
+        <div class="w-1/3 justify-end">
             <!-- logo et lien vers la home -->
-            <div class="w-full flex flex-col">
+            <div class="w-fit flex flex-col">
                 <a class="mx-auto" href="{{ route('home') }}">
                     <img data-aos="fade-down"
                          data-aos-offset="0"
