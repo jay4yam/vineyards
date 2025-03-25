@@ -38,7 +38,7 @@
 
                     <div class="w-full flex flex-col gap-1">
                         <label for="property_prefix_codes">Créer une liste par Régions Viticole</label>
-                        <select name="region_viticole" class="w-full border-gray-200" disabled>
+                        <select name="region_viticole" class="w-full border-gray-200">
                             <option value="null">Liste de régions viticoles</option>
                             @foreach(config('property_regions') as $region => $departement)
                                 <option value="{{ implode(',', $departement) }}" @selected($departement === $listeseo->property_prefix_codes)>{{ $region }}</option>
@@ -51,7 +51,7 @@
                     <!-- liste departements des produits pour la liste seo -->
                     <div class="w-full flex flex-col gap-1">
                         <label for="property_prefix_codes">Créer une liste par département</label>
-                        <input type="text" name="property_prefix_codes" class="w-full border-gray-200" disabled>
+                        <input type="text" name="property_prefix_codes" class="w-full border-gray-200">
                     </div>
                     <!-- end liste departements des produits pour la liste seo -->
                 </div>
