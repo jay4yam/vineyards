@@ -39,7 +39,6 @@ class PropertyController extends Controller
 
     /**
      * Retourne la vue d'une propriété
-     * @param string $locale
      * @param string $slug
      * @param Property $property
      * @return View
