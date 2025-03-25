@@ -71,6 +71,16 @@ class ListeSeoRepository
      */
     public function update(Request $request, ListeSeo $listeSeo): void
     {
+        //1. création d'une liste seo par région viticole
+        if($request->has('region_viticole') && $request->region_viticole !=  "null")
+        {
+            $listeSeo->name = $request->name;
+            $listeSeo->slug = Str::slug($request->name);
+            $listeSeo->property_prefix_codes = explode(',', $request->region_viticole);
+            $listeSeo->is_active = true;
+            $listeSeo->save();
+        }
+
         //si la requête contient une traduction
         if($request->has('translate')) {
 
@@ -90,5 +100,4 @@ class ListeSeoRepository
             }
         }
     }
-
 }
