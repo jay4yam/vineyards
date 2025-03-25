@@ -9,6 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Testing\Fluent\Concerns\Has;
+use Random\RandomException;
 
 class UserRepository
 {
@@ -24,13 +25,14 @@ class UserRepository
      */
     public function getAll():LengthAwarePaginator
     {
-        return $this->user->with(['biotranslates'])->withCount(['blogs', 'properties'])->paginate(10);
+        return $this->user->with(['biotranslates'])->withCount(['blogs', 'properties'])->paginate(20);
     }
 
     /**
      * Gère la sauvegarde d'un nouvel utilisateur
      * @param Request $request
      * @return User
+     * @throws RandomException
      */
     public function store(Request $request): User
     {
