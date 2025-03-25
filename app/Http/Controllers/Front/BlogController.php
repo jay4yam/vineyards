@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Repositories\BlogRepository;
 use App\Services\BlogService;
-use App\traits\Seoable;
+use App\Traits\Seoable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 

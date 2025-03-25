@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Blog;
-use App\traits\Uploadable;
+use App\Traits\Uploadable;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;

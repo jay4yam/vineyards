@@ -7,7 +7,7 @@ use App\Models\ListeSeo;
 use App\Models\Properties\Property;
 use App\Repositories\PropertyRepository;
 use App\Services\FilterProperties;
-use App\traits\Seoable;
+use App\Traits\Seoable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 

@@ -2,7 +2,7 @@
 
 namespace App\Models\Properties;
 
-use App\traits\Uploadable;
+use App\Traits\Uploadable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

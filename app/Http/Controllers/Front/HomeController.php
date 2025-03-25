@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\traits\Seoable;
+use App\Traits\Seoable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 

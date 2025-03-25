@@ -11,7 +11,7 @@ use App\Models\City;
 use App\Models\District;
 use App\Models\Region;
 use App\Models\User;
-use App\traits\Uploadable;
+use App\Traits\Uploadable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;

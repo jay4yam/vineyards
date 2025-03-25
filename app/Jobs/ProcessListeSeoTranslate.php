@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\ListeSeo;
-use App\traits\ChatGpT;
+use App\Traits\ChatGpT;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Str;
