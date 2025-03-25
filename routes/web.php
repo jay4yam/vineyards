@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 //routes backoffice
-Route::domain('vineyards.'. env('APP_DOMAIN', 'michaelzingraf.com')
+Route::domain('vineyards.'. env('APP_DOMAIN', 'michaelzingraf.com'))
     ->prefix('dashboard')
     ->name('back.')
     ->middleware(['auth', 'verified'])->group(function (){
@@ -25,7 +25,7 @@ Route::domain('vineyards.'. env('APP_DOMAIN', 'michaelzingraf.com')
 
         Route::resource('listeseo', \App\Http\Controllers\Back\ListSeoController::class);
         Route::get('/translate/listeseo/{listeseo}', [\App\Http\Controllers\Back\TranslateController::class, 'listeseoTranslate'])->name('listeseo.translate');
-    }));
+    });
 
 //routes frontoffice
 Route::domain('vineyards.'.env('APP_DOMAIN', 'michaelzingraf.com'))
