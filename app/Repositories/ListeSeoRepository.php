@@ -53,7 +53,7 @@ class ListeSeoRepository
         }
 
         //2. création d'une liste seo par département
-        if($request->has('liste_departement') && $request->liste_departement != "null")
+        if($request->has('liste_departement') && $request->liste_departement != null)
         {
             $listeSeo->name = $request->name;
             $listeSeo->slug = Str::slug($request->name);
@@ -72,7 +72,7 @@ class ListeSeoRepository
     public function update(Request $request, ListeSeo $listeSeo): void
     {
         //1. création d'une liste seo par région viticole
-        if($request->has('region_viticole') && $request->region_viticole !=  "null")
+        if($request->has('region_viticole') && $request->region_viticole !=  null)
         {
             $listeSeo->name = $request->name;
             $listeSeo->slug = Str::slug($request->name);
