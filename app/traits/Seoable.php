@@ -3,6 +3,7 @@
 namespace App\traits;
 
 use App\Models\Blog;
+use App\Models\ListeSeo;
 use App\Models\Properties\Property;
 use Illuminate\Support\Str;
 use RalphJSmit\Laravel\SEO\SchemaCollection;
@@ -630,6 +631,86 @@ trait Seoable
                         href:route('properties.show', ['locale' => 'de', 'slug' => Str::slug($property->comments()->where('locale', 'de')->first()->title), 'property' => $property]),
                     ),
                 ],
+            ),
+        };
+    }
+
+    /**
+     * Retourne le seo de la page listing de propriété viticole
+     * @param ListeSeo $listeSeo
+     * @return SEOData
+     */
+    public function seoListeSeo(ListeSeo $listeSeo): SEOData
+    {
+        return match(app()->getLocale()){
+            'fr' => new SEOData(
+                title :$listeSeo->translate->meta_title_seo,
+                description:$listeSeo->translate->meta_description_seo,
+                image:asset('/images/contact-michael-zingraf-vineyards.webp'),
+                alternates:[
+                    new AlternateTag(
+                        hreflang:'x-default',
+                        href:route('properties.region', ['locale' => 'fr', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                    new AlternateTag(
+                        hreflang:'en',
+                        href:route('properties.region', ['locale' => 'en', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                    new AlternateTag(
+                        hreflang:'fr',
+                        href:route('properties.region', ['locale' => 'fr', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                    new AlternateTag(
+                        hreflang:'de',
+                        href:route('properties.region', ['locale' => 'de', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                ]
+            ),
+            'en' => new SEOData(
+                title :$listeSeo->translate->meta_title_seo,
+                description:$listeSeo->translate->meta_description_seo,
+                image:asset('/images/contact-michael-zingraf-vineyards.webp'),
+                alternates:[
+                    new AlternateTag(
+                        hreflang:'x-default',
+                        href:route('properties.region', ['locale' => 'fr', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                    new AlternateTag(
+                        hreflang:'en',
+                        href:route('properties.region', ['locale' => 'en', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                    new AlternateTag(
+                        hreflang:'fr',
+                        href:route('properties.region', ['locale' => 'fr', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                    new AlternateTag(
+                        hreflang:'de',
+                        href:route('properties.region', ['locale' => 'de', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                ]
+            ),
+            'de' => new SEOData(
+                title :$listeSeo->translate->meta_title_seo,
+                description:$listeSeo->translate->meta_description_seo,
+                image:asset('/images/contact-michael-zingraf-vineyards.webp'),
+                alternates:[
+                    new AlternateTag(
+                        hreflang:'x-default',
+                        href:route('properties.region', ['locale' => 'fr', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                    new AlternateTag(
+                        hreflang:'en',
+                        href:route('properties.region', ['locale' => 'en', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                    new AlternateTag(
+                        hreflang:'fr',
+                        href:route('properties.region', ['locale' => 'fr', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                    new AlternateTag(
+                        hreflang:'de',
+                        href:route('properties.region', ['locale' => 'de', 'listeseo' => $listeSeo, 'slug' => $listeSeo->slug]),
+                    ),
+                ]
             ),
         };
     }

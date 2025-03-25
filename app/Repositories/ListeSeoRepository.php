@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\ListeSeo;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 
 class ListeSeoRepository
@@ -20,7 +21,7 @@ class ListeSeoRepository
      * Retourne la liste des listeSeo
      * @return mixed
      */
-    public function getPaginate()
+    public function getPaginate():LengthAwarePaginator
     {
         return $this->listeSeo->paginate();
     }
@@ -30,7 +31,7 @@ class ListeSeoRepository
      * @param Request $request
      * @return ListeSeo
      */
-    public function store(Request $request)
+    public function store(Request $request):ListeSeo
     {
         $listSeo = new ListeSeo();
 

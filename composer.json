@@ -23,7 +23,8 @@
         "postare/blade-mdi": "^1.1",
         "ralphjsmit/laravel-seo": "^1.7",
         "realrashid/sweet-alert": "^7.3",
-        "saade/blade-iconsax": "^1.2"
+        "saade/blade-iconsax": "^1.2",
+        "spatie/laravel-sitemap": "^7.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.15",

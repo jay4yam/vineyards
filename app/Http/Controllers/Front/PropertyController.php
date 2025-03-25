@@ -61,12 +61,12 @@ class PropertyController extends Controller
      */
     public function region(string $locale, ListeSeo $listeseo, string $slug, Request $request): View
     {
-        $datas = $this->filterProperties->dataforListSeo($listeseo, $request);
+        $datas = $this->filterProperties->dataForListSeo($listeseo, $request);
 
         $properties = $datas->paginate(12);
 
         $listeseo->load('translate');
 
-        return view('properties.listeseo', ['properties' => $properties, 'listeseo' => $listeseo, 'seoData' => $this->seoProperties()]);
+        return view('properties.listeseo', ['properties' => $properties, 'listeseo' => $listeseo, 'seoData' => $this->seoListeSeo($listeseo)]);
     }
 }

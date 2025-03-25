@@ -83,7 +83,12 @@ class FilterProperties
     }
 
 
-    public function dataforListSeo(ListeSeo $listeSeo, Request $request)
+    /**
+     * @param ListeSeo $listeSeo
+     * @param Request $request
+     * @return Builder
+     */
+    public function dataForListSeo(ListeSeo $listeSeo, Request $request): Builder
     {
         $this->query->whereHas('city', function ($query) use ($listeSeo) {
             $query->whereIn('prefix_code', $listeSeo->property_prefix_codes);
