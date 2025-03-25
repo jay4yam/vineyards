@@ -39,13 +39,13 @@ class PropertyController extends Controller
 
     /**
      * Retourne la vue d'une propriété
+     * @param string $locale
      * @param string $slug
      * @param Property $property
      * @return View
      */
-    public function show(string $slug, Property $property):View
+    public function show(string $locale, string $slug, Property $property):View
     {
-        dd($slug, $property);
         $property->load(['category', 'user', 'subtype', 'type' ,'pictures', 'city' ,'region', 'areas', 'comment', 'comments']);
 
         return view('properties.show', ['property' => $property, 'seoData' => $this->seoPropertyShow($property)]);
