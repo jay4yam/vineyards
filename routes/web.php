@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 //routes backoffice
-Route::domain('vineyards.'. env('APP_DOMAIN')
+Route::domain('vineyards.'. env('APP_DOMAIN', 'michaelzingraf.com')
     ->prefix('dashboard')
     ->name('back.')
     ->middleware(['auth', 'verified'])->group(function (){
@@ -28,7 +28,7 @@ Route::domain('vineyards.'. env('APP_DOMAIN')
     }));
 
 //routes frontoffice
-Route::domain('vineyards.'.env('APP_DOMAIN'))
+Route::domain('vineyards.'.env('APP_DOMAIN', 'michaelzingraf.com'))
     ->prefix('{locale?}')
     ->middleware([\App\Http\Middleware\Localization::class, \App\Http\Middleware\SetDefaultLocale::class])
     ->group(function (){
