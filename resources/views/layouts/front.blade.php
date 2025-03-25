@@ -8,7 +8,7 @@
 
         {!! seo($seoData) !!}
 
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/x-icon">
         <link rel='stylesheet' href='/css/animation.css' type='text/css' media='all' />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
