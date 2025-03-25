@@ -7,7 +7,6 @@ use App\Models\City;
 use App\Traits\Uploadable;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class ApimoAgenciesImport extends ApimoImport
@@ -50,7 +49,7 @@ class ApimoAgenciesImport extends ApimoImport
     }
 
     /**
-     * Gère la sauv. des données
+     * Gère la sauvegarde des données
      * @return void
      */
     protected function save(): void
