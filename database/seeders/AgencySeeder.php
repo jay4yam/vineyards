@@ -7,11 +7,13 @@ use App\Models\Agency;
 use App\Models\City;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Http\Client\ConnectionException;
 
 class AgencySeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * @throws ConnectionException
      */
     public function run(ApimoAgenciesImport $agenciesImport): void
     {
