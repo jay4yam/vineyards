@@ -220,7 +220,7 @@
     </div>
 @push('dedicated_js')
 <!-- tinyMce -->
-<script src="https://cdn.tiny.cloud/1/dsnrqd6wanwpw9ttx90g1id6n31mhs3ooj2njnn63k3brdq9/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/{{ config('tinymce.api_key') }}/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
 <!-- init tinyMce -->
 <script>

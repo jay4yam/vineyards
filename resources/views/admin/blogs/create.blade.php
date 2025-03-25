@@ -133,15 +133,15 @@
 
     </div>
 
-    @push('dedicated_js')
-        <!-- Place the first <script> tag in your HTML's <head> -->
-        <script src="https://cdn.tiny.cloud/1/dsnrqd6wanwpw9ttx90g1id6n31mhs3ooj2njnn63k3brdq9/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+@push('dedicated_js')
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/{{ config('tinymce.api_key') }}/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
-        <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
-        <script>
-            tinymce.init({
-                selector: 'textarea',
-            });
-        </script>
-    @endpush
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+    tinymce.init({
+        selector: 'textarea',
+    });
+</script>
+@endpush
 </x-app-layout>
