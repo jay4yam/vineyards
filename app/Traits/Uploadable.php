@@ -11,7 +11,7 @@ trait Uploadable
 {
 
     /**
-     * Upload l'image de l'avatar de l'utilisateur
+     * Upload l'image de l'avatar de l'utilisateur.
      * @param UploadedFile $file
      * @return string
      */

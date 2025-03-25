@@ -12,7 +12,7 @@ trait ChatGpT
     private Client $client;
 
     /**
-     * Gère la réception du tableau de variables à traduire
+     * Gère la réception du tableau de variables à traduire.
      * @param array $itemsToTranslate
      * @param string $lang
      * @return array

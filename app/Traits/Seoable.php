@@ -13,7 +13,7 @@ use RalphJSmit\Laravel\SEO\Support\SEOData;
 trait Seoable
 {
     /**
-     * Retourne le seo pour la home page
+     * Retourne le seo pour la home page.
      * @return SEOData
      */
     public function seoHome(): SEOData
