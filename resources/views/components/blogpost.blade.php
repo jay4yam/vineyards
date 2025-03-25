@@ -22,9 +22,7 @@
         </li>
         <li>|</li>
         <li>
-            @foreach($blog->categories()->locale()->get() as $cat)
-                {{ ucfirst($cat->name) }}
-            @endforeach
+            {{ $blog->category->first()->name }}
         </li>
         <li>|</li>
         <li>{{ $blog->created_at->format('M Y') }}</li>
@@ -37,5 +35,8 @@
         <p>{!! $blog->translate->intro !!}</p>
     </div>
 
-    <button class="uppercase border border-red-800 text-red-800 py-1 px-4 hover:bg-red-800 hover:text-white delay-100 transition-all">{{ __('blog.read_more') }}</button>
+    <a href="{{ route('blog.show', ['locale' => app()->getLocale(), 'slug' => \Illuminate\Support\Str::slug($blog->translate->title), 'blog' => $blog]) }}"
+       class="uppercase border border-red-800 text-red-800 py-1 px-4 hover:bg-red-800 hover:text-white delay-100 transition-all">
+        {{ __('blog.read_more') }}
+    </a>
 </article>

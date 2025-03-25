@@ -175,7 +175,7 @@ class Property extends Model
         return $this->hasMany(Area::class, 'property_id', 'id')
             ->where('property_id', $this->id)
             ->whereIn('property_area_id', ['49', '50','51'])
-            ->sum('area');
+            ->sum('area') / 10000;
     }
 
     /**

@@ -18,7 +18,7 @@ class BlogService
      */
     public function getPaginate(): LengthAwarePaginator
     {
-        return $this->blog->with(['user','tags', 'categories', 'translate'])
+        return $this->blog->with(['user','tags', 'category', 'translate'])
             ->orderBy('id', 'desc')
             ->paginate(12);
     }

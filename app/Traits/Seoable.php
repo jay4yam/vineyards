@@ -265,19 +265,19 @@ trait Seoable
                 alternates:[
                     new AlternateTag(
                         hreflang:'x-default',
-                        href:route('blog.index', ['locale' => 'fr']),
+                        href:url( '/fr/'.trans('routes.handbook', locale:'fr')),
                     ),
                     new AlternateTag(
                         hreflang:'en',
-                        href:route('blog.index', ['locale' => 'en']),
+                        href:url( '/en/'.trans('routes.handbook', locale:'en')),
                     ),
                     new AlternateTag(
                         hreflang:'fr',
-                        href:route('blog.index', ['locale' => 'fr']),
+                        href:url( '/fr/'.trans('routes.handbook', locale:'fr')),
                     ),
                     new AlternateTag(
                         hreflang:'de',
-                        href:route('blog.index', ['locale' => 'de']),
+                        href:url( '/de/'.trans('routes.handbook', locale:'de')),
                     ),
                 ]
             ),
@@ -288,19 +288,19 @@ trait Seoable
                 alternates:[
                     new AlternateTag(
                         hreflang:'x-default',
-                        href:route('blog.index', ['locale' => 'fr']),
+                        href:url( '/fr/'.trans('routes.handbook', locale:'fr')),
                     ),
                     new AlternateTag(
                         hreflang:'en',
-                        href:route('blog.index', ['locale' => 'en']),
+                        href:url( '/en/'.trans('routes.handbook', locale:'en')),
                     ),
                     new AlternateTag(
                         hreflang:'fr',
-                        href:route('blog.index', ['locale' => 'fr']),
+                        href:url( '/fr/'.trans('routes.handbook', locale:'fr')),
                     ),
                     new AlternateTag(
                         hreflang:'de',
-                        href:route('blog.index', ['locale' => 'de']),
+                        href:url( '/de/'.trans('routes.handbook', locale:'de')),
                     ),
                 ]
             ),
@@ -311,19 +311,19 @@ trait Seoable
                 alternates:[
                     new AlternateTag(
                         hreflang:'x-default',
-                        href:route('blog.index', ['locale' => 'fr']),
+                        href:url( '/fr/'.trans('routes.handbook', locale:'fr')),
                     ),
                     new AlternateTag(
                         hreflang:'en',
-                        href:route('blog.index', ['locale' => 'en']),
+                        href:url( '/en/'.trans('routes.handbook', locale:'en')),
                     ),
                     new AlternateTag(
                         hreflang:'fr',
-                        href:route('blog.index', ['locale' => 'fr']),
+                        href:url( '/fr/'.trans('routes.handbook', locale:'fr')),
                     ),
                     new AlternateTag(
                         hreflang:'de',
-                        href:route('blog.index', ['locale' => 'de']),
+                        href:url( '/de/'.trans('routes.handbook', locale:'de')),
                     ),
                 ]
             ),

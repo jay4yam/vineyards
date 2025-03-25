@@ -57,4 +57,14 @@ class Blog extends Model
     {
         return $this->morphToMany(Category::class, 'categorizable');
     }
+
+    /**
+     * Liens vers les categories
+     * @return MorphToMany
+     */
+    public function category(): MorphToMany
+    {
+        return $this->morphToMany(Category::class, 'categorizable')
+            ->where('locale', '=', app()->getLocale() );
+    }
 }

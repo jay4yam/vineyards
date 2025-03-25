@@ -1,5 +1,5 @@
 <div data-aos="fade-up"
-     data-aos-offset="{{ $index * 10 }}"
+     data-aos-offset="{{ $index * 1 }}"
      data-aos-delay="500"
      data-aos-duration="1000"
      data-aos-easing="ease-in-out"
@@ -13,15 +13,15 @@
     </div>
 
     <ul class="absolute hidden group-hover:block group-hover:duration-300 text-white text-lg font-black uppercase text-shadow text-center gap-2">
-        <li class="text-base border-white border-b">superbe magnifique</li>
+        <li class="text-base border-white border-b">{{ $property->reference }}</li>
         <li class="text-base">{{ $property->subtype->name }} - {{ $property->region->name }}</li>
         <li class="text-sm flex flex-row justify-around gap-2">
             <div class="flex flex-row items-center gap-2">
                 <x-mdi-fruit-grapes class="mx-auto h-4"/>
-                <span>17ha</span></div>
+                <span>{{ $property->surfTerrain() }} ha</span></div>
             <div class="flex flex-row items-center gap-2">
                 <x-carbon-area class="mx-auto h-4"/>
-                <span>1200 m<sup>2</sup></span>
+                <span>{{ $property->area_value }} {!! __('property.sqm') !!}</span>
             </div>
             <div class="flex flex-row items-center gap-2">
                 <x-fas-map-marker-alt class="mx-auto h-4"/>
