@@ -2,8 +2,6 @@
 
 namespace App\traits;
 
-use App\Models\Project;
-use App\Models\Properties\Picture;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -15,7 +13,7 @@ trait Uploadable
     /**
      * Upload l'image de l'avatar de l'utilisateur
      * @param UploadedFile $file
-     * @return void
+     * @return string
      */
     public function uploadAvatar(UploadedFile $file): string
     {
