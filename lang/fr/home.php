@@ -28,4 +28,5 @@
         'support_text' => "Notre équipe de spécialistes en immobilier, œnologie, et cession d'entreprise offre un accompagnement personnalisé à chaque étape de votre projet, garantissant une expérience d'achat ou de vente fluide et sans souci.",
         'contact_text' => "Venez découvrir l'élégance intemporelle chez Michael Zingraf Vineyards, où chaque vignoble est une porte ouverte sur un monde où le luxe et la terre se rencontrent en harmonie parfaite.",
         'footer_brand' => "Une marque du groupe Michaël Zingraf Real Estate",
+        'footer_region' => "Régions viticoles en France et à l'internationale",
     ];

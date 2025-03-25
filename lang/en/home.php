@@ -28,4 +28,5 @@ return[
     'support_text' => "Our team of real estate, wine and business transfer specialists offers personalized support at every stage of your project, guaranteeing a smooth, worry-free buying or selling experience.",
     'contact_text' => "Discover timeless elegance at Michael Zingraf Vineyards, where each vineyard is a gateway to a world where luxury and earth meet in perfect harmony.",
     'footer_brand' => "A brand of the Michaël Zingraf Real Estate Group",
+    'footer_region' => "Wine regions in France and abroad",
 ];
