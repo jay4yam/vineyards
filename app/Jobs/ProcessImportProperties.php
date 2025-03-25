@@ -12,6 +12,8 @@ class ProcessImportProperties implements ShouldQueue
 {
     use Queueable;
 
+    public int $timeout = 0;
+
     /**
      * Create a new job instance.
      */

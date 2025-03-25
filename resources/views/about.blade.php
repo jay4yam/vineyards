@@ -41,7 +41,7 @@
         <div class="flex gap-12 items-center">
 
             <img data-aos="fade-left"
-                 data-aos-offset="500"
+                 data-aos-offset="0"
                  data-aos-delay="1000"
                  data-aos-duration="1000"
                  data-aos-easing="ease-in-out"
@@ -83,7 +83,7 @@
             </div>
 
             <img data-aos="fade-right"
-                 data-aos-offset="1000"
+                 data-aos-offset="0"
                  data-aos-delay="1000"
                  data-aos-duration="1000"
                  data-aos-easing="ease-in-out"
@@ -103,13 +103,12 @@
         <div class="flex gap-12 items-center">
 
             <img data-aos="fade-left"
-                 data-aos-offset="1300"
+                 data-aos-offset="0"
                  data-aos-delay="1000"
                  data-aos-duration="1000"
                  data-aos-easing="ease-in-out"
-                 data-aos-mirror="true"
-                 data-aos-once="false"
-                 data-aos-anchor-placement="center-bottom"
+                 data-aos-mirror="false"
+                 data-aos-once="true"
                  loading="lazy" class="w-1/2 rounded-sm" src="{{ asset('images/mzre-about.webp') }}" alt="groupe Michaël Zingraf Real Estate">
 
             <div>
@@ -153,14 +152,13 @@
             <div class="w-full lg:w-1/2 h-fit lg:h-auto hover:cursor-pointer flex items-center justify-center" style="background: center/cover url('{{ asset('/images/bg-form-estimation.webp') }}')">
 
                 <div class="my-10 lg:my-28 mx-12 lg:mx-44 w-full lg:w-2/3 bg-white rounded-md drop-shadow-2xl"
-                     data-aos="flip-left"
-                     data-aos-offset="1500"
+                     data-aos="fade-left"
+                     data-aos-offset="0"
                      data-aos-delay="1000"
                      data-aos-duration="1000"
                      data-aos-easing="ease-in-out"
-                     data-aos-mirror="true"
-                     data-aos-once="false"
-                     data-aos-anchor-placement="center-bottom">
+                     data-aos-mirror="false"
+                     data-aos-once="true">
 
                     <form action="{{ route('contact.form.submit') }}" method="post" class="p-6 lg:p-14" method="POST">
                         <input type="hidden" name="ip_address" value="{{ request()->getClientIp() }}">

@@ -12,6 +12,7 @@ class ProcessListeSeoTranslate implements ShouldQueue
 {
     use Queueable, ChatGpT;
 
+    public int $timeout = 0;
     /**
      * Create a new job instance.
      */
