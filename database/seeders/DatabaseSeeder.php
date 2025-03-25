@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(BrokerSeeder::class);
         $this->call(CatalogSeeder::class);
-        $this->call(BlogSeeder::class);
+        //$this->call(BlogSeeder::class);
     }
 }
