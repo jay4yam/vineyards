@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 //routes backoffice
-Route::domain('vineyards.'. env('APP_DOMAIN', 'localhost'))
+Route::domain('vineyards.'. env('APP_DOMAIN')
     ->prefix('dashboard')
     ->name('back.')
     ->middleware(['auth', 'verified'])->group(function (){
@@ -25,10 +25,10 @@ Route::domain('vineyards.'. env('APP_DOMAIN', 'localhost'))
 
         Route::resource('listeseo', \App\Http\Controllers\Back\ListSeoController::class);
         Route::get('/translate/listeseo/{listeseo}', [\App\Http\Controllers\Back\TranslateController::class, 'listeseoTranslate'])->name('listeseo.translate');
-    });
+    }));
 
 //routes frontoffice
-Route::domain('vineyards.'.env('APP_DOMAIN', 'localhost'))
+Route::domain('vineyards.'.env('APP_DOMAIN'))
     ->prefix('{locale?}')
     ->middleware([\App\Http\Middleware\Localization::class, \App\Http\Middleware\SetDefaultLocale::class])
     ->group(function (){
