@@ -5,7 +5,7 @@
      data-aos-easing="ease-in-out"
      data-aos-mirror="true"
      data-aos-once="false"
-     class="w-1/2 flex flex-col gap-2 items-center text-gray-600 text-sm">
+     class="w-full lg:w-1/2 flex flex-col gap-2 items-center text-gray-600 text-sm">
     <img class="mx-auto w-full lg:w-1/2 rounded-md" loading="lazy" src="{{ asset('storage/user/'.$partner->avatar) }}" alt="{{ $partner->fullname }}">
     <p>
         {{ $partner->firstname }} <span class="uppercase font-bold">{{ $partner->lastname }}</span>
