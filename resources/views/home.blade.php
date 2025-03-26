@@ -1,10 +1,10 @@
 <x-front-layout :seoData="$seoData">
 
     <!-- header video -->
-    <header class="relative flex items-center justify-center h-[calc(100vh-64px)] w-full overflow-hidden">
+    <header class="relative flex flex-col items-center justify-center h-[calc(100vh-64px)] w-full overflow-hidden">
 
         <!--logo & baseline -->
-        <div class="relative z-40 w-1/2 h-fit m-auto left-0 right-0 top-0 bottom-0 text-white drop-shadow text-center">
+        <div class="relative z-40 w-full lg:w-1/2 h-fit m-auto left-0 right-0 top-0 bottom-0 text-white drop-shadow text-center">
             <div class="flex flex-col gap-4">
                 <h1 data-aos="fade-down"
                     data-aos-offset="0"
@@ -26,7 +26,7 @@
         </div>
 
         <!-- video de la home page-->
-        <video poster="{{ asset('images/bg-video.webp') }}" autoplay loop muted class="absolute z-10 min-w-full min-h-screen max-w-full">
+        <video poster="{{ asset('images/bg-video.webp') }}" autoplay loop muted class="absolute max-w-none w-auto lg:w-full min-h-svh">
             <source src="{{ asset('images/vineyards.mp4') }}" type="video/mp4">
         </video>
 
@@ -47,7 +47,7 @@
     <section class="flex flex-col lg:flex-row">
 
         <!-- MZ & HZ photo -->
-        <div class="w-full lg:w-1/2 h-96 lg:h-auto"
+        <div class="w-full lg:w-1/2 h-fit lg:h-auto"
              data-aos="fade-right"
              data-aos-offset="-200"
              data-aos-delay="50"
@@ -86,7 +86,7 @@
     </section>
 
     <!-- philosophie & img bg -->
-    <section class="flex flex-col lg:flex-row">
+    <section class="flex flex-col lg:flex-row w-full">
 
         <!-- intro -->
         <div class="w-full lg:w-1/2 order-2 lg:order-1 p-8 lg:p-28 text-justify">
@@ -241,10 +241,10 @@
     </section>
 
     <!-- réassurance -->
-    <section class="flex flex-col lg:flex-row gap-y-12 w-full p-10 lg:p-20 justify-center items-start text-gray-500 font-crimson">
+    <section class="flex flex-col lg:flex-row w-full p-10 lg:p-20 justify-center items-start text-gray-500 font-crimson">
 
         <!-- expertise -->
-        <div data-aos="fade-right"
+        <div data-aos="fade-top"
              data-aos-delay="100"
              data-aos-duration="500"
              data-aos-easing="ease-in-out"
