@@ -1,4 +1,4 @@
-<section class="sticky top-[64px] z-40 bg-gray-100 p-4 lg:px-8 lg:py-2 drop-shadow">
+<section class="lg:sticky top-[64px] z-40 bg-gray-100 p-4 lg:px-8 lg:py-2 drop-shadow">
 
     <form action="{{ route('properties.index') }}" method="post" class="lg:container mx-auto grid grid-cols-1 lg:grid-cols-7 gap-2 justify-between items-center lg:px-40">
         @csrf
