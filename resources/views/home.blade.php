@@ -26,7 +26,7 @@
         </div>
 
         <!-- video de la home page-->
-        <video poster="{{ asset('images/bg-video.webp') }}" autoplay loop muted class="absolute z-10 w-auto min-w-full min-h-screen max-w-none">
+        <video poster="{{ asset('images/bg-video.webp') }}" autoplay loop muted class="absolute z-10 min-w-full min-h-screen max-w-full">
             <source src="{{ asset('images/vineyards.mp4') }}" type="video/mp4">
         </video>
 
