@@ -30,7 +30,7 @@
         <!-- end logo mz et christie's -->
 
         <div class="w-full lg:w-1/3">
-            <h2 class="font-bold uppercase">{{ __('home.footer_region') }}</h2>
+            <h2 class="text-sm lg:text-base font-bold uppercase">{{ __('home.footer_region') }}</h2>
             <ul class="flex flex-wrap list-inside py-4 gap-4">
             @foreach($allListesSeo as $listeseo)
                 <li>
