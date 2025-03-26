@@ -1,9 +1,9 @@
 <footer class="bg-stone-800 pt-32 px-10 lg:px-32 text-white">
 
-    <div class="flex gap-12 justify-center">
+    <div class="flex flex-col lg:flex-row gap-12 justify-center">
 
         <!-- logo mz et christie's -->
-        <div class="w-fit flex flex-col">
+        <div class="w-full lg:w-fit flex flex-col">
             <!-- logo mz -->
             <a class="mx-auto" href="{{ route('home') }}">
                 <img data-aos="fade-down"
@@ -29,7 +29,7 @@
         </div>
         <!-- end logo mz et christie's -->
 
-        <div class="w-1/3">
+        <div class="w-full lg:w-1/3">
             <h2 class="font-bold uppercase">{{ __('home.footer_region') }}</h2>
             <ul class="flex flex-wrap list-inside py-4 gap-4">
             @foreach($allListesSeo as $listeseo)
@@ -43,7 +43,7 @@
     </div>
 
     <!-- social network -->
-    <div class="flex gap-16 w-full lg:w-1/4 justify-between mx-auto pt-28 ">
+    <div class="flex gap-16 w-full lg:w-1/4 justify-between mx-auto pt-28">
 
         <a href="{{ config('socials.linkedin') }}" target="_blank" rel="noreferrer noopener" class="text-xl">
             <x-fab-linkedin class="h-12 hover:scale-110"/>
