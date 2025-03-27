@@ -43,7 +43,7 @@
     </div>
 
     <!-- social network -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-16 lg:w-1/4 justify-between mx-auto py-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 justify-items-center gap-16 lg:w-1/4 justify-between mx-auto py-8">
 
         <a href="{{ config('socials.linkedin') }}" target="_blank" rel="noreferrer noopener" class="text-xl">
             <x-fab-linkedin class="h-12 hover:scale-110"/>
