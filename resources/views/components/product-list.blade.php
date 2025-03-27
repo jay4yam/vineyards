@@ -123,7 +123,7 @@
                     <ul class="flex flex-col gap-1 text-center">
                         <li class="lowercase">{{ __('property.land') }}</li>
                         <li class="flex justify-center"><x-elemplus-grape class="h-6" /></li>
-                        <li class="font-bold lowercase">{{ $property->surfTerrain() / 10000 }} .Ha</li>
+                        <li class="font-bold lowercase">{{ $property->surfTerrain() }} .Ha</li>
                     </ul>
                 </div>
                 <!-- end terrain -->
