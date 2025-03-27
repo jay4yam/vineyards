@@ -26,7 +26,7 @@
         </div>
 
         <!-- video de la home page-->
-        <video poster="{{ asset('images/bg-video.webp') }}" autoplay loop muted class="w-auto h-screen max-w-none">
+        <video poster="{{ asset('images/bg-video.webp') }}" autoplay loop muted class="w-auto lg:w-full h-screen lg:h-auto max-w-none">
             <source src="{{ asset('images/vineyards.mp4') }}" type="video/mp4">
         </video>
 
@@ -174,12 +174,12 @@
 
             <div class="my-10 lg:my-28 mx-12 lg:mx-44 w-full lg:w-2/3 bg-white rounded-md drop-shadow-2xl"
                  data-aos="flip-left"
-                 data-aos-offset="0"
+                 data-aos-offset="100"
                  data-aos-delay="50"
                  data-aos-duration="1000"
                  data-aos-easing="ease-in-out"
                  data-aos-mirror="false"
-                 data-aos-once="true"
+                 data-aos-once="false"
                  data-aos-anchor-placement="top-center">
 
                 <form action="{{ route('contact.form.submit') }}" method="post" class="p-6 lg:p-14" method="POST">
@@ -245,6 +245,7 @@
 
         <!-- expertise -->
         <div data-aos="fade-down"
+             data-aos-offset="400"
              data-aos-delay="100"
              data-aos-duration="500"
              data-aos-easing="ease-in-out"
@@ -263,6 +264,7 @@
 
         <!-- network -->
         <div data-aos="fade-up"
+             data-aos-offset="400"
              data-aos-delay="200"
              data-aos-duration="500"
              data-aos-easing="ease-in-out"
@@ -281,6 +283,7 @@
 
         <!-- support -->
         <div data-aos="fade-down"
+             data-aos-offset="400"
              data-aos-delay="300"
              data-aos-duration="500"
              data-aos-easing="ease-in-out"
@@ -302,13 +305,12 @@
 
         <div class="my-10 lg:my-28 mx-12 lg:mx-44 w-full lg:w-1/3 bg-white rounded-md text-center p-6 lg:p-14"
              data-aos="zoom-in"
-             data-aos-offset="0"
+             data-aos-offset="500"
              data-aos-delay="50"
              data-aos-duration="1000"
              data-aos-easing="ease-in-out"
              data-aos-mirror="false"
-             data-aos-once="true"
-             data-aos-anchor-placement="top-center">
+             data-aos-once="false">
 
             <h3 class="uppercase text-center font-black text-xl">Michaël Zingraf Vineyards</h3>
 

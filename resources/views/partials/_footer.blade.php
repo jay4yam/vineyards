@@ -1,13 +1,13 @@
 <footer class="bg-stone-800 pt-32 px-10 lg:px-32 text-white">
 
-    <div class="flex flex-col lg:flex-row gap-12 justify-center">
+    <div class="w-full lg:w-1/2 mx-auto flex flex-col lg:flex-row gap-12 justify-center items-center">
 
         <!-- logo mz et christie's -->
-        <div class="w-full lg:w-fit flex flex-col">
+        <div class="w-fit flex flex-col">
             <!-- logo mz -->
             <a class="mx-auto" href="{{ route('home') }}">
                 <img data-aos="fade-down"
-                     data-aos-offset="0"
+                     data-aos-offset="-500"
                      data-aos-delay="50"
                      data-aos-duration="1000"
                      data-aos-easing="ease-in-out"
@@ -18,7 +18,7 @@
             </a>
             <!-- logo christie's -->
             <img data-aos="fade-up"
-                 data-aos-offset="-50"
+                 data-aos-offset="-500"
                  data-aos-delay="50"
                  data-aos-duration="500"
                  data-aos-easing="ease-in-out"
@@ -29,6 +29,7 @@
         </div>
         <!-- end logo mz et christie's -->
 
+        <!-- lien listes regions viticole -->
         <div class="w-full lg:w-1/3">
             <h2 class="text-sm lg:text-base font-bold uppercase">{{ __('home.footer_region') }}</h2>
             <ul class="flex flex-wrap list-inside py-4 gap-4">
