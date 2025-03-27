@@ -26,7 +26,7 @@
         </div>
 
         <!-- video de la home page-->
-        <video poster="{{ asset('images/bg-video.webp') }}" autoplay loop muted class="w-full">
+        <video poster="{{ asset('images/bg-video.webp') }}" autoplay loop muted class="w-auto h-screen max-w-none">
             <source src="{{ asset('images/vineyards.mp4') }}" type="video/mp4">
         </video>
 
@@ -38,7 +38,7 @@
              data-aos-easing="ease-in-out"
              data-aos-mirror="true"
              data-aos-once="false"
-             class="absolute z-40 w-full lg:w-48 h-fit m-auto left-0 right-0 bottom-4 animate-fade-up animate-once animate-delay-[3500ms] animate-ease-in-out"
+             class="absolute z-40 w-48 h-fit m-auto left-0 right-0 bottom-4 animate-fade-up animate-once animate-delay-[3500ms] animate-ease-in-out"
              src="{{ asset('images/cire_logo.svg') }}" alt="logo christie's international real estate">
 
     </header>

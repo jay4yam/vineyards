@@ -43,7 +43,7 @@
     </div>
 
     <!-- social network -->
-    <div class="flex gap-16 w-full lg:w-1/4 justify-between mx-auto pt-28">
+    <div class="flex gap-16 lg:w-1/4 justify-between mx-auto py-8">
 
         <a href="{{ config('socials.linkedin') }}" target="_blank" rel="noreferrer noopener" class="text-xl">
             <x-fab-linkedin class="h-12 hover:scale-110"/>
@@ -63,9 +63,10 @@
 
     </div>
 
+
     <!-- liens footer -->
-    <nav class="pt-14 pb-8 mx-auto w-fit">
-        <ul id="menu_footer" class="flex gap-12 font-bold text-lg uppercase">
+    <nav class="py-8 mx-auto">
+        <ul id="menu_footer" class="flex justify-between gap-2 lg:gap-12 font-bold text-base lg:text-lg uppercase">
             <li class="menu-item menu-item-143"><a href="{{ route('home') }}"><span>Home</span></a></li>
             <li class="menu-item menu-item-675"><a href="{{ route('properties.index') }}"><span>Properties</span></a></li>
             <li class="menu-item menu-item-677"><a href="{{ route('blog.index') }}"><span>Blog</span></a></li>
