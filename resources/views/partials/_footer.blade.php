@@ -63,18 +63,6 @@
 
     </div>
 
-
-    <!-- liens footer -->
-    <nav class="py-8 mx-auto">
-        <ul id="menu_footer" class="flex justify-between gap-2 lg:gap-12 font-bold text-base lg:text-lg uppercase">
-            <li class="menu-item menu-item-143"><a href="{{ route('home') }}"><span>Home</span></a></li>
-            <li class="menu-item menu-item-675"><a href="{{ route('properties.index') }}"><span>Properties</span></a></li>
-            <li class="menu-item menu-item-677"><a href="{{ route('blog.index') }}"><span>Blog</span></a></li>
-            <li class="menu-item menu-item-147"><a href="{{ route('blog.index') }}"><span>About</span></a></li>
-            <li class="menu-item menu-item-676"><a href="{{ route('contact') }}"><span>Contact</span></a></li>
-        </ul>
-    </nav>
-
     <!-- brand -->
     <div class="mx-auto w-fit text-sm p-3 uppercase">
 
