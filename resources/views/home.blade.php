@@ -300,7 +300,7 @@
     <!-- adresses -->
     <section class="flex justify-center items-center" style="background: center/cover url('{{ asset('/images/bg-address-vineyards.webp') }}')">
 
-        <div class="my-10 lg:my-28 mx-12 lg:mx-44 w-full lg:w-1/2 bg-white rounded-md text-center p-6 lg:p-14"
+        <div class="my-10 lg:my-28 mx-12 lg:mx-44 w-full lg:w-1/3 bg-white rounded-md text-center p-6 lg:p-14"
              data-aos="zoom-in"
              data-aos-offset="0"
              data-aos-delay="50"
