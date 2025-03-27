@@ -26,7 +26,7 @@
                         @foreach($property->pictures as $picture)
                             <div class="swiper-slide">
                                 <figure>
-                                    <img class="inset-0 w-full object-cover" src="{{ asset('storage/properties/'.$property->reference.'/'.$picture->name) }}" alt="slide property">
+                                    <img class="aspect-video object-contain" src="{{ asset('storage/properties/'.$property->reference.'/'.$picture->name) }}" alt="slide property">
                                 </figure>
                             </div>
                         @endforeach
