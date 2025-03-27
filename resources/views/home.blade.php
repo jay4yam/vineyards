@@ -1,10 +1,10 @@
 <x-front-layout :seoData="$seoData">
 
     <!-- header video -->
-    <header class="relative flex flex-col items-center justify-center h-[calc(100vh-64px)] w-full overflow-hidden">
+    <header class="h-[calc(100vh-64px)] w-full overflow-hidden">
 
         <!--logo & baseline -->
-        <div class="relative z-40 w-full lg:w-1/2 h-fit m-auto left-0 right-0 top-0 bottom-0 text-white drop-shadow text-center">
+        <div class="absolute z-40 w-full lg:w-1/2 h-fit m-auto left-0 right-0 top-0 bottom-0 text-white drop-shadow text-center">
             <div class="flex flex-col gap-4">
                 <h1 data-aos="fade-down"
                     data-aos-offset="0"
@@ -26,7 +26,7 @@
         </div>
 
         <!-- video de la home page-->
-        <video poster="{{ asset('images/bg-video.webp') }}" autoplay loop muted class="absolute max-w-none w-auto lg:w-full min-h-svh">
+        <video poster="{{ asset('images/bg-video.webp') }}" autoplay loop muted class="w-full">
             <source src="{{ asset('images/vineyards.mp4') }}" type="video/mp4">
         </video>
 
@@ -38,7 +38,7 @@
              data-aos-easing="ease-in-out"
              data-aos-mirror="true"
              data-aos-once="false"
-             class="absolute w-48 z-40 bottom-4 animate-fade-up animate-once animate-delay-[3500ms] animate-ease-in-out"
+             class="absolute z-40 w-full lg:w-48 h-fit m-auto left-0 right-0 bottom-4 animate-fade-up animate-once animate-delay-[3500ms] animate-ease-in-out"
              src="{{ asset('images/cire_logo.svg') }}" alt="logo christie's international real estate">
 
     </header>
@@ -152,7 +152,7 @@
     </section>
 
     <!-- STAFF & FORM -->
-    <section class="flex flex-col lg:flex-row">
+    <section class="w-full flex flex-col lg:flex-row">
 
         <!-- colonne staff -->
         <div class="w-full lg:w-1/2 p-8 lg:pt-24 lg:px-24 text-justify">
@@ -170,7 +170,7 @@
         </div>
 
         <!-- main form -->
-        <div class="w-full lg:w-1/2 h-fit lg:h-auto hover:cursor-pointer flex items-center justify-center" style="background: center/cover url('{{ asset('/images/bg-form.webp') }}')">
+        <div class="w-full lg:w-1/2 h-fit lg:h-auto flex items-center justify-center" style="background: center/cover url('{{ asset('/images/bg-form.webp') }}')">
 
             <div class="my-10 lg:my-28 mx-12 lg:mx-44 w-full lg:w-2/3 bg-white rounded-md drop-shadow-2xl"
                  data-aos="flip-left"
@@ -244,7 +244,7 @@
     <section class="flex flex-col lg:flex-row w-full p-10 lg:p-20 justify-center items-start text-gray-500 font-crimson">
 
         <!-- expertise -->
-        <div data-aos="fade-top"
+        <div data-aos="fade-down"
              data-aos-delay="100"
              data-aos-duration="500"
              data-aos-easing="ease-in-out"
@@ -280,7 +280,7 @@
         <!-- end network -->
 
         <!-- support -->
-        <div data-aos="fade-left"
+        <div data-aos="fade-down"
              data-aos-delay="300"
              data-aos-duration="500"
              data-aos-easing="ease-in-out"
