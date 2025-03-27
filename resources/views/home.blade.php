@@ -109,15 +109,7 @@
         </div>
 
         <!-- BG-wine -->
-        <div class="w-full lg:w-1/2 order-1 lg:order-2 h-96 lg:h-auto bg-wine">
-            <img data-aos="fade-right"
-                 data-aos-offset="-200"
-                 data-aos-delay="50"
-                 data-aos-duration="1000"
-                 data-aos-easing="ease-in-out"
-                 data-aos-mirror="true"
-                 data-aos-anchor-placement="top-center"
-                 class="h-full object-cover" src="{{ asset('/images/bg-vin.webp') }}" alt="">
+        <div class="w-full lg:w-1/2 order-1 lg:order-2 h-96 lg:h-auto bg-wine" style="background: center/cover url('{{ asset('/images/bg-vin.webp') }}') no-repeat">
         </div>
 
     </section>
