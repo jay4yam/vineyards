@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <!-- social network -->
+    <!-- social networks -->
     <div class="grid grid-cols-4 justify-items-center gap-16 lg:w-1/4 justify-between mx-auto py-8">
 
         <a href="{{ config('socials.linkedin') }}" target="_blank" rel="noreferrer noopener" class="text-xl">
