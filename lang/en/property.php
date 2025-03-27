@@ -12,7 +12,7 @@
         'city' => 'city',
         'type' => 'Type',
         'fees' => 'including fees',
-        'area' => 'Superficie',
+        'area' => 'Surface Area',
         'land' => 'Land',
         'rooms' => 'Rooms',
         'prev' => 'previous',
