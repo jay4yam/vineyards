@@ -116,6 +116,7 @@
 }
 
 #blog_content ul{
-    list-style: circle;
+    list-style-type: circle;
     padding: 0.3rem 0;
+    list-style-position: inside;
 }
