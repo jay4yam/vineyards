@@ -26,7 +26,7 @@
                     </li>
                     <li>|</li>
                     <li>
-                        @foreach($blog->categories as $cat)
+                        @foreach($blog->category as $cat)
                             {{ $cat->name }} @if(!$loop->last),@endif
                         @endforeach
                     </li>
