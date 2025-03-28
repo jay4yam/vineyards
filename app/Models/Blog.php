@@ -49,6 +49,12 @@ class Blog extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
+    public function tags_translates():MorphToMany
+    {
+        return $this->morphToMany(Tag::class, 'taggable')
+            ->where('locale', '=', app()->getLocale());
+    }
+
     /**
      * Liens vers les categories
      * @return MorphToMany

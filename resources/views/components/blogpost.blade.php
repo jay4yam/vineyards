@@ -16,7 +16,7 @@
     <!-- tag, categories, date, user -->
     <ul class="flex gap-2 text-xs text-red-800 pt-2 pb-4">
         <li>
-            @foreach($blog->tags as $tag)
+            @foreach($blog->tags_translates as $tag)
                 {{ $tag->name }} @if(!$loop->last),@endif
             @endforeach
         </li>

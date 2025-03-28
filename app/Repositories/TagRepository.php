@@ -15,6 +15,6 @@ class TagRepository
      */
     public function getTags()
     {
-        return $this->tag->with('posts')->get(['id', 'name']);
+        return $this->tag->locale()->whereHas('posts')->with('posts')->get(['id', 'name']);
     }
 }

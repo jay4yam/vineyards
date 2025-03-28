@@ -22,7 +22,6 @@
                 <x-text-input id="search_blog" class="relative block mt-1 w-5/4" type="text" name="search_blog" :value="old('search_blog')" required/>
                 <x-input-error :messages="$errors->get('search_blog')" class="mt-2"/>
             </div>
-
         </form>
     </aside>
     <!-- end search -->
