@@ -136,7 +136,7 @@ class BlogRepository
             }
         }
 
-        //sauv. l'article.
+        //sauvegarde l'article.
         $blog->save();
     }
 }
