@@ -45,7 +45,7 @@
                 <img class="w-full py-6" src="{{ asset('storage/blog/'.$blog->image) }}" alt="{{ $blog->title }}">
 
                 <!-- contenu de l'article -->
-                <div class="text-gray-500 text-justify">
+                <div id="blog_content" class="text-gray-500 text-justify">
                     {!! $blog->translate->content !!}
                 </div>
 
