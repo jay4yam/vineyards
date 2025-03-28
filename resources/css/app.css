@@ -114,3 +114,8 @@
     color: #718096;
     padding: 0.1rem 0;
 }
+
+#blog_content ul{
+    list-style: circle;
+    padding: 0.3rem 0;
+}
