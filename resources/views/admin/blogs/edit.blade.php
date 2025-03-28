@@ -223,6 +223,16 @@
                 //init un tableau
                 let listTag = [];
 
+                //init un booleen pour savoir si le tag est dans la whitelist ou pas
+                let is_in_whitelist = false;
+
+                //itère sur les item de la whitelist
+                e.detail.tagify.whitelist.forEach(function (item){
+                    if(e.detail.data.value === item.value){
+                        return is_in_whitelist = true;
+                    }
+                });
+
                 //si l'input tag_list n'est pas vide
                 if(tag_list_input_{{$locale}}.value !== "")
                 {
@@ -236,15 +246,31 @@
                     });
                 }
 
-                //pousse le contenu du tagify dans le tableau
-                listTag.push( String(e.detail.data.id) );
+                //si le tag est dans la whiteliste
+                if(is_in_whitelist) {
+                    //on met l'id du tag dans le tableau
+                    listTag.push(String(e.detail.data.id));
+                }else {
+                    //sinon on met la valeur de la chaine dans le tableau
+                    listTag.push(String(e.detail.data.value));
+                }
 
                 //ajoute les valeurs de tags dans l'input caché
                 tag_list_input_{{$locale}}.value = listTag;
             },
             remove:function (e){
+
+                //récupère la liste des tags sous forme de tableau
                 let arrayTagList = tag_list_input_{{$locale}}.value.split(',');
-                tag_list_input_{{$locale}}.value = arrayTagList.splice(e.detail.data.index, 1);
+
+                //détermine l'index de la valeur à supprimer dans le tableau
+                let index = arrayTagList.indexOf(String(e.detail.data.id));
+
+                //supprime la valeur par son index dans le tableau
+                arrayTagList.splice(index, 1);
+
+                //set l'input tag_list avec les nouvelles valeurs
+                tag_list_input_{{$locale}}.value = arrayTagList;
             }
         }
     });

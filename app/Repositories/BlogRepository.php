@@ -117,8 +117,22 @@ class BlogRepository
                 //transforme la string en array
                 $tagArray = explode(',', $tag);
 
-                //attach un tag et un article de blog
-                $blog->tags()->attach($tagArray);
+                //itère sur la liste tagArray
+                foreach ($tagArray as $tag_value) {
+
+                    //si tag_value est de type numeric
+                    if( is_numeric($tag_value)){
+                        //on attache le blog avec l'id du tag
+                        $blog->tags()->attach(intval($tag_value));
+                    }else{
+                        //sinon on doit créer un nouveau tag
+                        $blog->tags()->create([
+                            'name' => $tag_value,
+                            'type' => 'blog',
+                            'locale' => $locale
+                        ]);
+                    }
+                }
             }
         }
 
