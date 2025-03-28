@@ -9,10 +9,10 @@
     </header>
 
     <!-- détail de l'articles -->
-    <section class="container mx-auto p-12 px-48 flex gap-6">
+    <section class="container mx-auto p-6 lg:p-12 lg:px-48 flex flex-col lg:flex-row gap-6">
 
         <!-- colonnes détail article -->
-        <div class="w-3/4">
+        <div class="w-full lg:w-3/4">
             <article>
                 <!-- titre -->
                 <h1 class="text-2xl font-bold">{{ $blog->translate->title }}</h1>
