@@ -76,12 +76,12 @@ trait ChatGpT
     {
         return match ($lang){
             'en' => $messages = [
-                [ 'role' => 'system', 'content' => 'You are a professional English translator from french, return only the translated word or sentence without any comment'],
+                [ 'role' => 'system', 'content' => 'You are a professional English translator from french, return only the translated word or sentence without any comment (doesn\'t add an html tag if it doesn\'t exist in the content to be translated)'],
                 [ 'role' => 'user', 'content' => 'translate in english : '.$content]
             ],
 
             'de' => $messages = [
-                [ 'role' => 'system', 'content' => 'You are a professional German translator from french, return only the translated word or sentence without any comment'],
+                [ 'role' => 'system', 'content' => 'You are a professional German translator from french, return only the translated word or sentence without any comment (doesn\'t add an html tag if it doesn\'t exist in the content to be translated)'],
                 [ 'role' => 'user', 'content' => 'translate in german : '.$content]
             ],
         };
