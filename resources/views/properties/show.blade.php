@@ -63,13 +63,13 @@
 
                         <ul class="italic text-xs">
                             <li>
-                                <a href="mailto:{{$property->user->email}}">{{ $property->user->email }}</a>
+                                <a id="mailtobroker" href="mailto:{{$property->user->email}}">{{ $property->user->email }}</a>
                             </li>
                             <li>
-                                <a href="tel:{{$property->user->phone}}">{{ $property->user->phone }}</a>
+                                <a id="phonetobroker" href="tel:{{$property->user->phone}}">{{ $property->user->phone }}</a>
                             </li>
                             <li>
-                                <a href="tel:{{$property->user->mobile}}">{{ $property->user->mobile }}</a>
+                                <a id="mobiletobroker" href="tel:{{$property->user->mobile}}">{{ $property->user->mobile }}</a>
                             </li>
                         </ul>
 
@@ -79,7 +79,7 @@
                 <!-- end nego -->
 
                 <!-- form -->
-                <form action="{{ route('contact.form.submit') }}" method="post" class="flex flex-col gap-2 py-2">
+                <form id="form_request_product" action="{{ route('contact.form.submit') }}" method="post" class="flex flex-col gap-2 py-2">
                     @method('post')
                     @csrf
                     <input type="hidden" name="ip_address" value="{{ request()->getClientIp() }}">
