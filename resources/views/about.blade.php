@@ -152,7 +152,7 @@
             <div class="w-full lg:w-1/2 h-fit lg:h-auto hover:cursor-pointer flex items-center justify-center" style="background: center/cover url('{{ asset('/images/bg-form-estimation.webp') }}')">
 
                 <div class="my-10 lg:my-28 mx-12 lg:mx-44 w-full lg:w-2/3 bg-white rounded-md drop-shadow-2xl"
-                     data-aos="fade-left"
+                     data-aos="flip-up"
                      data-aos-offset="0"
                      data-aos-delay="1000"
                      data-aos-duration="1000"
