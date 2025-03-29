@@ -26,7 +26,7 @@
                         @foreach($property->pictures as $picture)
                             <div class="swiper-slide">
                                 <figure>
-                                    <img class="aspect-video object-contain" src="{{ asset('storage/properties/'.$property->reference.'/'.$picture->name) }}" alt="slide property">
+                                    <img class="w-full object-contain" src="{{ asset('storage/properties/'.$property->reference.'/'.$picture->name) }}" alt="slide property">
                                 </figure>
                             </div>
                         @endforeach
@@ -115,7 +115,7 @@
                         </div>
                     @endif
 
-                    <p x-init="$el.closest('form').scrollIntoView()" class="text-gray-400 text-xs">{{ __('form.rgpd') }}</p>
+                    <p class="text-gray-400 text-xs">{{ __('form.rgpd') }}</p>
 
                 </form>
                 <!-- end form -->
