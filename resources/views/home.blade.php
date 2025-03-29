@@ -174,7 +174,7 @@
                  data-aos-once="false"
                  data-aos-anchor-placement="top-center">
 
-                <form action="{{ route('contact.form.submit') }}" method="post" class="p-6 lg:p-14" method="POST">
+                <form id="form_home_page" action="{{ route('contact.form.submit') }}" method="post" class="p-6 lg:p-14" method="POST">
                     <input type="hidden" name="ip_address" value="{{ request()->getClientIp() }}">
                     <input type="hidden" name="sources" value="form_home_page">
                     @method('post')
