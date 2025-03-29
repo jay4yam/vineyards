@@ -139,7 +139,7 @@
 
                 <h5 class="uppercase font-black text-lg text-black py-4 text-center w-full">{{ __('about.estim_h3') }}</h5>
 
-                <div class="px6 lg:px-40">
+                <div class="px-6">
                     <p class="font-crimson text-justify">{{ __('about.estim_p1') }}</p>
                     <p class="font-crimson text-justify py-2">{{ __('about.estim_p2') }}</p>
                     <p class="font-crimson text-justify py-2">{{ __('about.estim_p3') }}</p>
