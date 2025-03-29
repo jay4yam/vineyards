@@ -6,7 +6,7 @@
      data-aos-mirror="true"
      data-aos-once="false"
      class="w-full lg:w-1/2 flex flex-col gap-2 items-center text-gray-600 text-sm">
-    <img class="mx-auto w-full lg:w-1/2 rounded-md" loading="lazy" src="{{ asset('storage/user/'.$partner->avatar) }}" alt="{{ $partner->fullname }}">
+    <img class="mx-auto w-full lg:w-1/2" loading="lazy" src="{{ asset('storage/user/'.$partner->avatar) }}" alt="{{ $partner->fullname }}">
     <p>
         {{ $partner->firstname }} <span class="uppercase font-bold">{{ $partner->lastname }}</span>
     </p>
@@ -15,19 +15,19 @@
     </p>
     <div class="flex gap-4 justify-center items-center">
         @if($partner->linkedin_profile_url)
-            <a href="{{ $partner->linkedin_profile_url }}">
+            <a href="{{ $partner->linkedin_profile_url }}" target="_blank">
                 <x-fab-linkedin class="h-5 hover:text-red-800"/>
             </a>
         @endif
 
         @if($partner->facebook_profile_url)
-            <a href="{{ $partner->facebook_profile_url }}">
+            <a href="{{ $partner->facebook_profile_url }}" target="_blank">
                 <x-fab-facebook-square class="h-5 hover:text-red-800"/>
             </a>
         @endif
 
         @if($partner->email)
-            <a href="mailto:{{$partner->email}}">
+            <a href="mailto:{{$partner->email}}" target="_blank">
                 <x-fas-envelope class="h-6 hover:text-red-800" />
             </a>
         @endif
