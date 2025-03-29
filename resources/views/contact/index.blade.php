@@ -20,7 +20,7 @@
         <div class="flex flex-col lg:flex-row gap-2">
 
             <!-- form -->
-            <form action="{{ route('contact.form.submit') }}" method="post" class="w-full lg:w-8/12">
+            <form id="form_page_contact" action="{{ route('contact.form.submit') }}" method="post" class="w-full lg:w-8/12">
                 @csrf
                 @method('post')
                 <input type="hidden" name="ip_address" value="{{ request()->getClientIp() }}">
@@ -134,12 +134,12 @@
             <!-- téléphone -->
             <div class="flex flex-col text-black font-crimson italic">
                 <span class="text-lg font-bold">{{ __('contact.phone') }}</span>
-                <span><a class="hover:text-red-800" href="tel:{{ $agency->phone }}">{{ $agency->phone }}</a></span>
+                <span><a class="click_on_agency_phone hover:text-red-800" href="tel:{{ $agency->phone }}">{{ $agency->phone }}</a></span>
             </div>
             <!-- email -->
             <div class="flex flex-col text-black font-crimson italic">
                 <span class="text-lg font-bold">{{ __('contact.email') }}</span>
-                <span><a class="hover:text-red-800" href="mailto:vineyards@michaelzingraf.com">vineyards@michaelzingraf.com</a></span>
+                <span><a class="click_on_agency_mail hover:text-red-800" href="mailto:vineyards@michaelzingraf.com">vineyards@michaelzingraf.com</a></span>
             </div>
         </div>
 
@@ -159,12 +159,12 @@
             <!-- téléphone -->
             <div class="flex flex-col text-black font-crimson italic">
                 <span class="text-lg font-bold">{{ __('contact.phone') }}</span>
-                <span><a class="hover:text-red-800" href="tel:{{ $agency->phone }}">{{ $agency->phone }}</a></span>
+                <span><a class="click_on_agency_phone hover:text-red-800" href="tel:{{ $agency->phone }}">{{ $agency->phone }}</a></span>
             </div>
             <!-- email -->
             <div class="flex flex-col text-black font-crimson italic">
                 <span class="text-lg font-bold">{{ __('contact.email') }}</span>
-                <span><a class="hover:text-red-800" href="mailto:vineyards@michaelzingraf.com">vineyards@michaelzingraf.com</a></span>
+                <span><a class="click_on_agency_mail hover:text-red-800" href="mailto:vineyards@michaelzingraf.com">vineyards@michaelzingraf.com</a></span>
             </div>
         </div>
     </section>
