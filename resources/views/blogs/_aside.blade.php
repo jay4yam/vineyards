@@ -1,4 +1,4 @@
-<div class="w-1/4 px-6 flex flex-col">
+<div class="w-full lg:w-1/4 px-0 lg:px-6 flex flex-col">
 
     <!-- category -->
     <aside>
@@ -14,7 +14,7 @@
     <!-- end category -->
 
     <!-- search -->
-    <aside class="border-t border-t-gray-200 my-6 py-12">
+    <aside class="border-t border-t-gray-200 my-3 lg:my-6 py-6 lg:py-12">
         <h5 class="uppercase text-xl font-bold font-eurostile text-gray-400 mb-6">{{ __('blog.search') }}</h5>
         <form action="" method="post">
             @csrf
@@ -27,7 +27,7 @@
     <!-- end search -->
 
     <!-- last articles -->
-    <aside class="border-t border-t-gray-200 my-6 py-12">
+    <aside class="border-t border-t-gray-200 my-3 lg:my-6 py-6 lg:py-12">
         <h5 class="uppercase text-xl font-bold font-eurostile text-gray-400 mb-6">{{ __('blog.last') }}</h5>
         <ul class="list-disc list-inside">
             @foreach($lastArticles as $article)
@@ -42,7 +42,7 @@
     <!-- end last articles -->
 
     <!-- tags -->
-    <aside class="border-t border-t-gray-200 my-6 py-12">
+    <aside class="border-t border-t-gray-200 my-3 lg:my-6 py-6 lg:py-12">
         <h5 class="uppercase text-xl font-bold font-eurostile text-gray-400 mb-6">{{ __('blog.tags') }}</h5>
         <div class="flex flex-wrap gap-2">
             @foreach($allTags as $tag)

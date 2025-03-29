@@ -1,9 +1,9 @@
 <x-front-layout :seoData="$seoData">
 
-    <header class="relative flex items-center justify-center h-96 w-full" style="background: center/cover fixed url('{{ asset('images/bg-listing.webp') }}');">
+    <header class="relative flex items-center justify-center h-24 lg:h-96 w-full" style="background: center/cover fixed url('{{ asset('images/bg-listing.webp') }}');">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow">
             <span class="font-retro text-7xl text-white text-shadow">
-                {{ __('menu.blog') }}
+                {{ __('menu.handbook') }}
             </span>
         </div>
     </header>
@@ -56,7 +56,7 @@
             </article>
 
             <!-- about users -->
-            <div class="flex gap-6 border-y border-gray-200 my-24 py-8">
+            <div class="flex gap-6 border-y border-gray-200 my-12 lg:my-24 py-2 lg:py-8">
                 <img class="w-32 h-fit" src="{{ asset('storage/user/'.$blog->user->avatar) }}" alt="{{ $blog->user->firstname }} {{ $blog->user->lastname }}">
                 <div class="flex flex-col justify-around">
                     <h6 class="font-bold">{{ __('blog.about') }} {{ $blog->user->firstname }} {{ $blog->user->lastname }}</h6>
@@ -66,14 +66,14 @@
             </div>
 
             <!-- deux articles connexes -->
-            <div class="flex justify-between gap-12">
+            <div class="flex flex-col lg:flex-row justify-between gap-12">
 
                 @foreach($connexePosts as $post)
                     <a href="{{ route('blog.show', ['slug' => \Illuminate\Support\Str::slug($blog->translate->title), 'blog' => $blog]) }}">
                         <div class="flex gap-2">
                             <img class="w-1/3" src="{{ asset('storage/blog/'.$post->image) }}" alt="{{ $blog->translate->title }}">
                             <div class="w-2/3 flex flex-col justify-between gap-2">
-                                <span class="text-lg font-bold">{{ \Illuminate\Support\Str::limit($post->translate->title, 40, '...') }}</span>
+                                <span class="text-base lg:text-lg font-bold">{{ \Illuminate\Support\Str::limit($post->translate->title, 40, '...') }}</span>
                                 <span class="text-sm text-gray-400">{{ $post->created_at->format('M Y') }}</span>
                             </div>
                         </div>

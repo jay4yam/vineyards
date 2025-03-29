@@ -1,6 +1,6 @@
 <x-front-layout :seoData="$seoData">
 
-    <header class="relative flex items-center justify-center h-96 w-full" style="background: top/contain fixed url('{{ asset('images/bg-about.webp') }}') no-repeat;">
+    <header class="relative flex items-center justify-center h-24 lg:h-96 w-full" style="background: top/contain fixed url('{{ asset('images/bg-about.webp') }}') no-repeat;">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow">
             <span class="font-retro text-7xl text-white text-shadow">
                 {{ __('menu.about') }}
@@ -11,9 +11,9 @@
     <!-- intro -->
     <section>
 
-        <div class="flex gap-12 items-center">
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-12 items-center">
 
-            <div class="px-40 text-right">
+            <div class="px-6 lg:px-40 text-right">
                 <h1 class="uppercase font-black text-2xl text-black py-4 text-center w-full px-12">{{ __('about.intro_h1') }}</h1>
 
                 <p class="text-justify font-crimson">{!! __('about.intro_p1')  !!}</p>
@@ -29,16 +29,16 @@
                  data-aos-mirror="false"
                  data-aos-once="true"
                  data-aos-anchor-placement="center-bottom"
-                 loading="lazy" class="w-1/2 rounded-sm" src="{{ asset('images/michael-heathcliff-zingraf.webp') }}" alt="groupe Michaël Zingraf Real Estate">
+                 loading="lazy" class="w-full lg:w-1/2 rounded-sm" src="{{ asset('images/michael-heathcliff-zingraf.webp') }}" alt="groupe Michaël Zingraf Real Estate">
         </div>
 
     </section>
     <!-- end intro -->
 
-    <!-- strategique -->
+    <!-- stratégique -->
     <section>
 
-        <div class="flex gap-12 items-center">
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
 
             <img data-aos="fade-left"
                  data-aos-offset="0"
@@ -48,9 +48,9 @@
                  data-aos-mirror="false"
                  data-aos-once="true"
                  data-aos-anchor-placement="center-bottom"
-                 class="w-1/2 rounded-sm" src="{{ asset('images/investissement-strategique.webp') }}" alt="groupe Michaël Zingraf Real Estate">
+                 class="w-full lg:w-1/2 rounded-sm" src="{{ asset('images/investissement-strategique.webp') }}" alt="groupe Michaël Zingraf Real Estate">
 
-            <div class="px-40">
+            <div class="px-6 lg:px-40">
                 <h2 class="uppercase font-black text-2xl text-black py-4 text-center w-full px-12">{{ __('about.strat_h2') }}</h2>
 
                 <p class="text-justify font-crimson">{{ __('about.strat_p1') }}</p>
@@ -69,9 +69,9 @@
     <!-- patrimoine -->
     <section>
 
-        <div class="flex gap-12 items-center">
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-12 items-center">
 
-            <div class="px-40 text-justify">
+            <div class="px-6 lg:px-40 text-justify">
                 <h3 class="uppercase font-black text-2xl text-black py-4 text-center w-full px-12">{{ __('about.patri_h2') }}</h3>
 
                 <p class="font-crimson">{{ __('about.patri_p1') }}</p>
@@ -90,7 +90,7 @@
                  data-aos-mirror="false"
                  data-aos-once="true"
                  data-aos-anchor-placement="center-bottom"
-                loading="lazy" class="w-1/2 rounded-sm" src="{{ asset('images/patrimoine-img.webp') }}" alt="patrimoine">
+                loading="lazy" class="w-full lg:w-1/2 rounded-sm" src="{{ asset('images/patrimoine-img.webp') }}" alt="patrimoine">
         </div>
 
     </section>
@@ -100,7 +100,7 @@
     <!-- mzre -->
     <section>
 
-        <div class="flex gap-12 items-center">
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-12 items-center">
 
             <img data-aos="fade-left"
                  data-aos-offset="0"
@@ -109,13 +109,13 @@
                  data-aos-easing="ease-in-out"
                  data-aos-mirror="false"
                  data-aos-once="true"
-                 loading="lazy" class="w-1/2 rounded-sm" src="{{ asset('images/mzre-about.webp') }}" alt="groupe Michaël Zingraf Real Estate">
+                 loading="lazy" class="w-full lg:w-1/2 rounded-sm" src="{{ asset('images/mzre-about.webp') }}" alt="groupe Michaël Zingraf Real Estate">
 
             <div>
 
-                <h1 class="uppercase font-black text-2xl text-black py-4 text-center w-full px-40">{{ __('about.mzre_h2') }}</h1>
+                <h3 class="uppercase font-black text-2xl text-black py-4 text-center w-full px-6 lg:px-40">{{ __('about.mzre_h2') }}</h3>
 
-                <div class="px-40">
+                <div class="px-6 lg:px-40">
                     <p class="text-justify font-crimson">{{ __('about.mzre_p1') }}</p>
 
                     <p class="text-justify font-crimson py-2">{{ __('about.mzre_p2') }}</p>
@@ -130,16 +130,16 @@
     <!-- demande estimation -->
     <section>
 
-        <div class="flex items-center gap-2">
+        <div class="flex flex-col lg:flex-row items-center gap-2">
 
             <!-- content -->
-            <div class="w-1/2">
+            <div class="w-full lg:w-1/2 px-6 lg:px-40">
 
                 <h4 class="uppercase font-black text-2xl text-black py-4 text-center w-full">{{ __('about.estim_h2') }}</h4>
 
                 <h5 class="uppercase font-black text-lg text-black py-4 text-center w-full">{{ __('about.estim_h3') }}</h5>
 
-                <div class="px-40">
+                <div class="px6 lg:px-40">
                     <p class="font-crimson text-justify">{{ __('about.estim_p1') }}</p>
                     <p class="font-crimson text-justify py-2">{{ __('about.estim_p2') }}</p>
                     <p class="font-crimson text-justify py-2">{{ __('about.estim_p3') }}</p>

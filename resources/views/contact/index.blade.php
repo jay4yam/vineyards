@@ -6,7 +6,7 @@
           crossorigin=""/>
 @endsection
 
-    <header class="relative flex items-center justify-center h-96 w-full" style="background: center/cover fixed url('{{ asset('images/bg-listing.webp') }}');">
+    <header class="relative flex items-center justify-center h-24 lg:h-96 w-full" style="background: center/cover fixed url('{{ asset('images/bg-listing.webp') }}');">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow">
             <span class="font-retro text-7xl text-white text-shadow">
                 {{ __('menu.contact') }}
@@ -15,12 +15,12 @@
     </header>
 
     <!-- section form -->
-    <section class="container mx-auto w-3/4 pt-16 font-eurostile">
+    <section class="container mx-auto w-full lg:w-3/4 px-6 pt-4 lg:pt-16 font-eurostile">
 
-        <div class="flex gap-2">
+        <div class="flex flex-col lg:flex-row gap-2">
 
             <!-- form -->
-            <form action="{{ route('contact.form.submit') }}" method="post" class="w-full lg:w-8/12 p-6">
+            <form action="{{ route('contact.form.submit') }}" method="post" class="w-full lg:w-8/12">
                 @csrf
                 @method('post')
                 <input type="hidden" name="ip_address" value="{{ request()->getClientIp() }}">
@@ -72,7 +72,7 @@
                 @endif
         </form>
 
-            <div class="w-4/12 p-6">
+            <div class="w-full lg:w-4/12">
 
                 <h2 class="text-center text-red-800 text-3xl uppercase">{{ __('contact.call_expert') }}</h2>
 
@@ -112,6 +112,7 @@
 
                 </div>
             </div>
+
         </div>
 
     </section>

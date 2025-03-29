@@ -10,22 +10,24 @@
 
         <!-- main image -->
         <figure class="relative basis-2/3 overflow-hidden">
-            <img class="w-full h-full object-cover group-hover:scale-105 ease-in-out delay-150 transition-all" loading="lazy" src="{{ asset('storage/properties/'.$property->reference.'/'.$property->picture->name) }}" alt="{{ $property->name }}">
+            <a href="{{ route('properties.show', ['slug' => $property->comment->slug, 'property' => $property ]) }}">
+                <img class="w-full h-full object-cover group-hover:scale-105 ease-in-out delay-150 transition-all" loading="lazy" src="{{ asset('storage/properties/'.$property->reference.'/'.$property->picture->name) }}" alt="{{ $property->name }}">
+            </a>
             <div class="absolute bottom-0 flex gap-2 p-6">
-                @foreach( $property->pictures as $picture )
-                    <img loading="lazy" class="border-4 border-white h-20" src="{{ asset('storage/properties/'.$property->reference.'/'.$picture->name) }}" alt="">
-                    @if($loop->index >= 4)
-                        @break
-                    @endif
-                @endforeach
-            </div>
+            @foreach( $property->pictures as $picture )
+                <img loading="lazy" class="border-4 border-white h-20" src="{{ asset('storage/properties/'.$property->reference.'/'.$picture->name) }}" alt="">
+                @if($loop->index >= 4)
+                    @break
+                @endif
+            @endforeach
+        </div>
         </figure>
 
         <!-- product info -->
         <div class="basis-1/3 flex flex-col gap-4 justify-between bg-gray-50 pr-1">
 
             <!-- text et prix -->
-            <div class="text-center p-12">
+            <div class="text-center p-6 lg:p-12">
                 <h2 class="font-bold">{{ $property->comment->title }}</h2>
                 <p class="text-justify italic pt-8 lowercase">{!! \Illuminate\Support\Str::limit($property->comment->comment, 200, '...', true) !!}</p>
             </div>
